@@ -10,5 +10,10 @@ public class MainController {
 	public String home() {
 		return "home";
 	}
+	
+	@RequestMapping("/kwi")
+	public String test_kwi() {
+		return "kwi_test";
+	}
 
 }
