@@ -15,5 +15,10 @@ public class MainController {
 	public String test_kwi() {
 		return "kwi_test";
 	}
+	
+	@RequestMapping("/ary")
+	public String test_ary() {
+		return "ary_test";
+	}
 
 }
