@@ -15,5 +15,10 @@ public class MainController {
 	public String test_kwi() {
 		return "kwi_test";
 	}
+	
+	@RequestMapping("/cdw")
+	public String test_kwi() {
+		return "cdw_test";
+	}
 
 }
