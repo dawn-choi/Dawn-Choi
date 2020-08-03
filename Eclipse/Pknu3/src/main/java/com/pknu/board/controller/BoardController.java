@@ -11,9 +11,9 @@ public class BoardController {
 		return "home";
 	}
 	
-	@RequestMapping("/SideBar")
+	@RequestMapping("/Table")
 	public String sidebar() {
-		return "sidebar";
+		return "table";
 	}
 	
 }

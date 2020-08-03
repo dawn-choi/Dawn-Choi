@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,13 +40,13 @@
                 autoRowHeight:false,pageSize:50">
         <thead>
             <tr>
-                <th field="inv" width="80">Inv No</th>
-                <th field="date" width="100">Date</th>
-                <th field="name" width="80">Name</th>
-                <th field="amount" width="80" align="right">Amount</th>
-                <th field="price" width="80" align="right">Price</th>
-                <th field="cost" width="100" align="right">Cost</th>
-                <th field="note" width="110">Note</th>
+                <th field="inv" width="80">회원권</th>
+                <th field="date" width="100">카테고리</th>
+                <th field="name" width="80">회원권명</th>
+                <th field="amount" width="80" align="right">사용기한</th>
+                <th field="price" width="80" align="right">세션</th>
+                <th field="cost" width="100" align="right">가격</th>
+                <th field="note" width="110">--</th>
             </tr>
         </thead>
     </table>
