@@ -10,9 +10,7 @@ import com.pknu.board.service.BoardService;
 @Controller
 public class BoardController {
 
-	@Autowired
-	private BoardService boardService;
-	
+		
 	@RequestMapping("/")
 	public String home() {
 		return "home";
