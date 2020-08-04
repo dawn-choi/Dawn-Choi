@@ -24,6 +24,12 @@ public class BoardController {
 		return "home";
 	}
 	
+	@RequestMapping("/MBoard")
+	public String mboard() {
+		return "mboard";
+	}
+	
+	
 	@RequestMapping("/Table")
 	public ModelAndView table() {
        List<BoardVo> spBoardList = boardService.getList();
