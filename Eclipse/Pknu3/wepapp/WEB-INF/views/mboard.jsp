@@ -14,7 +14,9 @@
 
 <style>
 
-
+ #wrapMain{ background-color: blue; 
+    width: 100%;
+	height: 430px; }
 
 </style>
 
@@ -62,9 +64,7 @@
 
  <div id="wrapper">
 		<div id="wrapMain">
-			<div id="mainImg">
-				<img width="1000px" height="420px" alt="메인 이미지" src="/img/main.jpg">
-			</div>
+			
 	    </div>
 </div>
 

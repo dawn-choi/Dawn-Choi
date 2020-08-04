@@ -32,8 +32,8 @@
        destroy-method="close">
       <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
       <property name="url"      value="jdbc:oracle:thin:@localhost:1521:xe" />
-      <property name="username" value="jjsdb" />
-      <property name="password" value="1234" />    
+      <property name="username" value="s" />
+      <property name="password" value="1" />    
     </bean>
   
     <!-- 
