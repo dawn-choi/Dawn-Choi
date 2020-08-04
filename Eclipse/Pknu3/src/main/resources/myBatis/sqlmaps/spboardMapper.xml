@@ -62,12 +62,14 @@
 		
 		<result property="menu_name" column="MENU_NAME" javaType="string" />
 		
+		<result property="category" column="CATEGORY" javaType="string" />
+		
 	</resultMap>
 
 	<select id="BoardList" statementType="CALLABLE"
 		parameterType="hashmap" resultType="com.pknu.board.vo.BoardVo">
 
-		{CALL PKG_GUESTS.PROC_GUESTS_LIST(
+		{CALL PKG_BOARD.PROC_BOARD_LIST(
 		#{result, mode=OUT, jdbcType=CURSOR,
 		javaType=ResultSet, resultMap = spBoardMap }
 		)}

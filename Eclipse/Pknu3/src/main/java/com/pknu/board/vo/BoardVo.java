@@ -57,7 +57,10 @@ public class BoardVo {
 	private int    delnum;
 	
 	private String menu_name;
+	
+	private String category;
 
+	
 	
 	// Getter Setter
 	public String getMid() {
@@ -411,6 +414,14 @@ public class BoardVo {
 	public void setMenu_name(String menu_name) {
 		this.menu_name = menu_name;
 	}
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	
 	
@@ -425,7 +436,8 @@ public class BoardVo {
 				+ ", lsdate=" + lsdate + ", bid=" + bid + ", imp=" + imp + ", bname=" + bname + ", idx=" + idx
 				+ ", menu_id=" + menu_id + ", title=" + title + ", cont=" + cont + ", regdate=" + regdate
 				+ ", readcount=" + readcount + ", bnum=" + bnum + ", step=" + step + ", nref=" + nref + ", delnum="
-				+ delnum + ", menu_name=" + menu_name + "]";
+				+ delnum + ", menu_name=" + menu_name + ", category=" + category + "]";
 	}
+
 	
 }
