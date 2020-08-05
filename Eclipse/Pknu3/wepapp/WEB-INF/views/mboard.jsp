@@ -14,9 +14,48 @@
 
 <style>
 
- #wrapMain{ background-color: blue; 
+
+ 
+ #wrapMain{ 
+    background-color: blue; 
     width: 100%;
-	height: 430px; }
+    height: 1000px;
+	 }
+	 
+ #mb_head{
+ 	position:relative;
+ 	height: 100px;
+ }
+ #mb_title {
+ 	position:absolute;
+ 	margin-left : 160px;
+ 	margin-top  : 30px;
+ 	
+ 	position:fixed;
+ }
+ #select_kind{
+ 	position:absolute;
+ 	margin-left : 80%;
+ 	margin-top  : 70px;
+ 	width: 100px;
+ 	position:fixed;
+ }
+
+#mb_tableWrap{
+	position:relative;
+	background-color: green; 
+	height: 900px;
+}
+
+#mb_tableDiv{
+     position:absolute;
+     margin-left : 160px;
+ 	 margin-top  : 20px;
+     width: 1450px;
+     height: 800px;
+     background-color: red; 
+     position:fixed;
+}
 
 </style>
 
@@ -64,6 +103,25 @@
 
  <div id="wrapper">
 		<div id="wrapMain">
+			<div id = "mb_head">
+				<div id = "mb_title"><h1>회원게시판</h1></div>
+				<div id = "select_kind">
+					<select name = "kind" id = "kind" style = "width:100px;">
+						<option value = "humor1">유머1</option>
+						<option value = "humor2">유머2</option>
+						<option value = "humor3">유머3</option>
+						<option value = "humor4">유머4</option>
+					</select>
+				</div>
+			</div>
+			
+			<div id = "mb_tableWrap">
+				<div id = "mb_tableDiv">
+					
+				
+				</div>
+			
+			</div>
 			
 	    </div>
 </div>
