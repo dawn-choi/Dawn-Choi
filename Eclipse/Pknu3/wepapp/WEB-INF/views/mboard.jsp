@@ -10,54 +10,7 @@
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/mainPage.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
-
-
-<style>
-
-
- 
- #wrapMain{ 
-    background-color: blue; 
-    width: 100%;
-    height: 1000px;
-	 }
-	 
- #mb_head{
- 	position:relative;
- 	height: 100px;
- }
- #mb_title {
- 	position:absolute;
- 	margin-left : 160px;
- 	margin-top  : 30px;
- 	
- 	position:fixed;
- }
- #select_kind{
- 	position:absolute;
- 	margin-left : 80%;
- 	margin-top  : 70px;
- 	width: 100px;
- 	position:fixed;
- }
-
-#mb_tableWrap{
-	position:relative;
-	background-color: green; 
-	height: 900px;
-}
-
-#mb_tableDiv{
-     position:absolute;
-     margin-left : 160px;
- 	 margin-top  : 20px;
-     width: 1450px;
-     height: 800px;
-     background-color: red; 
-     position:fixed;
-}
-
-</style>
+<link rel="stylesheet" href="/css/mboard.css">
 
 
 </head>
@@ -117,7 +70,31 @@
 			
 			<div id = "mb_tableWrap">
 				<div id = "mb_tableDiv">
-					
+					<!-- 테이블 -->
+					<table width = "1450" cellpadding = "0" cellspacing ="0" id = "userboard"">
+						<tr class = "headtr">
+							<td>번호</td>
+							<td>제목</td>
+							<td>작성자</td>
+							<td>날짜</td>
+							<td>조회수</td>
+						</tr>
+						<tr class = "MainUL" >
+							<td><h1 style = "color:#07D88E">1</h1></td>
+							<td class = "itemtd" >			
+								<div class = "textdiv">
+									최선생님 이두박근 보고 있으면...
+								</div>
+								<div class = "imgdiv">
+								 	<img alt="Schedule" src="/img/main.jpg" width = "90"/>
+								</div>
+							</td>
+							<td>이두박근 성애자</td>
+							<td>2020.08.05</td>
+							<td>20</td>
+						</tr>
+						
+					</table>
 				
 				</div>
 			
