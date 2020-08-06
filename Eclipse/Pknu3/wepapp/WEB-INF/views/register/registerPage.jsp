@@ -93,7 +93,7 @@
 		<%-- </c:forEach> --%>
 	</table>
 	
-	<!-- 페이지네이션 넣을까 말까? ADMINLTE 사용 -->
+	<!-- 페이지네이션 넣을까 말까? ADMINLTE 사용 예정-->
 	
 </body>
 </html>
