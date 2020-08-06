@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품관리</title>
+<title>03 프로젝트 메인</title>
+
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/mainPage.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="/css/mboard.css">
+
+
 </head>
 <body>
-	<!-- 상단 네비게이션  -->
+
+<!-- 상단 네비게이션  -->
 	<div id="topNav">
 		<div id="logo">
 			<span>로고 위치</span>
@@ -48,40 +51,60 @@
 			<!-- 스케줄 / 수업신청 / 상품  / 통계  / 자유게시판 순 -->
 		</ul>
 	</div>
-	
-	<!-- 메인 -->
-	<div id="wrapper">
-		<div style="margin-bottom: 10px">
-			<select>
-				<option value="">종류</option>
-			<c:forEach var="bsel" items="${spBoardList}">
-				<option value="${ bsel.pname }">${ bsel.pname }</option>
-			</c:forEach>	
-			</select> <select>
-				<option value="">가격별</option>
-				<option value="">높은가격순</option>
-				<option value="">낮은가격순</option>
-			</select> <a href="/SideBar">사이드바</a>
-		</div>
-		<table id="tablesort" style="width: 700px; height: 300px">
-			<tr>
-				<th width="60">번호</th>
-				<th width="200">회원권</th>
-				<th width="200">회원권명</th>
-				<th width="150" align="right">사용기한/세션</th>
-				<th width="80" align="right">가격</th>
-			</tr>
 
-			<c:forEach var="bdata" items="${spBoardList}">
-				<tr>
-					<td>${bdata.index}</td>
-					<td>${bdata.pname}</td>
-					<td>${bdata.category}</td>
-					<td>${bdata.cname}</td>
-					<td>${bdata.pcost}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
+
+
+ <div id="wrapper">
+		<div id="wrapMain">
+			<div id = "mb_head">
+				<div id = "mb_title"><h1>회원게시판</h1></div>
+				<div id = "select_kind">
+					<select name = "kind" id = "kind" style = "width:100px;">
+						<option value = "humor1">유머1</option>
+						<option value = "humor2">유머2</option>
+						<option value = "humor3">유머3</option>
+						<option value = "humor4">유머4</option>
+					</select>
+				</div>
+			</div>
+			
+			<div id = "mb_tableWrap">
+				<div id = "mb_tableDiv">
+					<!-- 테이블 -->
+					<table width = "1450" cellpadding = "0" cellspacing ="0" id = "userboard"">
+						<tr class = "headtr">
+							<td>번호</td>
+							<td>제목</td>
+							<td>작성자</td>
+							<td>날짜</td>
+							<td>조회수</td>
+						</tr>
+						<tr class = "MainUL" >
+							<td><h1 style = "color:#07D88E">1</h1></td>
+							<td class = "itemtd" >			
+								<div class = "textdiv">
+									최선생님 이두박근 보고 있으면...
+								</div>
+								<div class = "imgdiv">
+								 	<img alt="Schedule" src="/img/main.jpg" width = "90"/>
+								</div>
+							</td>
+							<td>이두박근 성애자</td>
+							<td>2020.08.05</td>
+							<td>20</td>
+						</tr>
+						
+					</table>
+				
+				</div>
+			
+			</div>
+			
+	    </div>
+</div>
+
+	
+
+
 </body>
 </html>

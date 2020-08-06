@@ -1,16 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품관리</title>
+<title>수업 신청 페이지</title>
 <link rel="stylesheet" href="/css/commons.css">
-<link rel="stylesheet" href="/css/mainPage.css">
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	<!-- 상단 네비게이션  -->
@@ -41,7 +37,7 @@
 		<div id="toHome"><a href="/"><img width="40px" height="40px" alt="HOME" src="/img/home.png"></a></div>
 		<ul>
 			<li><a class="category" href=""><img width="40px" height="40px" alt="Schedule" src="/img/calendar.png"></a></li> 
-			<li><a class="category" href=""><img width="40px" height="40px" alt="Class register" src="/img/registration.png"></a></li>
+			<li><a class="category" href="/RegisterPage"><img width="40px" height="40px" alt="Class register" src="/img/registration.png"></a></li>
 			<li><a class="category" href=""><img width="40px" height="40px" alt="Product List" src="/img/gym.png"></a></li>
 			<li><a class="category" href=""><img width="40px" height="40px" alt="Statistics" src="/img/result.png"></a></li>
 			<li><a class="category" href=""><img width="40px" height="40px" alt="Board" src="/img/meeting.png"></a></li>
@@ -49,39 +45,55 @@
 		</ul>
 	</div>
 	
-	<!-- 메인 -->
-	<div id="wrapper">
-		<div style="margin-bottom: 10px">
-			<select>
-				<option value="">종류</option>
-			<c:forEach var="bsel" items="${spBoardList}">
-				<option value="${ bsel.pname }">${ bsel.pname }</option>
-			</c:forEach>	
-			</select> <select>
-				<option value="">가격별</option>
-				<option value="">높은가격순</option>
-				<option value="">낮은가격순</option>
-			</select> <a href="/SideBar">사이드바</a>
+	<div id="searchWrap">
+		<div id="filter">
+			<select id="">
+				<option  value="">선택</option>
+				<!-- 그룹명 - GRNAME -->
+			<%-- 	<c:forEach var="grpVo" items="grpList"> --%>
+					<option value="" ></option>
+			<%-- 	</c:forEach> --%>
+			</select>
 		</div>
-		<table id="tablesort" style="width: 700px; height: 300px">
-			<tr>
-				<th width="60">번호</th>
-				<th width="200">회원권</th>
-				<th width="200">회원권명</th>
-				<th width="150" align="right">사용기한/세션</th>
-				<th width="80" align="right">가격</th>
-			</tr>
-
-			<c:forEach var="bdata" items="${spBoardList}">
-				<tr>
-					<td>${bdata.index}</td>
-					<td>${bdata.pname}</td>
-					<td>${bdata.category}</td>
-					<td>${bdata.cname}</td>
-					<td>${bdata.pcost}</td>
-				</tr>
-			</c:forEach>
-		</table>
+		<!-- 여기 상품 목록이 출력 될 것임 -->
+		<div id="search">
+			<select id="">
+				<option value="">선택</option>
+				<option value="">수업명</option>
+				<option value="">강사명</option>
+			</select>
+			<input type="text" id="searchText" />
+			<input type="button" id="searchBtn" value="검색" />
+		</div>
 	</div>
+	
+	<table>
+		<tr>
+			<th>종류</th>
+			<th>수업명</th>
+			<th>요일</th>
+			<th>시간</th>
+			<th>강의실</th>
+			<th>강사명</th>
+			<th>수업료</th>
+			<th>신청</th>
+		</tr>
+		<!-- 아래에 리스트 ROW 반복 -->
+		<%-- <c:forEach	val="ClassVo" items="classList"> --%>
+		<tr>
+			<td>종류</td>
+			<td>수업명</td>
+			<td>요일</td>
+			<td>시간</td>
+			<td>강의실</td>
+			<td>강사명</td>
+			<td>수업료</td>
+			<td><input type="button" id="insertBtn" value="신청"/></td>
+		</tr>
+		<%-- </c:forEach> --%>
+	</table>
+	
+	<!-- 페이지네이션 넣을까 말까? ADMINLTE 사용 예정-->
+	
 </body>
 </html>

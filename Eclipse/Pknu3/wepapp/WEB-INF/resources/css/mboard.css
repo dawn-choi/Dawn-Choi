@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+#wrapMain{ 
+    width: 100%;
+    height: 1000px;
+	 }
+	 
+ #mb_head{
+ 	position:relative;
+ 	height: 100px;
+ }
+ #mb_title {
+ 	position:absolute;
+ 	margin-left : 160px;
+ 	margin-top  : 30px;
+ 	
+ 	position:fixed;
+ }
+ #select_kind{
+ 	position:absolute;
+ 	margin-left : 80%;
+ 	margin-top  : 70px;
+ 	width: 100px;
+ 	position:fixed;
+ }
+
+#mb_tableWrap{
+	position:relative;
+	height: 900px;
+}
+
+#mb_tableDiv{
+     position:absolute;
+     margin-left : 160px;
+ 	 margin-top  : 20px;
+     width: 1450px;
+     height: 800px;
+     position:fixed;
+}
+
+#userboard{
+	border-top:1px solid #E9E9E9; 
+    border-collapse: collapse;
+}
+
+td
+{
+ border-bottom:1px solid #E9E9E9; 
+}
+
+.headtr
+{
+ text-align:center;
+ height: 60px;
+}
+
+.MainUL
+{
+text-align:center;
+}
+
+.MainUL > td
+{
+ height: 100px;
+}
+
+.headtr > td:nth-of-type(1)
+{
+ width:250px;
+}
+
+.headtr > td:nth-of-type(2)
+{
+ width:450px;
+}
+
+.headtr > td:nth-of-type(3)
+{
+ width:250px;
+}
+
+.headtr > td:nth-of-type(4)
+{
+ width:250px;
+}
+
+.headtr > td:nth-of-type(5)
+{
+ width:250px;
+}
+
+.itemtd
+{
+position:relative;
+}
+
+/*2 열 */
+.itemtd
+{
+width: 550px;
+}
+
+.imgdiv
+{
+position:absolute;
+top:10px;
+left:400px;
+}
