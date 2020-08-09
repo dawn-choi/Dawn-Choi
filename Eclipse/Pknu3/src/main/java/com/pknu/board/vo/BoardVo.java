@@ -27,7 +27,7 @@ public class BoardVo {
 	private String  pid;
 	private String  pname;
 	private int     pcost;
-	private int     ptot;
+	private String  ptot;
 	
 	private String  tid;
 	private String  tname;
@@ -55,6 +55,9 @@ public class BoardVo {
 	private String  step;
 	private int     nref;
 	private int    delnum;
+	
+	private String    dtime;
+	private String    dday;
 	
 	private String menu_name;
 	
@@ -109,6 +112,14 @@ public class BoardVo {
 
 	public void setMgender(String mgender) {
 		this.mgender = mgender;
+	}
+
+	public String getPtot() {
+		return ptot;
+	}
+
+	public void setPtot(String ptot) {
+		this.ptot = ptot;
 	}
 
 	public String getMtel() {
@@ -223,13 +234,7 @@ public class BoardVo {
 		this.pcost = pcost;
 	}
 
-	public int getPtot() {
-		return ptot;
-	}
-
-	public void setPtot(int ptot) {
-		this.ptot = ptot;
-	}
+	
 
 	public String getTid() {
 		return tid;
@@ -422,9 +427,23 @@ public class BoardVo {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	public String getDtime() {
+		return dtime;
+	}
 
-	
-	
+	public void setDtime(String dtime) {
+		this.dtime = dtime;
+	}
+
+	public String getDday() {
+		return dday;
+	}
+
+	public void setDday(String dday) {
+		this.dday = dday;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVo [mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", memail=" + memail + ", mbirth="
@@ -436,8 +455,11 @@ public class BoardVo {
 				+ ", lsdate=" + lsdate + ", bid=" + bid + ", imp=" + imp + ", bname=" + bname + ", idx=" + idx
 				+ ", menu_id=" + menu_id + ", title=" + title + ", cont=" + cont + ", regdate=" + regdate
 				+ ", readcount=" + readcount + ", bnum=" + bnum + ", step=" + step + ", nref=" + nref + ", delnum="
-				+ delnum + ", menu_name=" + menu_name + ", category=" + category + "]";
+				+ delnum + ", dtime=" + dtime + ", dday=" + dday + ", menu_name=" + menu_name + ", category=" + category
+				+ "]";
 	}
 
+	
+	
 	
 }

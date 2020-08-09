@@ -15,22 +15,50 @@
 <link rel="stylesheet" type="text/css"
 	href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
 <style>
+table {
+  border-spacing: 1px;
+  table-layout: fixed;
+}
 #tablesort{
   margin : 0 auto;
 }
 
+#leftmenu{
+  width : 300px;
+  height : 740px;
+  background-color : black;
+  float:left;
+}
+#seldiv{
+  
+}
+
+
+#selone {
+  margin-left : 25%;
+  margin-bottom : 20px;
+}
+
+#selone {
+}
+
+#mainbody{
+  width : 1000px;
+  float: left;
+}
+
 .bdetail {
-	width: 700px;
-	display: none;
+	width: 720px;
+	display: none; 
 }
 
 .detailleft {
-	width: 100px;
+	width: 50%;
 	display: none;
 }
 
 .detailright {
-	width: 250px;
+	width: 50%;
 	display: none;
 }
 
@@ -44,6 +72,7 @@
   color : white;
   font-weight : bold;
 }
+.datarow { outline : 1px solid gray; }
 </style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -63,18 +92,8 @@
 				  $('tr').eq(i+1).hide();  
 		    });
 	    };     
-
 	    
-	    $("td").click(function(){
-			// alert("클릭됨");
-		    	if($(".bdetail").css("display") == "none"){   
-		    		$(".bdetail").show();   
-		    		$(".bdetail > div").show();   
-		        } else {  
-		        	$(".bdetail").hide();   
-		    		$(".bdetail > div").hide();   
-		        }  
-		    }); // td.click
+	    
 	  
     });
       
@@ -92,6 +111,55 @@
 		  if(deltr != "")
 			  $('tr:nth-child(2)').hide();
 	  ); */
+	  
+	  
+	  function trClick(trObj) {
+		    var i = trObj.rowIndex;
+	    	//alert(trObj.rowIndex);   // +3 개의 row show
+	    	//alert(i);   // +3 개의 row show
+	    	
+	    	if($("tr").eq(i+1).css('display') == 'none'){
+	    	for (var n = 1; n <= 3; n++) {
+   		      $("tr").eq(i+n).children().show(); 
+	    	  $("tr").eq(i+n).show();   // tr클릭시 다음 3개로우 show()
+			  }
+	    	}
+	    	
+	    	else {
+		    	for (var n = 1; n <= 3; n++) {
+	   		      $("tr").eq(i+n).children().hide(); 
+		    	  $("tr").eq(i+n).hide();   // tr클릭시 다음 3개로우 hide()
+				}
+	    	}
+	    	
+            //$("tr").eq(i+2).show();   
+	    	//$("tr").eq(i+3).show();   
+	    	
+    		//$("tr").eq(i+2).children().show(); 
+     		//$("tr").eq(i+3).children().show(); 
+		}
+	  
+	  // select box 
+	  // 1.개인운동 2. 그룹수업 3 높은가격 4 낮은가격
+	   function selonechg(selObj){
+		   alert(selObj);
+		   
+		   var leng = $('td').length;
+		   alert(leng);
+		   if(selObj == 1){
+		     for( var i = 10; i < leng; i+=11 ) {
+			 console.log($("td").eq(i).html());	   
+		     }   
+		   }
+		   
+	   }
+	   
+	  
+       function seltwochg(selObj){
+    	   alert(selObj);
+	   }
+	  
+	
 </script>
 </head>
 <body>
@@ -113,7 +181,7 @@
 				</a></li>
 			</ul>
 		</div>
-	</div>
+	</div>.
 	<!-- 왼쪽 네비게이션 -->
 	<div id="leftNav">
 		<div id="toHome">
@@ -137,58 +205,58 @@
 
 	<!-- 메인 -->
 	<div id="wrapper">
-		<div style="margin-bottom: 10px">
-			<form id="user" action="join" method="post">
-				<select id="selone">
+	
+	<div id="leftmenu">
+	
+    </div>	
+	
+	<div id="mainbody">
+		<div id="seldiv">
+				<select id="selone" onchange="selonechg(this.value)">
 					<option value="">종류별</option>
 					<option value="1">개인운동</option>
 					<option value="2">그룹수업</option>
 				</select> 
-				<select id="seltwo">
+				<select id="seltwo" onchange="seltwochg(this.value)">
 					<option value="">가격별</option>
 					<option value="3">높은가격순</option>
 					<option value="4">낮은가격순</option>
 				</select>
-			</form>
 
-			<a href="/SideBar">사이드바</a>
 		</div>
-		<table id="tablesort" style="width: 700px; height: 300px">
+		<table id="tablesort" style="width: 720px; height: 300px">
 			<tr class="firsttr">
 				<th width="60">번호</th>
 				<th width="200">회원권</th>
-				<th width="200">회원권명</th>
+				<th width="210">회원권명</th>
 				<th width="150" >사용기한/세션</th>
-				<th width="80" >가격</th>
+				<th width="90" >가격</th>
 			</tr>
 
 			<c:forEach var="bdata" items="${spBoardList}" varStatus="status">
-				<tr class="datarow">
-					<td class="${status.count}">${bdata.count}</td>
+				<tr class="datarow" onclick="javascript:trClick(this)" >
+					<td class="${status.count}" >${status.count}</td>
 					<td class="${status.count}" >${bdata.pname}</td>
 					<td class="${status.count}" >${bdata.category}</td>
 					<td class="${status.count}" >${bdata.cname}</td>
-					<td class="${status.count}" >${bdata.pcost}
-					<!-- <div class="bdetail">
-						<div class="detailleft">회원권명</div>
-						<div class="detailright">회원권명</div>
-						<div class="detailleft">사용기간</div>
-						<div class="detailright">회원권명</div>
-
-						<div class="detailleft">가격</div>
-						<div class="detailright">회원권명</div>
-						<div class="detailleft">수업요일</div>
-						<div class="detailright">회원권명</div>
-
-						<div class="detailleft">수업시간대</div>
-						<div class="detailright">회원권명</div>
-						<div class="detailleft">총인원</div>
-						<div class="detailright">회원권명</div>
-					</div> -->
-					</td>
-				</tr>
+					<td class="${status.count}" >${bdata.pcost}</td>
+				  </tr>
+				  
+					 <tr class="bdetail">
+						<td class="detailleft" colspan="2"  >회원권명 : ${bdata.category}</td>
+						<td class="detailright" colspan="2" >사용기간 : ${bdata.cname}</td>
+					</tr>
+					<tr class="bdetail">
+						<td class="detailleft" colspan="2" >가격 : ${bdata.pcost}</td>
+						<td class="detailright" colspan="2" >수업요일 : ${bdata.dday} </td>
+					</tr>
+					<tr class="bdetail">
+						<td class="detailleft" colspan="2" >수업시간 : ${bdata.dtime}</td>
+						<td class="detailright" colspan="2" >정원 : ${bdata.ptot}</td>
+					</tr>
 			</c:forEach>
 		</table>
+		</div>
 	</div>
 </body>
 </html>
