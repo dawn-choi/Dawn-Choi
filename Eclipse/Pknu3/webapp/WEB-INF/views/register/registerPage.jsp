@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>수업 신청 페이지</title>
 <link rel="stylesheet" href="/css/commons.css">
+<style>
+	#wrapper {
+	margin-left: 60px;
+	margin-top: 60px;
+}
+</style>
 </head>
 <body>
 	<!-- 상단 네비게이션  -->
@@ -44,55 +50,55 @@
 			<!-- 스케줄 / 수업신청 / 상품  / 통계  / 자유게시판 순 -->
 		</ul>
 	</div>
+	<div id="wrapper">
+		<div id="searchWrap">
+			<div id="filter">
+				<select id="">
+					<option  value="">선택</option>
+					<!-- 그룹명 - GRNAME -->
+				<%-- 	<c:forEach var="grpVo" items="grpList"> --%>
+						<option value="" ></option>
+				<%-- 	</c:forEach> --%>
+				</select>
+			</div>
+			<!-- 여기 상품 목록이 출력 될 것임 -->
+			<div id="search">
+				<select id="">
+					<option value="">선택</option>
+					<option value="">수업명</option>
+					<option value="">강사명</option>
+				</select>
+				<input type="text" id="searchText" />
+				<input type="button" id="searchBtn" value="검색" />
+			</div>
+		</div>
 	
-	<div id="searchWrap">
-		<div id="filter">
-			<select id="">
-				<option  value="">선택</option>
-				<!-- 그룹명 - GRNAME -->
-			<%-- 	<c:forEach var="grpVo" items="grpList"> --%>
-					<option value="" ></option>
-			<%-- 	</c:forEach> --%>
-			</select>
-		</div>
-		<!-- 여기 상품 목록이 출력 될 것임 -->
-		<div id="search">
-			<select id="">
-				<option value="">선택</option>
-				<option value="">수업명</option>
-				<option value="">강사명</option>
-			</select>
-			<input type="text" id="searchText" />
-			<input type="button" id="searchBtn" value="검색" />
-		</div>
+		<table>
+			<tr>
+				<th>종류</th>
+				<th>수업명</th>
+				<th>요일</th>
+				<th>시간</th>
+				<th>강의실</th>
+				<th>강사명</th>
+				<th>수업료</th>
+				<th>신청</th>
+			</tr>
+			<!-- 아래에 리스트 ROW 반복 -->
+			<%-- <c:forEach	val="ClassVo" items="classList"> --%>
+			<tr>
+				<td>종류</td>
+				<td>수업명</td>
+				<td>요일</td>
+				<td>시간</td>
+				<td>강의실</td>
+				<td>강사명</td>
+				<td>수업료</td>
+				<td><input type="button" id="insertBtn" value="신청"/></td>
+			</tr>
+			<%-- </c:forEach> --%>
+		</table>
 	</div>
-	
-	<table>
-		<tr>
-			<th>종류</th>
-			<th>수업명</th>
-			<th>요일</th>
-			<th>시간</th>
-			<th>강의실</th>
-			<th>강사명</th>
-			<th>수업료</th>
-			<th>신청</th>
-		</tr>
-		<!-- 아래에 리스트 ROW 반복 -->
-		<%-- <c:forEach	val="ClassVo" items="classList"> --%>
-		<tr>
-			<td>종류</td>
-			<td>수업명</td>
-			<td>요일</td>
-			<td>시간</td>
-			<td>강의실</td>
-			<td>강사명</td>
-			<td>수업료</td>
-			<td><input type="button" id="insertBtn" value="신청"/></td>
-		</tr>
-		<%-- </c:forEach> --%>
-	</table>
-	
 	<!-- 페이지네이션 넣을까 말까? ADMINLTE 사용 예정-->
 	
 </body>
