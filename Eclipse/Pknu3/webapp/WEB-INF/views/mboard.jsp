@@ -12,6 +12,58 @@
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/mboard.css">
 
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+$(document).ready(
+		function(){
+			
+			 var strHTML = "";
+		        
+		        $.ajax({
+		                 url :"/kwi_ajax",
+		                 datatype: "json",
+		                 success : function(datas) {
+		                 strHTML += "<table>";
+		                     
+		                 $.each( datas,function(index, item)
+		                
+		                {
+		                	 strHTML += "<tr class = 'MainUL' >";
+		                	 strHTML +=	"<td><h1 style = 'color:#07D88E'>1</h1></td>";
+		                	 strHTML +=	"<td class = 'itemtd' >";			
+		                	 strHTML +=	"<div class = 'textdiv'>";
+		                	 strHTML +=	"최선생님 이두박근 보고 있으면...";
+		                	 strHTML +=	"</div>";
+		                	 strHTML +=	"<div class = 'imgdiv'>";
+		                	 strHTML +=	"<img alt= 'Schedule' src= '/img/main.jpg' width = '90'/>";
+		                	 strHTML +=	"</div>";
+		                	 strHTML +=	"</td>";
+		                	 strHTML += "<td>이두박근 성애자</td>";
+		                	 strHTML += "<td>2020.08.05</td>";
+		                	 strHTML += "<td>20</td>";
+		                	 strHTML += "</tr>"
+		                }
+		                         
+		                 );
+		                 strHTML += "</table>";
+		                     
+		                 $("#" + testDiv).html(strHTML);
+		                 
+		                 },
+		                 error: function(){
+		                         alert("err");
+		                 }
+		        });
+
+			
+	
+		}
+		
+);
+</script>
+
 
 </head>
 <body>
@@ -93,6 +145,7 @@
 							<td>2020.08.05</td>
 							<td>20</td>
 						</tr>
+						
 						
 					</table>
 				
