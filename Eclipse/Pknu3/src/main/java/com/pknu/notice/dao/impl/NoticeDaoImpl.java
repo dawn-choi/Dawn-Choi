@@ -24,8 +24,14 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public List<NoticeVo> getList(HashMap<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+
+		sqlSession.selectList("Notice.NoticeList", map);
+		
+		List<NoticeVo> list = (List<NoticeVo>) map.get("result");
+		
+		System.out.println(list);
+		
+		return  list;
 	}
 
 
@@ -37,8 +43,6 @@ public class NoticeDaoImpl implements NoticeDao {
 		sqlSession.selectList("Notice.FilterList", map);
 		
 		List<FilterVo> list = (List<FilterVo>) map.get("result");
-		
-		System.out.println(list);
 		
 		return list;
 	}
