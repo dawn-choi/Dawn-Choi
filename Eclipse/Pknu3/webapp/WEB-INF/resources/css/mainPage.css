@@ -76,10 +76,6 @@
 	font-weight: bold;
 }
 
-#infoWrap p:nth-of-type(2) {
+#infoWrap p:nth-of-type(2), #infoWrap p:nth-of-type(3) {
 	font-size: 16px;
-}
-
-#infoWrap p:nth-of-type(3) {
-	font-size: 12px;
 }
