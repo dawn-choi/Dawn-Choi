@@ -32,7 +32,15 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Override
 	public List<FilterVo> getFilterList() {
 		
-		return null;
+		HashMap map = new HashMap();
+		
+		sqlSession.selectList("Notice.FilterList", map);
+		
+		List<FilterVo> list = (List<FilterVo>) map.get("result");
+		
+		System.out.println(list);
+		
+		return list;
 	}
 
 	

@@ -17,6 +17,10 @@
 
 <script>
 $(document).ready(
+		
+		
+		
+		
 		function(){
 			
 			 var strHTML = "";
@@ -25,7 +29,15 @@ $(document).ready(
 		                 url :"/kwi_ajax",
 		                 datatype: "json",
 		                 success : function(datas) {
-		                 strHTML += "<table>";
+		                 
+		                 strHTML += "<table width = '1450' cellpadding = '0' cellspacing ='0' id = 'userboard'>";
+						 strHTML += "<tr class = 'headtr'>";
+						 strHTML +=	"<td>번호</td>";
+						 strHTML += "<td>제목</td>";
+						 strHTML += "<td>작성자</td>";
+						 strHTML += "<td>날짜</td>";
+						 strHTML += "<td>조회수</td>";
+						 strHTML += "</tr>";
 		                     
 		                 $.each( datas,function(index, item)
 		                
@@ -49,17 +61,16 @@ $(document).ready(
 		                 );
 		                 strHTML += "</table>";
 		                     
-		                 $("#" + testDiv).html(strHTML);
+		                 $("#" + mb_tableDiv).html(strHTML);
 		                 
 		                 },
 		                 error: function(){
 		                         alert("err");
 		                 }
 		        });
-
-			
-	
 		}
+		
+		
 		
 );
 </script>
@@ -123,7 +134,14 @@ $(document).ready(
 			<div id = "mb_tableWrap">
 				<div id = "mb_tableDiv">
 					<!-- 테이블 -->
-					<table width = "1450" cellpadding = "0" cellspacing ="0" id = "userboard"">
+				</div>
+			</div>
+			
+	    </div>
+</div>
+
+<!--  
+<table width = "1450" cellpadding = "0" cellspacing ="0" id = "userboard">
 						<tr class = "headtr">
 							<td>번호</td>
 							<td>제목</td>
@@ -147,15 +165,7 @@ $(document).ready(
 						</tr>
 						
 						
-					</table>
-				
-				</div>
-			
-			</div>
-			
-	    </div>
-</div>
-
+					</table>-->
 	
 
 

@@ -22,7 +22,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@RequestMapping("/FilterSelect")
+	@RequestMapping("/FilterList")
 	public String FilterSelect(HttpServletResponse response) throws JsonProcessingException
 	{
 		List<FilterVo> list = noticeService.getFilterList();
