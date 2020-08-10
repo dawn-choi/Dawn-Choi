@@ -17,6 +17,8 @@
 	<mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**" />
     <mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**" />
     <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**" />
+    <mvc:resources location="/WEB-INF/resources/plugins/" mapping="/plugins/**" />
+    <mvc:resources location="/WEB-INF/resources/dist/" mapping="/dist/**" />
 	
 	
 	<bean id="viewResolver" 
