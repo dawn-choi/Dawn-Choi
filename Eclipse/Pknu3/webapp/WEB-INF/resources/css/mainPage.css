@@ -67,7 +67,7 @@
 }
 
 #infoWrap p {
-	font-family: 'Russo One', 'Do Hyeon'sans-serif;
+	font-family: 'Russo One', 'Do Hyeon', sans-serif;
 	font-size: 25px;
 	color: Darkgrey;
 }
@@ -77,9 +77,9 @@
 }
 
 #infoWrap p:nth-of-type(2) {
-	font0size: 16px;
+	font-size: 16px;
 }
 
 #infoWrap p:nth-of-type(3) {
-	font0size: 12px;
+	font-size: 12px;
 }
