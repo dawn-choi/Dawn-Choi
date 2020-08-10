@@ -16,63 +16,100 @@
   src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
+
+
+var getList = function(kindValue){
+
+       $.ajax({
+                url :'/NoticeList',
+                dataType: 'json',
+                data : {menu_id : kindValue} ,
+                success : function(datas) {
+                
+                 var strHTML = '<table width = 1450 cellpadding = 0 cellspacing =0 id = userboard>';
+				 strHTML += '<tr class = headtr>';
+				 strHTML +=	'<td>번호</td>';
+				 strHTML += '<td>제목</td>';
+				 strHTML += '<td>작성자</td>';
+				 strHTML += '<td>날짜</td>';
+				 strHTML += '<td>조회수</td>';
+				 strHTML += '</tr>';
+                    
+                $.each( datas,function(index, item)
+               
+               {
+               	 strHTML += '<tr class = MainUL>';
+               	 strHTML +=	'<td><h1 style = color:#07D88E>'+ item.idx +'</h1></td>';
+               	 strHTML +=	'<td class = itemtd >';			
+               	 strHTML +=	'<div class = textdiv>';
+               	 strHTML +=	 item.title;
+               	 strHTML +=	'</div>';
+               	 strHTML +=	'<div class = imgdiv>';
+               	 strHTML +=	'<img alt= Schedule src= /img/main.jpg width = 90/>';
+               	 strHTML +=	'</div>';
+               	 strHTML +=	'</td>';
+               	 strHTML += '<td>'+ item.mname +'</td>';
+               	 strHTML += '<td>'+ item.regdate +'</td>';
+               	 strHTML += '<td>'+item.readcount + '</td>';
+               	 strHTML += '</tr>'
+               }
+                        
+                );
+                strHTML += '</table>';
+                    
+                $('#mb_tableDiv').html(strHTML);
+                
+                },
+                error: function(){
+                        alert('err');
+                }
+       });
+};
+
+
+var getFilter = function() {
+	$.ajax({
+		url : '/FilterList',
+		dataType : 'json',
+		success : function(datas) {
+			
+			var strHTML = '<select name = kind id = kind style = width:100px;>';
+			strHTML += '<option value = all > 전체 </option>';
+			$.each( datas,function(index, item)
+			{
+				strHTML += '<option value =' + item.menu_id +  '>';
+				strHTML += item.menu_name + '</option>';
+			});
+			
+			strHTML += '</select>';
+			
+			$('#select_kind').html(strHTML);
+			
+			getList('all');
+			
+			$('#kind').change(function(){
+				alert( $('#kind').val() )
+				getList($('#kind').val());
+			});
+		},
+		error: function(datas){
+			console.log(datas);
+            alert("strerr");
+        }
+		
+	})
+	
+};
+
+
 $(document).ready(
 		
-		
-		
-		
 		function(){
-			
-			 var strHTML = "";
-		        
-		        $.ajax({
-		                 url :"/kwi_ajax",
-		                 datatype: "json",
-		                 success : function(datas) {
-		                 
-		                 strHTML += "<table width = '1450' cellpadding = '0' cellspacing ='0' id = 'userboard'>";
-						 strHTML += "<tr class = 'headtr'>";
-						 strHTML +=	"<td>번호</td>";
-						 strHTML += "<td>제목</td>";
-						 strHTML += "<td>작성자</td>";
-						 strHTML += "<td>날짜</td>";
-						 strHTML += "<td>조회수</td>";
-						 strHTML += "</tr>";
-		                     
-		                 $.each( datas,function(index, item)
-		                
-		                {
-		                	 strHTML += "<tr class = 'MainUL' >";
-		                	 strHTML +=	"<td><h1 style = 'color:#07D88E'>1</h1></td>";
-		                	 strHTML +=	"<td class = 'itemtd' >";			
-		                	 strHTML +=	"<div class = 'textdiv'>";
-		                	 strHTML +=	"최선생님 이두박근 보고 있으면...";
-		                	 strHTML +=	"</div>";
-		                	 strHTML +=	"<div class = 'imgdiv'>";
-		                	 strHTML +=	"<img alt= 'Schedule' src= '/img/main.jpg' width = '90'/>";
-		                	 strHTML +=	"</div>";
-		                	 strHTML +=	"</td>";
-		                	 strHTML += "<td>이두박근 성애자</td>";
-		                	 strHTML += "<td>2020.08.05</td>";
-		                	 strHTML += "<td>20</td>";
-		                	 strHTML += "</tr>"
-		                }
-		                         
-		                 );
-		                 strHTML += "</table>";
-		                     
-		                 $("#" + mb_tableDiv).html(strHTML);
-		                 
-		                 },
-		                 error: function(){
-		                         alert("err");
-		                 }
-		        });
+			getFilter()
 		}
+		)
 		
 		
-		
-);
 </script>
 
 
@@ -122,12 +159,7 @@ $(document).ready(
 			<div id = "mb_head">
 				<div id = "mb_title"><h1>회원게시판</h1></div>
 				<div id = "select_kind">
-					<select name = "kind" id = "kind" style = "width:100px;">
-						<option value = "humor1">유머1</option>
-						<option value = "humor2">유머2</option>
-						<option value = "humor3">유머3</option>
-						<option value = "humor4">유머4</option>
-					</select>
+					
 				</div>
 			</div>
 			
