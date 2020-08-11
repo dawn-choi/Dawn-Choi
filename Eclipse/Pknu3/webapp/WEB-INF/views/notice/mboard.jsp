@@ -7,10 +7,14 @@
 <meta charset="UTF-8">
 <title>03 프로젝트 자유게시판</title>
 
+<!-- Theme style -->
+<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/mainPage.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/mboard.css">
+
+
 
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -59,7 +63,11 @@ var getList = function(kindValue){
                 strHTML += '</table>'; 
                 strHTML += '<table width = 1450 cellpadding = 0 cellspacing =0 id = writeButton>';
                 strHTML += '<tr class = write_TR>';
-                strHTML += '<td><a href=/NoticeWriteForm><button>새글쓰기</button></a><td>';
+                strHTML += '<td></td>';
+                strHTML += '<td></td>';
+                strHTML += '<td></td>';
+                strHTML += '<td></td>';
+                strHTML += '<td><a href=/NoticeWriteForm><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
 
 				
@@ -80,7 +88,7 @@ var getFilter = function() {
 		dataType : 'json',
 		success : function(datas) {
 			
-			var strHTML = '<select name = kind id = kind style = width:100px;>';
+			var strHTML = '<select name = kind id = kind class=form-control >';
 			strHTML += '<option value = all > 전체 </option>';
 			$.each( datas,function(index, item)
 			{
@@ -172,18 +180,12 @@ $(document).ready(
 			
 			<div id = "mb_tableWrap">
 				<div id = "mb_tableDiv">
-					<!-- 테이블 -->
-					
+					<!-- 테이블 -->			
 				</div>
 			</div>
-			
-			
-			
+	
 	    </div>
 </div>
-
-
-	
 
 
 </body>
