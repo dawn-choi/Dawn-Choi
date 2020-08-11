@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>03 프로젝트 메인</title>
+<title>03 프로젝트 자유게시판</title>
 
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/mainPage.css">
@@ -48,15 +48,22 @@ var getList = function(kindValue){
                	 strHTML +=	'<img alt= Schedule src= /img/main.jpg width = 90/>';
                	 strHTML +=	'</div>';
                	 strHTML +=	'</td>';
-               	 strHTML += '<td>'+ item.mname +'</td>';
-               	 strHTML += '<td>'+ item.regdate +'</td>';
-               	 strHTML += '<td>'+item.readcount + '</td>';
+               	 strHTML += '<td>'+ item.mname     +'</td>';
+               	 strHTML += '<td>'+ item.regdate   +'</td>';
+               	 strHTML += '<td>'+ item.readcount + '</td>';
                	 strHTML += '</tr>'
                }
                         
                 );
-                strHTML += '</table>';
-                    
+                
+                strHTML += '</table>'; 
+                strHTML += '<table width = 1450 cellpadding = 0 cellspacing =0 id = writeButton>';
+                strHTML += '<tr class = write_TR>';
+                strHTML += '<td><a href=/NoticeWriteForm><button>새글쓰기</button></a><td>';
+                strHTML += '</tr>';
+
+				
+                
                 $('#mb_tableDiv').html(strHTML);
                 
                 },
@@ -82,7 +89,7 @@ var getFilter = function() {
 			});
 			
 			strHTML += '</select>';
-			
+
 			$('#select_kind').html(strHTML);
 			
 			getList('all');
@@ -166,38 +173,16 @@ $(document).ready(
 			<div id = "mb_tableWrap">
 				<div id = "mb_tableDiv">
 					<!-- 테이블 -->
+					
 				</div>
 			</div>
+			
+			
 			
 	    </div>
 </div>
 
-<!--  
-<table width = "1450" cellpadding = "0" cellspacing ="0" id = "userboard">
-						<tr class = "headtr">
-							<td>번호</td>
-							<td>제목</td>
-							<td>작성자</td>
-							<td>날짜</td>
-							<td>조회수</td>
-						</tr>
-						<tr class = "MainUL" >
-							<td><h1 style = "color:#07D88E">1</h1></td>
-							<td class = "itemtd" >			
-								<div class = "textdiv">
-									최선생님 이두박근 보고 있으면...
-								</div>
-								<div class = "imgdiv">
-								 	<img alt="Schedule" src="/img/main.jpg" width = "90"/>
-								</div>
-							</td>
-							<td>이두박근 성애자</td>
-							<td>2020.08.05</td>
-							<td>20</td>
-						</tr>
-						
-						
-					</table>-->
+
 	
 
 

@@ -59,9 +59,15 @@ public class NoticeController {
 
 		System.out.println(jsonStr);
 		
-		
 		return jsonStr;
 				
-
 	}
+	
+	@RequestMapping("/NoticeWriteForm")
+	public String NoticeWriteForm(HashMap<String, Object> map)
+	{
+		
+		return "notice/writeform";
+	}
+	
 }
