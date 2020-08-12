@@ -9,9 +9,9 @@
 <link rel="stylesheet" href="/css/commons.css">
 <style>
 	#wrapper {
-	margin-left: 60px;
-	margin-top: 60px;
-}
+		margin-left: 60px;
+		margin-top: 60px;
+	}
 </style>
 </head>
 <body>
