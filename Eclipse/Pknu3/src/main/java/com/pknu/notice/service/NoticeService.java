@@ -1,6 +1,10 @@
 package com.pknu.notice.service;
 
+
+
+
 import java.util.HashMap;
+
 import java.util.List;
 
 import com.pknu.notice.vo.FilterVo;
@@ -13,5 +17,6 @@ public interface NoticeService {
 	List<FilterVo> getFilterList();
 	
 	
+
 
 }

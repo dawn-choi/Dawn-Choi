@@ -31,7 +31,7 @@
 		<result property="pid" column="PID" javaType="string" />
 		<result property="pname" column="PNAME" javaType="string" />
 		<result property="pcost" column="PCOST" javaType="int" />
-		<result property="ptot" column="PTOT" javaType="int" />
+		<result property="ptot" column="PTOT" javaType="string" />
 
 		<result property="tid" column="TID" javaType="string" />
 		<result property="tname" column="TNAME" javaType="string" />
@@ -63,6 +63,8 @@
 		<result property="menu_name" column="MENU_NAME" javaType="string" />
 		
 		<result property="category" column="CATEGORY" javaType="string" />
+		<result property="dtime" column="DTIME" javaType="string" />
+		<result property="dday" column="DDAY" javaType="string" />
 		
 	</resultMap>
 
@@ -76,7 +78,7 @@
 
 	</select>
 
-	<select id="BoardView" statementType="CALLABLE"
+	<!-- <select id="BoardView" statementType="CALLABLE"
 		parameterType="hashmap" resultType="com.pknu.board.vo.BoardVo">
 
 		{CALL PKG_GUESTS.PROC_GUESTS_VIEW(
@@ -115,7 +117,7 @@
 		#{name, mode=IN, jdbcType=VARCHAR}
 		)}
 
-	</update>
+	</update> -->
 
 
 </mapper>     

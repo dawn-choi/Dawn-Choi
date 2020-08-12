@@ -26,7 +26,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/SignUpForm">
+					<a href="/AssignForm">
 						<img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
 						<div>회원가입</div>
 					</a>

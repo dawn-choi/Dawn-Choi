@@ -4,7 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace = "Notice">
-	<resultMap type="com.pknu.notice.vo.FilterVo" id="FilterListMap">
+
+	<resultMap  id="FilterListMap" type="com.pknu.notice.vo.FilterVo" >
 		<result property="menu_id"        column=""    javaType="string" />
 		<result property="menu_name"      column=""    javaType="string" />
 		<result property="menu_seq"       column=""    javaType="int" />
@@ -13,10 +14,11 @@
 	<select id = "FilterList" statementType = "CALLABLE"
 	 parameterType = "hashmap"
 	 resultType = "com.pknu.notice.vo.FilterVo">
-	 
-	 
-	 
-	 
+	 {CALL PKG_NOTICE.PROC_NOTICE_FILTER_LIST(
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	    javaType = ResultSet, resultMap = FilterListMap
+	 	}
+	 )}
 	 </select>
 
 
@@ -26,6 +28,7 @@
 		<result property="title"        column=""    javaType="string" />
 		<result property="cont"         column=""    javaType="string" />
 		<result property="mid"          column=""    javaType="string" />
+		<result property="mname"          column=""    javaType="string" />
 		<result property="regdate"      column=""    javaType="string" />		
 		<result property="readcount"    column=""    javaType="int" />		
 	</resultMap>
@@ -33,7 +36,11 @@
 	<select id = "NoticeList" statementType = "CALLABLE"
 	 parameterType = "hashmap"
 	 resultType = "com.pknu.notice.vo.NoticeVo">
-	 
+	 {CALL PKG_NOTICE.PROC_NOTICE_TABLE_LIST(
+	  #{menu_id, mode=IN, jdbcType = CHAR},
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeListMap}
+	 )}
 	 
 	 
 	 

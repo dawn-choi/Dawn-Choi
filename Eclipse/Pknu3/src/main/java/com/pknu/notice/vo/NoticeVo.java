@@ -1,14 +1,19 @@
 package com.pknu.notice.vo;
 
 public class NoticeVo {
+
 	//Fields
 		private int idx;
 		private String menu_id;
 		private String title;
 		private String cont;
 		private String mid;
+		// MEMBERS테이블의 이름
+		private String mname;
 		private String regdate;
 		private int readcount;
+		
+		
 		
 		// 답글 
 		// 답글 처리
@@ -57,6 +62,14 @@ public class NoticeVo {
 
 		public void setMid(String mid) {
 			this.mid = mid;
+		}
+
+		public String getMname() {
+			return mname;
+		}
+
+		public void setMname(String mname) {
+			this.mname = mname;
 		}
 
 		public String getRegdate() {
@@ -117,13 +130,13 @@ public class NoticeVo {
 
 		@Override
 		public String toString() {
-			return "NoticeVo [idx=" + idx + ", menu_id=" + menu_id + ", title=" + title + ", cont=" + cont + ", mid=" + mid
-					+ ", regdate=" + regdate + ", readcount=" + readcount + ", bnum=" + bnum + ", lvl=" + lvl + ", step="
-					+ step + ", nref=" + nref + ", delnum=" + delnum + ", getIdx()=" + getIdx() + ", getMenu_id()="
-					+ getMenu_id() + ", getTitle()=" + getTitle() + ", getCont()=" + getCont() + ", getMid()=" + getMid()
-					+ ", getRegdate()=" + getRegdate() + ", getReadcount()=" + getReadcount() + ", getBnum()=" + getBnum()
-					+ ", getLvl()=" + getLvl() + ", getStep()=" + getStep() + ", getNref()=" + getNref() + ", getDelnum()="
-					+ getDelnum() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-					+ super.toString() + "]";
+			return "NoticeVo [idx=" + idx + ", menu_id=" + menu_id + ", title=" + title + ", cont=" + cont + ", mid="
+					+ mid + ", mname=" + mname + ", regdate=" + regdate + ", readcount=" + readcount + ", bnum=" + bnum
+					+ ", lvl=" + lvl + ", step=" + step + ", nref=" + nref + ", delnum=" + delnum + "]";
 		}
+		
+		
+
+		
+
 }
