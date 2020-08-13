@@ -15,6 +15,7 @@ body {
 		height:60px;
 		background-color: #07D88E;
 		position: fixed;
+		z-index:10;
 		top:0;
 		overflow:hidden;
 	}
@@ -29,7 +30,6 @@ body {
 		background-color: white;
 		position: relative;
 		left : 60px;
-		text-align: center;
 		display: inline-block;
 	}
 	
@@ -50,32 +50,22 @@ body {
 		height:100%;
 		position:fixed;
 		background-color: #07D88E;
+		top:0;
 		left:0;
+		z-index:11;
 		clear:both;
 	}
 	
-	#toHome {
-		height:45px;
-	}
-	#toHome > a {
-		display: block;
-		text-align:center;
-		height:45px;
-		line-height:40px;
-	}
-	
 	#leftNav > ul {
+		margin-top:60px;
 		padding:0;
 	}
-	#leftNav li{
-		position:relative;
-		left:0;
-		font-size: 20px;
-	}
-	.category {
+	
+	.categorys {
 		display: block;
 		text-align: center;
-		padding: 20px 0px;
+		height:40px;
+		margin: 50px 0px;
 	}
 	
 	#wrapper {
