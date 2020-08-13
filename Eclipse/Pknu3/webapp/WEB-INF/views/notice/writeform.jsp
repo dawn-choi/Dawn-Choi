@@ -114,20 +114,26 @@ $(document).ready(
 	<div id="wrapper">
 		<div id="wrapDiv">
 			<div id="writeFormDiv">
-				<div class="card card-success" style = "max-height:90%;" >
+				<div class="card card-success" >
 					<div class="card-header" style="background-color:#07D88E; color:white;">
 						<h3 class="card-title" style = "font-size:30px;">게시글 작성</h3>
 					</div>
-					<div class="card-body" id = "writeBody" >
+					<div class="card-body" id = "writeBody"  style = "height: 88%;">
 					<!-- form 테그 시작 -->
 						 <form action ="/testWrite" method = "post">
 						 <div id = "select_kind"></div>
 						 
-						 <div class="writeInfoDiv" ><input type = "text" name="title"/></div>
+						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>
 					
-						 <div class="writeInfoDiv"  >
-						 <textarea id= "writeContent" name="cont" style = "max-height:90%;"></textarea>
-						 </div>
+						
+						 <!-- 본문 에디터 -->
+						  <!-- Ckeditor4 에디터 불러오기 크기 조절 최대치 설정 실패... 하...-->
+					    <div class = "writeInfoDiv">
+					    <textarea id = "writeCont" name = "cont"></textarea>
+					    
+					    </div>
+						
+						
 						 
 						 <div class="writeInfoDiv" id = "writeOkDiv" ><input type = "submit"  id = "writeOk" value = "작성"/></div>
 						 
@@ -149,7 +155,7 @@ $(document).ready(
 		</div>
 	</div>
 
-
+	
 
 </body>
 </html>

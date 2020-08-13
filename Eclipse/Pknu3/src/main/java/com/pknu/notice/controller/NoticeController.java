@@ -80,12 +80,15 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/testWrite")
-	public String testWrite(@RequestParam HashMap<String, Object>map)
+	public ModelAndView testWrite(@RequestParam HashMap<String, Object>map)
 	{
+		System.out.println(map);
 		
-	    System.out.println(map);
-
-		return null;
+	    ModelAndView mv = new ModelAndView();
+	    mv.addObject("map", map);
+	    mv.setViewName("notice/content");
+	    
+		return mv;
 	}
 	
 	
