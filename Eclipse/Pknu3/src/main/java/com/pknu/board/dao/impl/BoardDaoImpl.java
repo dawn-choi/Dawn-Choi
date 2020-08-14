@@ -15,12 +15,23 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Override
 	public List<BoardVo> getList() {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		sqlSession.selectList("SpBoard.BoardList", map);
-		List<BoardVo> spBoardList = (List<BoardVo>) map.get("result"); 
+		List<BoardVo> spBoardList = (List<BoardVo>) map.get("result");
+		return spBoardList;
+	}
+
+	@Override
+	public List<BoardVo> getList2(HashMap<String, Object> map) {
+		System.out.println("selone = " + map.get("selone"));
+		System.out.println("seltwo = " + map.get("seltwo"));
+		
+
+		sqlSession.selectList("SpBoard.BoardSelect", map);
+		List<BoardVo> spBoardList = (List<BoardVo>) map.get("result");
 		return spBoardList;
 	}
 
