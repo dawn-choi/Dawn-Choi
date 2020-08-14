@@ -3,7 +3,6 @@
 #wrapDiv
 {
 	margin : 0 auto;
-	background-color:blue;
 	width: 100%;
 	height : 100%;
 	position:relative;
@@ -13,7 +12,6 @@
 #writeFormDiv {
    font-family: 'Russo One', 'Do Hyeon', sans-serif;
    position:absolute;
-   background-color:red;
    width: 80%;
    height: 100%;
    margin-left : 9%;
@@ -23,7 +21,6 @@
  
 #writeContent{
   width: 100%;
-  height: 80%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
