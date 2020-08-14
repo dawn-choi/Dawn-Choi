@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+#wrapDiv
+{
+	margin : 0 auto;
+	width: 100%;
+	height : 100%;
+	position:relative;
+	position:fixed;
+}
+
+#writeFormDiv {
+   font-family: 'Russo One', 'Do Hyeon', sans-serif;
+   position:absolute;
+   width: 80%;
+   height: 100%;
+   margin-left : 9%;
+   margin-top : 30px;
+   position:    fixed;
+ }
+ 
+#writeContent{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+} 
+
+
+
+.writeInfoDiv {
+	width: 100%;
+} 
+
+ 
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+

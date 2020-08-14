@@ -26,10 +26,7 @@ public class BoardController {
 		return "home";
 	}
 	
-	@RequestMapping("/MBoard")
-	public String mboard() {
-		return "mboard";
-	}
+	
 	
 	
 	@RequestMapping("/Table")

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SpBoard">
+
+	<resultMap id="spBoardMap" type="com.pknu.board.vo.BoardVo">
+		<result property="mid" column="MID" javaType="string" />
+		<result property="mpwd" column="MPWD"
+			javaType="java.lang.String" />
+		<result property="mname" column="MNAME" javaType="string" />
+		<result property="memail" column="MEMAIL" javaType="string" />
+		<result property="mbirth" column="MBIRTH" javaType="string" />
+		<result property="mgender" column="MGENDER" javaType="string" />
+		<result property="mtel" column="MTEL" javaType="string" />
+		<result property="maddr" column="MADDR" javaType="string" />
+
+		<result property="rid" column="RID" javaType="string" />
+		<result property="rname" column="RNAME" javaType="string" />
+
+		<result property="cid" column="CID" javaType="string" />
+		<result property="cname" column="CNAME" javaType="string" />
+		<result property="clvl" column="CLVL" javaType="int" />
+		<result property="cparent_id" column="CPARENT_ID" javaType="string" />
+
+		<result property="orid" column="ORID" javaType="string" />
+		<result property="sdate" column="SDATE" javaType="string" />
+		<result property="oexp" column="OEXP" javaType="string" />
+
+		<result property="pid" column="PID" javaType="string" />
+		<result property="pname" column="PNAME" javaType="string" />
+		<result property="pcost" column="PCOST" javaType="int" />
+		<result property="ptot" column="PTOT" javaType="string" />
+
+		<result property="tid" column="TID" javaType="string" />
+		<result property="tname" column="TNAME" javaType="string" />
+		
+		<result property="lid" column="LID" javaType="string" />
+		<result property="lname" column="LNAME" javaType="string" />
+		<result property="lday" column="LDAY" javaType="string" />
+		<result property="ltime" column="LTIME" javaType="string" />
+		<result property="lhour" column="LHOUR" javaType="int" />
+		
+		<result property="lsid" column="LSID" javaType="string" />
+		<result property="lsdate" column="LSDATE" javaType="string" />
+		
+		<result property="bid" column="BID" javaType="string" />
+		<result property="imp" column="IMP" javaType="int" />
+		<result property="bname" column="BNAME" javaType="string" />
+		
+		<result property="idx" column="IDX" javaType="string" />
+		<result property="menu_id" column="MENU_ID" javaType="string" />
+		<result property="title" column="TITLE" javaType="string" />
+		<result property="cont" column="CONT" javaType="string" />
+		<result property="regdate" column="REGDATE" javaType="string" />
+		<result property="readcount" column="READCOUNT" javaType="int" />
+		<result property="bnum" column="BNUM" javaType="int" />
+		<result property="step" column="STEP" javaType="string" />
+		<result property="nref" column="NREF" javaType="int" />
+		<result property="delnum" column="DELNUM" javaType="int" />
+		
+		<result property="menu_name" column="MENU_NAME" javaType="string" />
+		
+		<result property="category" column="CATEGORY" javaType="string" />
+		<result property="dtime" column="DTIME" javaType="string" />
+		<result property="dday" column="DDAY" javaType="string" />
+		
+	</resultMap>
+
+	<select id="BoardList" statementType="CALLABLE"
+		parameterType="hashmap" resultType="com.pknu.board.vo.BoardVo">
+
+		{CALL PKG_BOARD.PROC_BOARD_LIST(
+		#{result, mode=OUT, jdbcType=CURSOR,
+		javaType=ResultSet, resultMap = spBoardMap }
+		)}
+
+	</select>
+
+	<!-- <select id="BoardView" statementType="CALLABLE"
+		parameterType="hashmap" resultType="com.pknu.board.vo.BoardVo">
+
+		{CALL PKG_GUESTS.PROC_GUESTS_VIEW(
+		#{idx, mode=IN, jdbcType=INTEGER },
+		#{result, mode = OUT, jdbcType = CURSOR,
+		javaType=ResultSet, resultMap = spBoardMap }
+		)}
+
+	</select>
+
+	<insert id="BoardInsert" statementType="CALLABLE"
+		parameterType="hashmap">
+
+		{CALL PKG_GUESTS.PROC_GUESTS_INSERT(
+		#{title, mode=IN, jdbcType=VARCHAR, javaType=string},
+		#{name, mode=IN, jdbcType=VARCHAR, javaType=string}
+		)}
+
+	</insert>
+
+	<delete id="BoardDelete" statementType="CALLABLE"
+		parameterType="hashmap">
+
+		{CALL PKG_GUESTS.PROC_GUESTS_DELETE(
+		#{idx, mode=IN, jdbcType=INTEGER}
+		)}
+
+	</delete>
+
+	<update id="BoardUpdate" statementType="CALLABLE"
+		parameterType="hashmap">
+
+		{CALL PKG_GUESTS.PROC_GUESTS_UPDATE(
+		#{idx, mode=IN, jdbcType=INTEGER},
+		#{title, mode=IN, jdbcType=VARCHAR},
+		#{name, mode=IN, jdbcType=VARCHAR}
+		)}
+
+	</update> -->
+
+
+</mapper>     
