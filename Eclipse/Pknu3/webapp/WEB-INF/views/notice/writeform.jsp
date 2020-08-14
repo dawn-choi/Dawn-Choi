@@ -162,7 +162,8 @@ $(document).ready(
 						  <!-- Ckeditor4 에디터 불러오기 크기 조절 최대치 설정 실패... 하...-->
 					    <div class = "writeInfoDiv">
 					    
-					    <textarea class = "form-control" id = "cont" name = "cont"></textarea>
+					    <textarea id = "cont" name = "cont"
+					    style = "width:100%;"></textarea>
 					    
 					    <script type="text/javascript">
 					    var oEditors = [];
@@ -171,8 +172,17 @@ $(document).ready(
 					      oAppRef : oEditors,
 					      elPlaceHolder : "cont",
 					      sSkinURI : "/smarteditor2/SmartEditor2Skin.html",
-					      fCreator : "createSEditor2"
-					    });
+					      fCreator : "createSEditor2",
+					      htParams : {
+					            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+					            bUseToolbar : true,             
+					            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+					            bUseVerticalResizer : false,     
+					            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+					            bUseModeChanger : true
+					        }
+
+					     });
 						</script>
 					    </div>
 						
