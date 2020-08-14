@@ -14,7 +14,7 @@
     		<result property="tName" 	column="TNAME" 	javaType="string" />
     		<result property="rName" 	column="RNAME" 	javaType="string" />
     		<result property="pCost" 	column="PCOST" 	javaType="string" />
-    		<result property="lCnt" 	column="LCNT" 	javaType="string" />
+    		<result property="dCnt" 	column="LCNT" 	javaType="string" />
     	</resultMap>
     	
     	<resultMap id="grListMap" type="com.pknu.subject.vo.SubjectVo">
