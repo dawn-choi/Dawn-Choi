@@ -43,7 +43,7 @@ var getList = function(kindValue){
                
                {
                	 strHTML += '<tr class = MainUL>';
-               	 strHTML +=	'<td><h1 style = color:#07D88E>'+ item.idx +'</h1></td>';
+               	 strHTML +=	'<td><h1 style = color:#07D88E>'+ item.bnum +'</h1></td>';
                	 strHTML +=	'<td class = itemtd >';			
                	 strHTML +=	'<div class = textdiv>';
                	 strHTML +=	 item.title;
@@ -67,7 +67,7 @@ var getList = function(kindValue){
                 strHTML += '<td></td>';
                 strHTML += '<td></td>';
                 strHTML += '<td></td>';
-                strHTML += '<td><a href=/NoticeWriteForm><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
+                strHTML += '<td><a href=/NoticeWriteForm?mid=SA0066&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
 
 				

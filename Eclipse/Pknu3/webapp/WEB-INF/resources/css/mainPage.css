@@ -8,7 +8,7 @@
 	right: 0px;
 }
 
-#barRight>ul {
+#barRight > ul {
 	padding: 0;
 	margin: 0 auto;
 }
@@ -78,8 +78,5 @@
 
 #infoWrap p:nth-of-type(2), #infoWrap p:nth-of-type(3)  {
 	font-size: 16px;
-#infoWrap p:nth-of-type(2), #infoWrap p:nth-of-type(3) {
-	font-size: 16px;
-#infoWrap p:nth-of-type(2), #infoWrap p:nth-of-type(3) {
-	font-size: 16px;
 }
+

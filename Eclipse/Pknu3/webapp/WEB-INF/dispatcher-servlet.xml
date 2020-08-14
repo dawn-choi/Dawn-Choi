@@ -19,8 +19,8 @@
     <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**" />
     <mvc:resources location="/WEB-INF/resources/plugins/" mapping="/plugins/**" />
     <mvc:resources location="/WEB-INF/resources/dist/" mapping="/dist/**" />
-	
-	
+	<mvc:resources location="/WEB-INF/resources/smarteditor2/" mapping="/smarteditor2/**" />
+		
 	<bean id="viewResolver" 
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	  <property name="prefix" value="/WEB-INF/views/" />

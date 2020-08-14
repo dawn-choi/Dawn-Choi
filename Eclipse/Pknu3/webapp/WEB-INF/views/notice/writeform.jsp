@@ -19,8 +19,87 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
+<script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 
+ <!--  
+<script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+-->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<!-- bnum같은 애들이 이 페이지로 넘어올때 숫자값으로 넘어옴 -->
+<!-- 컨트롤 부분에서 활용할때 String -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
+
+
+
+
+
+
+
+<script>
+var getFilter = function() {
+	$.ajax({
+		url : '/FilterList',
+		dataType : 'json',
+		success : function(datas) {
+			
+			var strHTML = '<select name = kind id = kind class=form-control  >';
+			
+			$.each( datas,function(index, item)
+			{
+				strHTML += '<option value =' + item.menu_id +  '>';
+				strHTML += item.menu_name + '</option>';
+			});
+			
+			strHTML += '</select>';
+
+			$('#select_kind').html(strHTML);
+			
+		},
+		error: function(datas){
+			console.log(datas);
+            alert("strerr");
+        }
+		
+	})
+	
+};
+
+
+//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
+var submitContents = function() {
+	 // 에디터의 내용이 textarea에 적용된다.
+	 oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+
+	 // 에디터의 내용에 대한 값 검증은 이곳에서
+	 // document.getElementById("ir1").value를 이용해서 처리한다.
+
+}
+
+
+
+$(document).ready(
+		
+		function(){
+			getFilter();
+			
+			$('#writeform').submit(function(){
+				
+				submitContents();
+			    
+			});
+			
+			});
+
+		
+		
+		
+
+
+</script>
+
+
 </head>
 <body>
 
@@ -67,22 +146,59 @@
 	<div id="wrapper">
 		<div id="wrapDiv">
 			<div id="writeFormDiv">
-				<div class="card card-success">
+				<div class="card card-success" >
 					<div class="card-header" style="background-color:#07D88E; color:white;">
 						<h3 class="card-title" style = "font-size:30px;">게시글 작성</h3>
 					</div>
-					<div class="card-body">
+					<div class="card-body" id = "writeBody"  style = "height: 88%;">
+					<!-- form 테그 시작 -->
+						 <form action ="/testWrite" method = "post" id = "writeform">
+						 <div id = "select_kind"></div>
+						 
+						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>
+					
+						
+						 <!-- 본문 에디터 -->
+						  <!-- Ckeditor4 에디터 불러오기 크기 조절 최대치 설정 실패... 하...-->
+					    <div class = "writeInfoDiv">
+					    
+					    <textarea class = "form-control" id = "cont" name = "cont"></textarea>
+					    
+					    <script type="text/javascript">
+					    var oEditors = [];
+
+					    nhn.husky.EZCreator.createInIFrame({
+					      oAppRef : oEditors,
+					      elPlaceHolder : "cont",
+					      sSkinURI : "/smarteditor2/SmartEditor2Skin.html",
+					      fCreator : "createSEditor2"
+					    });
+						</script>
+					    </div>
 						
 						
+						 
+						 <div class="writeInfoDiv" id = "writeOkDiv" ><input type = "submit"  id = "writeOk" value = "작성"/></div>
+						 
+						 
+						 
+						 <!-- 숨겨진 정보 -->
+						 <input type="hidden" name = "mid" value = "<c:out value= '${map.mid}'/>"/>
+						 <input type="hidden" name="bnum" value="<c:out value='${ map.bnum}' />" />
+   						 <input type="hidden" name="lvl" value="<c:out value='${ map.lvl}' />" />
+   						 <input type="hidden" name="step" value="<c:out value='${ map.step}' />" />
+   						 <input type="hidden" name="nref" value="<c:out value='${ map.nref}' />" />	
+						 </form>
+					<!-- form 테그 끝 -->	 
 					</div>
-					<!-- /.card-body -->
+					
 				</div>
 
 			</div>
 		</div>
 	</div>
 
-
+	
 
 </body>
 </html>

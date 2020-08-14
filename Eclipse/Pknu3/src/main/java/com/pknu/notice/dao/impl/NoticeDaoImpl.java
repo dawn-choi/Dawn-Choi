@@ -14,6 +14,7 @@ import com.pknu.notice.dao.NoticeDao;
 import com.pknu.notice.vo.FilterVo;
 import com.pknu.notice.vo.NoticeVo;
 
+
 @Repository("noticeDao")
 public class NoticeDaoImpl implements NoticeDao {
 
@@ -46,6 +47,9 @@ public class NoticeDaoImpl implements NoticeDao {
 		
 		return list;
 	}
+
+
+	
 
 	
 	

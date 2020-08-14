@@ -1,5 +1,6 @@
 package com.pknu.board.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVo> getList() {
 		List<BoardVo> spBoardList = BoardDao.getList();
+		return spBoardList;
+	}
+
+	@Override
+	public List<BoardVo> getList2(HashMap<String, Object> map) {
+		List<BoardVo> spBoardList = BoardDao.getList2(map);
 		return spBoardList;
 	}
 
