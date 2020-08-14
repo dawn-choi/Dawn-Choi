@@ -590,6 +590,7 @@ pre code {
   padding-left: 7.5px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: 70px;
 }
 
 @media (min-width: 576px) {
@@ -4783,6 +4784,7 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  margin:30px auto;
 }
 
 .card > hr {

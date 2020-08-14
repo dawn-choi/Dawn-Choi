@@ -14,7 +14,7 @@ public class SubjectVo {
 	//DLECTURES
 	private String dDay;
 	private String dTime;
-	private String lCnt;	//해당 수업의 상세 정보 개수
+	private String dCnt;	//해당 수업의 상세 정보 개수
 	
 	//Trainers - ClassRoom
 	private String tId;
@@ -75,12 +75,15 @@ public class SubjectVo {
 	public void setdTime(String dTime) {
 		this.dTime = dTime;
 	}
-	public String getlCnt() {
-		return lCnt;
+	
+		
+	public String getdCnt() {
+		return dCnt;
 	}
-	public void setlCnt(String lCnt) {
-		this.lCnt = lCnt;
+	public void setdCnt(String dCnt) {
+		this.dCnt = dCnt;
 	}
+	
 	public String gettId() {
 		return tId;
 	}
@@ -153,7 +156,7 @@ public class SubjectVo {
 	
 	public SubjectVo( ) {}
 	
-	public SubjectVo(String lId, String lName, String grId, String grName, String dDay, String dTime, String lCnt,
+	public SubjectVo(String lId, String lName, String grId, String grName, String dDay, String dTime, String dCnt,
 			String tId, String tName, String rId, String rName, String pId, String pCost, String mId, String inNum,
 			String keyword, String oCode, String oMsg) {
 		super();
@@ -163,7 +166,7 @@ public class SubjectVo {
 		this.grName = grName;
 		this.dDay = dDay;
 		this.dTime = dTime;
-		this.lCnt = lCnt;
+		this.dCnt = dCnt;
 		this.tId = tId;
 		this.tName = tName;
 		this.rId = rId;
@@ -181,11 +184,10 @@ public class SubjectVo {
 	@Override
 	public String toString() {
 		return "SubjectVo [lId=" + lId + ", lName=" + lName + ", grId=" + grId + ", grName=" + grName + ", dDay=" + dDay
-				+ ", dTime=" + dTime + ", lCnt=" + lCnt + ", tId=" + tId + ", tName=" + tName + ", rId=" + rId
+				+ ", dTime=" + dTime + ", dCnt=" + dCnt + ", tId=" + tId + ", tName=" + tName + ", rId=" + rId
 				+ ", rName=" + rName + ", pId=" + pId + ", pCost=" + pCost + ", mId=" + mId + ", inNum=" + inNum
 				+ ", keyword=" + keyword + ", oCode=" + oCode + ", oMsg=" + oMsg + "]";
 	}
-	
-		
 
+	
 }
