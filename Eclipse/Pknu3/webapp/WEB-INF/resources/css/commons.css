@@ -17,6 +17,7 @@ body {
 		position: fixed;
 		top:0;
 		overflow:hidden;
+		z-index:10;
 	}
 	
 	#logo {

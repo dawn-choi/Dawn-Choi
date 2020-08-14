@@ -34,7 +34,7 @@
 				var oMsg  = "${ oMsg  }";
 			
 				
-				if(oCode != '0' || oMsg != '0'){
+				if(oCode != '' || oMsg != ''){
 					
 					alert( '[' + oCode + ' : ' + oMsg  + ']' );
 				}
@@ -236,6 +236,21 @@
 		</ul>
 	</div>
 	<div id="wrapper">
+		<div class="content-wrapper" style="margin-top:30px">
+			
+	 <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">수업 신청 목록</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+	    
+
+	
 		<div id="searchWrap">
 			<div id="filter">
 				<select id="grSelect">
@@ -258,7 +273,8 @@
 			</div>
 		</div>
 	
-		<table border="1" id="dataList">
+		<table border="1" id="dataList" class="table table-bordered table-striped">
+		 <thead>	
 			<tr>
 				<th>종류</th>
 				<th>수업명</th>
@@ -269,6 +285,9 @@
 				<th>수업료</th>
 				<th>신청</th>
 			</tr>
+             </thead>
+             <tbody>
+             
 			<!-- 아래에 리스트 ROW 반복 -->
 			<c:set	var="old"	value=" " />
 			<c:forEach	var="subjectVo" items="${ subjectList }">
@@ -295,8 +314,53 @@
 				<c:set	var="old"	value="${ subjectVo.lId }" />	
 			</c:forEach>
 		</table>
-	</div>
+	 </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  </div>
+
 	<!-- 페이지네이션 넣을까 말까? ADMINLTE 사용 예정-->
-	
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#dataList').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

@@ -31,8 +31,8 @@ public class SubjectController {
 		ModelAndView mv = new ModelAndView();
 		
 		if( !map.containsKey("oCode") || !map.containsKey("oMsg")) {
-			map.put("oCode", "0");
-			map.put("oMsg", "0");
+			map.put("oCode", "");
+			map.put("oMsg", "");
 		}
 		
 		mv.addObject("subjectList", subjectList);
