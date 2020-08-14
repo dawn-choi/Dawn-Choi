@@ -1,16 +1,24 @@
 package com.pknu.notice.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// 밑은 따로 아파치 버전을 받아야함 일단 제외 
+//import org.apache.commons.lang3
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pknu.notice.service.NoticeService;
 import com.pknu.notice.vo.FilterVo;
 import com.pknu.notice.vo.NoticeVo;
+import com.pknu.notice.vo.SmarteditorVo;
 
 
 @Controller
@@ -101,4 +110,45 @@ public class NoticeController {
 		return "notice/test";
 	}
 	
-}
+	
+	//======================================에디터 파일 처리 
+	@RequestMapping(value = "/singleImageUploader.do")
+	public String simpleImageUploader(
+			HttpServletRequest req, SmarteditorVo smarteditorVo
+			) throws IllegalStateException, IOException 
+	{
+		String callback_func = smarteditorVo.getCallback_func();
+		String callback = smarteditorVo.getCallback();
+		String file_result = "";
+		String result = "";
+		
+		MultipartFile multiFile = smarteditorVo.getFiledata();
+		
+		if(multiFile != null && multiFile.getSize() > 0 &&
+				StringUtils.isEmpty(multiFile.getName()) != true)
+		{
+			if(multiFile.getContentType().toLowerCase().startsWith("image/")) {
+				String oriName = multiFile.getName();
+				String uploadPath = req.getServletContext().getRealPath("/img");
+				String path = uploadPath + "/smarteditor/";
+				File file = new File(path);
+				if(!file.exists()) {
+					file.mkdir();
+				}
+				String fileName = UUID.randomUUID().toString();
+				smarteditorVo.getFiledata().transferTo(new File(path + fileName));
+				file_result += "&bNewLine=true&sFileName=" + oriName + 
+         			   "&sFileURL=/img/smarteditor/" + fileName;
+		}else{
+			file_result += "&errstr=error";
+		}
+	}else{
+		file_result += "&errstr=error";
+	}
+ 
+		result = "redirect:" + callback + 
+		 "?callback_func=" + URLEncoder.encode(callback_func,"UTF-8") + file_result;
+		return result;
+			}
+		}
+	
