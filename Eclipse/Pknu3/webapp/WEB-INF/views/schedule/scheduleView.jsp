@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상세정보 보기</title>
 <link rel="stylesheet" href="/css/commons.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
 <!-- 상세 보기 	-->
@@ -96,6 +96,11 @@ canvas {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 }
+h3{
+	padding-right : 20px;
+  	font-family: 'Russo One', 'Do Hyeon', sans-serif;
+	font-size : 30px;
+  }
 
 </style>
 
@@ -141,7 +146,7 @@ canvas {
 			},
 			title : {
 				display : true,
-				text : '필라테스 운동 향상량'
+				text : ''
 			},
 			scale : {
 				beginAtZero : true
@@ -248,6 +253,7 @@ canvas {
 		</div>
 	
 		<div class="imp" style="width: 45%">
+			<h3>운동향상량</h3>
 			<canvas id="canvas"></canvas>
 		</div>
 	</div>	
