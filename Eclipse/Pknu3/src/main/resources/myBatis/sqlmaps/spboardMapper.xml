@@ -78,17 +78,17 @@
 
 	</select>
 
-	<!-- <select id="BoardView" statementType="CALLABLE"
+	 <select id="BoardSelect" statementType="CALLABLE"
 		parameterType="hashmap" resultType="com.pknu.board.vo.BoardVo">
 
-		{CALL PKG_GUESTS.PROC_GUESTS_VIEW(
-		#{idx, mode=IN, jdbcType=INTEGER },
+		{CALL PKG_BOARD.PROC_BOARD_SELECT(
+		#{selone, mode=IN, jdbcType=VARCHAR },
+		#{seltwo, mode=IN, jdbcType=VARCHAR },
 		#{result, mode = OUT, jdbcType = CURSOR,
 		javaType=ResultSet, resultMap = spBoardMap }
 		)}
-
 	</select>
-
+<!--
 	<insert id="BoardInsert" statementType="CALLABLE"
 		parameterType="hashmap">
 
