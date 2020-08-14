@@ -314,7 +314,7 @@
 			</tr>
 				<c:set	var="old"	value="${ subjectVo.lId }" />	
 			</c:forEach>
-		</table>
+		</table>  
 	 </div>
               <!-- /.card-body -->
             </div>
