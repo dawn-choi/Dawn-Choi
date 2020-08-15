@@ -19,8 +19,9 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
+<!--  
 <script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
-
+-->
  <!--  
 <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
 -->
@@ -29,13 +30,7 @@
 <!-- bnum같은 애들이 이 페이지로 넘어올때 숫자값으로 넘어옴 -->
 <!-- 컨트롤 부분에서 활용할때 String -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
-
-
-
-
-
-
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 
 <script>
 var getFilter = function() {
@@ -66,7 +61,7 @@ var getFilter = function() {
 	
 };
 
-
+/*
 //‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
 var submitContents = function() {
 	 // 에디터의 내용이 textarea에 적용된다.
@@ -74,22 +69,40 @@ var submitContents = function() {
 
 	 // 에디터의 내용에 대한 값 검증은 이곳에서
 	 // document.getElementById("ir1").value를 이용해서 처리한다.
+	 
+	 $('#writeform').submit(function(){
+			
+			submitContents();
+		    
+		});
+	 
+	 var oEditors = [];
+
+	    nhn.husky.EZCreator.createInIFrame({
+	      oAppRef : oEditors,
+	      elPlaceHolder : "cont",
+	      sSkinURI : "/smarteditor2/SmartEditor2Skin.html",
+	      fCreator : "createSEditor2",
+	      htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,             
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : false,     
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true
+	        }
+
+	     });
 
 }
-
+*/
 
 
 $(document).ready(
 		
 		function(){
 			getFilter();
-			
-			$('#writeform').submit(function(){
-				
-				submitContents();
-			    
-			});
-			
+
 			});
 
 		
@@ -166,23 +179,11 @@ $(document).ready(
 					    style = "width:100%;"></textarea>
 					    
 					    <script type="text/javascript">
-					    var oEditors = [];
-
-					    nhn.husky.EZCreator.createInIFrame({
-					      oAppRef : oEditors,
-					      elPlaceHolder : "cont",
-					      sSkinURI : "/smarteditor2/SmartEditor2Skin.html",
-					      fCreator : "createSEditor2",
-					      htParams : {
-					            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-					            bUseToolbar : true,             
-					            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-					            bUseVerticalResizer : false,     
-					            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-					            bUseModeChanger : true
-					        }
-
-					     });
+						$(function(){
+							CKEDITOR.replace('cont',{
+								filebrowserUploadUrl: '/imageUpload.do'
+							});
+						});
 						</script>
 					    </div>
 						
