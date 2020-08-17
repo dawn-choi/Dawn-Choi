@@ -39,7 +39,7 @@ var getFilter = function() {
 		dataType : 'json',
 		success : function(datas) {
 			
-			var strHTML = '<select name = kind id = kind class=form-control  >';
+			var strHTML = '<select name = menu_id id = kind class=form-control  >';
 			
 			$.each( datas,function(index, item)
 			{
@@ -105,11 +105,11 @@ $(document).ready(
 
 			});
 
-		
-		
-		
+</script>
 
-
+<script type = "text/javascript">
+        window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '업로드완료');   
+        
 </script>
 
 
@@ -165,7 +165,7 @@ $(document).ready(
 					</div>
 					<div class="card-body" id = "writeBody"  style = "height: 88%;">
 					<!-- form 테그 시작 -->
-						 <form action ="/testWrite" method = "post" id = "writeform">
+						 <form action ="/Write" method = "post" id = "writeform" enctype="multipart/form-data">
 						 <div id = "select_kind"></div>
 						 
 						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>
@@ -188,8 +188,18 @@ $(document).ready(
 					    </div>
 						
 						
+						 <div class="writeInfoDiv">
+						 <input type="file" name="upfile" />		 
+						 </div>
 						 
-						 <div class="writeInfoDiv" id = "writeOkDiv" ><input type = "submit"  id = "writeOk" value = "작성"/></div>
+						 <div class="writeInfoDiv" id = "writeOkDiv" >
+						 <table>
+						 	<tr class = "writeTr">
+						 		<td><input type = "submit"  id = "writeOk" value="작성" />
+						        </td>
+						 	</tr>
+						 </table>
+						 </div>
 						 
 						 
 						 
@@ -199,6 +209,9 @@ $(document).ready(
    						 <input type="hidden" name="lvl" value="<c:out value='${ map.lvl}' />" />
    						 <input type="hidden" name="step" value="<c:out value='${ map.step}' />" />
    						 <input type="hidden" name="nref" value="<c:out value='${ map.nref}' />" />	
+   						 <input type="text" name="sumnail" value="${filePath}" />	
+   						 <div id = "sumnailDiv"></div>		 
+   						 	
 						 </form>
 					<!-- form 테그 끝 -->	 
 					</div>

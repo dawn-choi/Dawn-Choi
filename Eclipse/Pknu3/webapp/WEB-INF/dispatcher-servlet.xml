@@ -19,7 +19,6 @@
     <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**" />
     <mvc:resources location="/WEB-INF/resources/plugins/" mapping="/plugins/**" />
     <mvc:resources location="/WEB-INF/resources/dist/" mapping="/dist/**" />
-	<mvc:resources location="/WEB-INF/resources/smarteditor2/" mapping="/smarteditor2/**" />
 	<mvc:resources location="/WEB-INF/resources/ckeditor/" mapping="/ckeditor/**" />
 	<mvc:resources mapping="/ckEditorImg/**" location="/resources/ckEditorImg/" />
 	<mvc:resources location="/WEB-INF/resources/files/" mapping="/files/**" />

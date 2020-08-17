@@ -14,6 +14,8 @@ public interface NoticeDao {
 
 	List<FilterVo> getFilterList();
 
+	void setWrite(HashMap<String, Object> map);
+
 
 
 }

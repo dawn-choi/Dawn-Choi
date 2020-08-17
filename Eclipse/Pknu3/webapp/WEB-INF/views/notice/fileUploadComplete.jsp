@@ -5,4 +5,9 @@
 
     <script type = "text/javascript">
         window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '업로드완료');
+   
+        
+        
     </script>
+    
+    

@@ -88,10 +88,14 @@ public class NoticeController {
 		return mv;
 	}
 	
-	@RequestMapping("/testWrite")
-	public ModelAndView testWrite(@RequestParam HashMap<String, Object>map)
+	@RequestMapping("/Write")
+	public ModelAndView testWrite(@RequestParam HashMap<String, Object>map,
+			HttpServletRequest request)
 	{
 		System.out.println(map);
+		
+		noticeService.setWrite(map,request);
+		
 		
 	    ModelAndView mv = new ModelAndView();
 	    mv.addObject("map", map);
@@ -100,15 +104,6 @@ public class NoticeController {
 		return mv;
 	}
 	
-	
-	@RequestMapping("/test")
-	public String test()
-	{
-		
-	   
-
-		return "notice/test";
-	}
 	
 	
 	//==================================에디터 그림 업로드 컨트롤러
@@ -168,7 +163,7 @@ public class NoticeController {
 			
 			System.out.println(model);
 			
-		    return "notice/fileUploadComplete";
+		    return "notice/writeform";
 		
 	}
 	
