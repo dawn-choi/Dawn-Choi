@@ -38,7 +38,7 @@
     <select id="ImpList" statementType="CALLABLE" parameterType="hashmap" resultType="com.pknu.schedule.vo.ScheduleVo">
       { CALL PKG_SCHEDULE.PROC_BIMP_SEL(
       #{ pid,    mode=IN, jdbcType=VARCHAR},
-      #{ result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=subjectMap }
+      #{ result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=scheduleMap }
       ) }
 	</select>
    

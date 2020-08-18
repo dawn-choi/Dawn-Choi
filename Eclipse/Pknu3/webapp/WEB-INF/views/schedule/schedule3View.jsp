@@ -138,7 +138,7 @@ canvas {
 			}
 		}
 	};
-
+	
 	window.onload = function() {
 		window.myRadar = new Chart(document.getElementById('canvas'), config);
 	};

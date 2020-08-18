@@ -129,7 +129,7 @@
 			<c:when test="${day eq dday && time eq dtime}">
 				<a href="/Schedule/ScheduleView?mid=${scheduleList.mid}&lid=${scheduleList.lid}&lname=${scheduleList.lname}
 						&dday=${scheduleList.dday}&dtime=${scheduleList.dtime}&rtime=${scheduleList.rname}&tname=${scheduleList.tname}
-						&ptot=${scheduleList.ptot}&pcost=${scheduleList.pcost}&cname=${scheduleList.cname}">
+						&pid=${scheduleList.pid}&ptot=${scheduleList.ptot}&pcost=${scheduleList.pcost}&cname=${scheduleList.cname}">
 				<c:out value="${scheduleList.lname}"/></a>
 			</c:when>
 			

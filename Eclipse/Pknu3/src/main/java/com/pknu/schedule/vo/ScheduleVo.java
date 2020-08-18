@@ -383,7 +383,7 @@ public class ScheduleVo {
 	//	toString
 	@Override
 	public String toString() {
-		return "SubjectVo [mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", memail=" + memail + ", mbirth="
+		return "ScheduleVo [mid=" + mid + ", mpwd=" + mpwd + ", mname=" + mname + ", memail=" + memail + ", mbirth="
 				+ mbirth + ", mgender=" + mgender + ", mtel=" + mtel + ", maddr=" + maddr + ", rid=" + rid + ", rname="
 				+ rname + ", tid=" + tid + ", tname=" + tname + ", grid=" + grid + ", grname=" + grname + ", cid=" + cid
 				+ ", cname=" + cname + ", clvl=" + clvl + ", cparent_id=" + cparent_id + ", pid=" + pid + ", pname="
