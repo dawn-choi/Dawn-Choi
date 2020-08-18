@@ -43,6 +43,7 @@ public class ScheduleController {
       day.add("목");
       day.add("금");
       day.add("토");
+      
       time.add("09:00");
       time.add("10:00");
       time.add("11:00");

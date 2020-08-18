@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>시간표</title>
 <link rel="stylesheet" href="/css/commons.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
 
@@ -16,45 +16,48 @@
 	
 
 	table, th, td{
-					border : 2px solid #13EBA2;
+					border : 2px solid #07D88E;
 					border-collapse:collapse;
 					text-align : center;
-					line-height : 50px;
+					line-height : 55px;
 				 }
 				 
-	table {width: 1000px; margin: 100px auto;}
+	table {width: 1500px; margin: 100px auto;}
 	
-	h2{
-		  color : PowderBlue;
-		  text-align : center;
-	  }
-	  
 	a{
-		  color : Darkgrey;
+		  color : black;
 		  text-decoration: none;
 		  text-line : none;
 		  font-family: 'Russo One', 'Do Hyeon', sans-serif;
-		  font-size : 17px;
-
 	 }  
 	 
+	 a:hover{
+	 		color: purple;
+	 		}
+	td > a {
+		display:block;
+		width:100%;
+		height:100%;
+		background-color: lightgreen;
+	} 
 	th {
-	      background-color:#13EBA2;
+	      background-color:#07D88E;
 	      color :white;
 	      font-family: 'Russo One', 'Do Hyeon', sans-serif;
-		  font-size: 25px;
+		  font-size: 30px;
 	   }
 	   
 	td{
 	  font-family: 'Russo One', 'Do Hyeon', sans-serif;
-		  font-size: 17px;
+		  font-size: 25px;
+		  padding : 2px;
 	  }
 	
 	td:nth-of-type(1) {width: 50px;}
-	td:nth-of-type(2) {width: 200px;}
-	td:nth-of-type(3) {width: 200px;}
-	td:nth-of-type(4) {width: 200px;}  
-	td:nth-of-type(5) {width: 200px;}  
+	td:nth-of-type(2) {width: 300px;}
+	td:nth-of-type(3) {width: 300px;}
+	td:nth-of-type(4) {width: 300px;}  
+	td:nth-of-type(5) {width: 300px;}  
 </style>
 
    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

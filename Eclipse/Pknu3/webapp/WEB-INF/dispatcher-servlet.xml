@@ -19,8 +19,13 @@
     <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**" />
     <mvc:resources location="/WEB-INF/resources/plugins/" mapping="/plugins/**" />
     <mvc:resources location="/WEB-INF/resources/dist/" mapping="/dist/**" />
+	<mvc:resources location="/WEB-INF/resources/ckeditor/" mapping="/ckeditor/**" />
+	<mvc:resources mapping="/ckEditorImg/**" location="/resources/ckEditorImg/" />
+	<mvc:resources location="/WEB-INF/resources/files/" mapping="/files/**" />
 	
 	
+	
+		
 	<bean id="viewResolver" 
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	  <property name="prefix" value="/WEB-INF/views/" />
@@ -62,5 +67,8 @@
         <property name="maxUploadSize" value="100000000" />
         <property name="maxInMemorySize" value="100000000" />
     </bean>
+    
+    
+    
 
 </beans>

@@ -19,13 +19,18 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 
-
+<!--  
+<script type="text/javascript" src="/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+-->
+ <!--  
+<script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+-->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <!-- bnum같은 애들이 이 페이지로 넘어올때 숫자값으로 넘어옴 -->
 <!-- 컨트롤 부분에서 활용할때 String -->
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 
 <script>
 var getFilter = function() {
@@ -34,7 +39,7 @@ var getFilter = function() {
 		dataType : 'json',
 		success : function(datas) {
 			
-			var strHTML = '<select name = kind id = kind class=form-control  >';
+			var strHTML = '<select name = menu_id id = kind class=form-control  >';
 			
 			$.each( datas,function(index, item)
 			{
@@ -56,15 +61,55 @@ var getFilter = function() {
 	
 };
 
+/*
+//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
+var submitContents = function() {
+	 // 에디터의 내용이 textarea에 적용된다.
+	 oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+
+	 // 에디터의 내용에 대한 값 검증은 이곳에서
+	 // document.getElementById("ir1").value를 이용해서 처리한다.
+	 
+	 $('#writeform').submit(function(){
+			
+			submitContents();
+		    
+		});
+	 
+	 var oEditors = [];
+
+	    nhn.husky.EZCreator.createInIFrame({
+	      oAppRef : oEditors,
+	      elPlaceHolder : "cont",
+	      sSkinURI : "/smarteditor2/SmartEditor2Skin.html",
+	      fCreator : "createSEditor2",
+	      htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,             
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : false,     
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true
+	        }
+
+	     });
+
+}
+*/
+
 
 $(document).ready(
 		
 		function(){
-			getFilter()
-		}
-		)
+			getFilter();
 
+			});
 
+</script>
+
+<script type = "text/javascript">
+        window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '업로드완료');   
+        
 </script>
 
 
@@ -120,7 +165,7 @@ $(document).ready(
 					</div>
 					<div class="card-body" id = "writeBody"  style = "height: 88%;">
 					<!-- form 테그 시작 -->
-						 <form action ="/testWrite" method = "post">
+						 <form action ="/Write" method = "post" id = "writeform" enctype="multipart/form-data">
 						 <div id = "select_kind"></div>
 						 
 						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>
@@ -129,13 +174,32 @@ $(document).ready(
 						 <!-- 본문 에디터 -->
 						  <!-- Ckeditor4 에디터 불러오기 크기 조절 최대치 설정 실패... 하...-->
 					    <div class = "writeInfoDiv">
-					    <textarea id = "writeCont" name = "cont"></textarea>
 					    
+					    <textarea id = "cont" name = "cont"
+					    style = "width:100%;"></textarea>
+					    
+					    <script type="text/javascript">
+						$(function(){
+							CKEDITOR.replace('cont',{
+								filebrowserUploadUrl: '/imageUpload.do'
+							});
+						});
+						</script>
 					    </div>
 						
 						
+						 <div class="writeInfoDiv">
+						 <input type="file" name="upfile" />		 
+						 </div>
 						 
-						 <div class="writeInfoDiv" id = "writeOkDiv" ><input type = "submit"  id = "writeOk" value = "작성"/></div>
+						 <div class="writeInfoDiv" id = "writeOkDiv" >
+						 <table>
+						 	<tr class = "writeTr">
+						 		<td><input type = "submit"  id = "writeOk" value="작성" />
+						        </td>
+						 	</tr>
+						 </table>
+						 </div>
 						 
 						 
 						 
@@ -145,6 +209,9 @@ $(document).ready(
    						 <input type="hidden" name="lvl" value="<c:out value='${ map.lvl}' />" />
    						 <input type="hidden" name="step" value="<c:out value='${ map.step}' />" />
    						 <input type="hidden" name="nref" value="<c:out value='${ map.nref}' />" />	
+   						 <input type="text" name="sumnail" value="${filePath}" />	
+   						 <div id = "sumnailDiv"></div>		 
+   						 	
 						 </form>
 					<!-- form 테그 끝 -->	 
 					</div>

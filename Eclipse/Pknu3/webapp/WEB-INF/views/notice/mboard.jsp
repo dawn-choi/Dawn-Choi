@@ -49,7 +49,7 @@ var getList = function(kindValue){
                	 strHTML +=	 item.title;
                	 strHTML +=	'</div>';
                	 strHTML +=	'<div class = imgdiv>';
-               	 strHTML +=	'<img alt= Schedule src= /img/main.jpg width = 90/>';
+               	 strHTML +=	'<img alt= Schedule src=' + item.sumnail + 'width = 90/>';
                	 strHTML +=	'</div>';
                	 strHTML +=	'</td>';
                	 strHTML += '<td>'+ item.mname     +'</td>';
