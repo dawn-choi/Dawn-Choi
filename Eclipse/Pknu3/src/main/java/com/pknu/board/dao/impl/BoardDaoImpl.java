@@ -35,4 +35,14 @@ public class BoardDaoImpl implements BoardDao {
 		return spBoardList;
 	}
 
+	@Override
+	public List<BoardVo> getList3(HashMap<String, Object> map) {
+		System.out.println("menuname = " + map.get("menuname"));
+		
+
+		sqlSession.selectList("SpBoard.BoardMenu", map);
+		List<BoardVo> spBoardList = (List<BoardVo>) map.get("result");
+		return spBoardList;
+	}
+
 }

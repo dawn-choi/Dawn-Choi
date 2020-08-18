@@ -2849,14 +2849,14 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-	color: #007bff;
-	border-color: #007bff
+	color: #07D88E;
+	border-color: #07D88E
 }
 
 .btn-outline-primary:hover {
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff
+	background-color: #07D88E;
+	border-color: #07D88E
 }
 
 .btn-outline-primary.focus, .btn-outline-primary:focus {
@@ -5044,7 +5044,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 	padding: .5rem .75rem;
 	margin-left: -1px;
 	line-height: 1.25;
-	color: #007bff;
+	color: #07D88E;
 	background-color: #fff;
 	border: 1px solid #dee2e6
 }
@@ -5077,8 +5077,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .page-item.active .page-link {
 	z-index: 3;
 	color: #fff;
-	background-color: #007bff;
-	border-color: #007bff
+	background-color: #07D88E;
+	border-color: #07D88E;
 }
 
 .page-item.disabled .page-link {

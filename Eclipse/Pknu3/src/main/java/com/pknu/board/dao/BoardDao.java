@@ -9,6 +9,8 @@ public interface BoardDao {
 
 	List<BoardVo> getList();
 
-	List<BoardVo> getList2(HashMap<String, Object> map); 
+	List<BoardVo> getList2(HashMap<String, Object> map);
+
+	List<BoardVo> getList3(HashMap<String, Object> map); 
 
 }

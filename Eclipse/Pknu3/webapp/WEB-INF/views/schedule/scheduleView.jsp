@@ -111,10 +111,6 @@ h3 {
 <script>
 $(document).ready(function (){
       
-   $('#impBtn').click(
-      function(){
-         alert("impBtn");
-         
           $.ajax({
                url    : '/Schedule/ImpList',
                  data   : {'pid' : '${scheduleVo.pid}'},
@@ -138,40 +134,37 @@ $(document).ready(function (){
                      };
 
                      var color = Chart.helpers.color;
-                     var config = {
-                        type : 'radar',
-                        data : {
-                           labels : chartLabels,
-                           datasets : [
-                                 {
-                                    label : '운동향상량',
-                                    backgroundColor : color(window.chartColors.red).alpha(
-                                          0.2).rgbString(),
-                                    borderColor : window.chartColors.red,
-                                    pointBackgroundColor : window.chartColors.red,
-                                    data : chartData
-                                 }]
-                        },
-                        
-                        options : {
-                           legend : {
-                              position : 'top',
-                           },
-                           title : {
-                              display : true,
-                              text : ''
-                           },
-                           scale : {
-                              beginAtZero : true
-                           }
-                        }
-                     };
-                     
-                     var imp = '${scheduleVo.pid}'
-                    alert(imp);
-                    var e = $("#imp").html(datas);
-             alert(e);
-                    
+                     var config = { 
+                    		   labels : chartLabels,
+                    		   datasets : [ {
+                    		   label : '운동향상량',
+                    		   backgroundColor : color(window.chartColors.green).alpha(0.2).rgbString(),   
+                    		   borderColor : window.chartColors.green, 
+                    		   pointBackgroundColor : window.chartColors.green,
+                    		   data : chartData
+                    			}] 
+                    		};
+
+                    		var chartOptions =  {
+                    		                           legend : {
+                    		                              position : 'top',
+                    		                           },
+                    		                           title : {
+                    		                              display : true,
+                    		                              text : ''
+                    		                           },
+                    		                           scale : {
+                    		                              beginAtZero : true
+                    		                           }
+                    		                        };
+
+                    		var chartImp = $('#impChart');
+                    		var radarChart = new Chart( chartImp, {
+                    		   type:'radar',
+                    		   data:config,
+                    		   options: chartOptions
+                    		});
+                    		
                      //window.location.href = "/Schedule/ScheduleView";
                      console.log("chartLabel2:" + chartLabels);
                      console.log("chartData2:" + chartData);
@@ -181,8 +174,6 @@ $(document).ready(function (){
                  }
          });
           
-   });
-   
 });   
    
 </script>
@@ -284,9 +275,9 @@ $(document).ready(function (){
 
             <div class="imp" style="width: 45%">
                <h3>
-                  운동향상량 <input type="button" id="impBtn" value="차트 보기" size="10" />
+                  운동향상량
                </h3>
-               <canvas id="${scheduleVo.pid}"></canvas>
+               <canvas id="impChart"></canvas>
             </div>
          </div>
       </div>

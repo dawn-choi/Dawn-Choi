@@ -49,6 +49,14 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 
+	@Override
+	public void setWrite(HashMap<String, Object> map) {
+		
+		sqlSession.insert("Notice.InsertList", map);
+		
+	}
+
+
 	
 
 	

@@ -55,5 +55,20 @@ public class BoardController {
 	}
 	
 	
+	@RequestMapping("/TableMenu")
+	public ModelAndView tableMenu(
+			@RequestParam HashMap<String,Object> map) {
+		//{selone=1, seltwo=3}
+		//{selone=0, seltwo=5}
+		//System.out.println(map);
+		List<BoardVo> spBoardList = boardService.getList3(map);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("table");
+		mv.addObject("spBoardList", spBoardList );
+		return  mv;
+	}
+	
+	
 	
 }

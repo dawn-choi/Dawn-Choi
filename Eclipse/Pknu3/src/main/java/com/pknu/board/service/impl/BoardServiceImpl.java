@@ -28,4 +28,10 @@ public class BoardServiceImpl implements BoardService {
 		return spBoardList;
 	}
 
+	@Override
+	public List<BoardVo> getList3(HashMap<String, Object> map) {
+		List<BoardVo> spBoardList = BoardDao.getList3(map);
+		return spBoardList;
+	}
+
 }
