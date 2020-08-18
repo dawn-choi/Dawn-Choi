@@ -88,6 +88,18 @@
 		javaType=ResultSet, resultMap = spBoardMap }
 		)}
 	</select>
+	
+	<select id="BoardMenu" statementType="CALLABLE"
+		parameterType="hashmap" resultType="com.pknu.board.vo.BoardVo">
+
+		{CALL PKG_BOARD.PROC_BOARD_MENU(
+		#{menuname, mode=IN, jdbcType=VARCHAR },
+		#{result, mode = OUT, jdbcType = CURSOR,
+		javaType=ResultSet, resultMap = spBoardMap }
+		)}
+	</select>
+	
+	
 <!--
 	<insert id="BoardInsert" statementType="CALLABLE"
 		parameterType="hashmap">
