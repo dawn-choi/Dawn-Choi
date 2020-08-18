@@ -35,6 +35,10 @@
 	.btn-block{
 		display:inline-block;
 	}
+	
+	#example {
+		margin-bottom: 30px;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -94,14 +98,7 @@
                         
                         var old = '';
                         
-                        if(datas == ''){
-                           strHTML += '<tr>';
-                           strHTML += '<td colspan="8">';
-                           strHTML += '해당하는 데이터가 없습니다.';
-                           strHTML += '</td>';
-                           strHTML += '</tr>';
-                        }
-                        else{
+                        
                            $.each(datas, function(index, subjectVo){
                               
                               
@@ -115,7 +112,7 @@
 	                                strHTML += '<td>' + subjectVo.tName  + '</td>';
 	                                strHTML += '<td>' + subjectVo.pCost  + '</td>';
 	                                strHTML += '<td>';
-	                                strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
+	                                strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>';
 	                                strHTML += '</td>';
 
                               }
@@ -135,7 +132,7 @@
                               old = subjectVo.lId;
                               
                            }); //each
-                        } //if
+                     
                         strHTML += '</tbody>';
                            
                         $('#example').html(strHTML);
@@ -191,22 +188,7 @@
                         
 	                        var old = '';
 	                        
-	                        if(datas == ''){
-	                           strHTML += '<tr>';
-	                           strHTML += '<td>';
-	                           strHTML += '해당하는 데이터가 없습니다.';
-	                           strHTML += '</td>';
-	                           strHTML += '<td></td>';
-	                           strHTML += '<td></td>';
-	                           strHTML += '<td></td>';
-	                           strHTML += '<td></td>';
-	                           strHTML += '<td></td>';
-	                           strHTML += '<td></td>';
-	                           strHTML += '<td></td>';
-	                           
-	                           strHTML += '</tr>';
-	                        }
-	                        else{
+	                      
 	                           $.each(datas, function(index, subjectVo){
 	                              
 	                              
@@ -220,7 +202,7 @@
 		                                strHTML += '<td>' + subjectVo.tName  + '</td>';
 		                                strHTML += '<td>' + subjectVo.pCost  + '</td>';
 		                                strHTML += '<td>';
-		                                strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
+		                                strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>';
 		                                strHTML += '</td>';
 	
 	                              }
@@ -240,7 +222,7 @@
 	                              old = subjectVo.lId;
 	                              
 	                           }); //each
-	                        } //if
+	                           
 	                        strHTML += '</tbody>';
 	                           
 	                        $('#example').html(strHTML);
@@ -316,7 +298,6 @@
           <div class="col-12">
                  <div class="card">
               <div class="card-header">
-              	
               	 <div id="searchWrap">
 			         <div class="form-group">
 			            <select id="grSelect" class="form-control" style="width:100px;">
@@ -337,10 +318,9 @@
 				            </select>
 				          </div>
 			            <input type="text" id="searchText"  class="form-control"  style="width:250px;"/>
-			            <input type="button" id="searchBtn" 	class="btn btn-block btn-default" value="검색"  style="width:100px;"/>
+			            <input type="submit" id="searchBtn" class="btn btn-block btn-default" value="검색"  style="width:100px;"/>
 			         </div>
 			      </div>
-              
               </div>
               <!-- /.card-header -->
 				  <div class="card-body">
