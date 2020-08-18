@@ -30,7 +30,12 @@
 		<result property="mid"          column=""    javaType="string" />
 		<result property="mname"        column=""    javaType="string" />
 		<result property="regdate"      column=""    javaType="string" />		
-		<result property="readcount"    column=""    javaType="int" />		
+		<result property="readcount"    column=""    javaType="int" />
+		<result property="bnum"         column=""    javaType="int" />
+      	<result property="lvl"          column=""    javaType="int" />
+      	<result property="step"         column=""    javaType="int" />
+      	<result property="nref"         column=""    javaType="int" />    
+      	<result property="delnum"       column=""    javaType="int" />    	
 		<result property="sumnail"      column=""    javaType="string" />		
 	</resultMap>
 
@@ -55,7 +60,6 @@
 		#{lvl, mode=IN, jdbcType=INTEGER},
 		#{step, mode=IN, jdbcType=INTEGER},
 		#{nref, mode=IN, jdbcType=INTEGER},
-		#{sumnail, mode=IN, jdbcType=VARCHAR},
 		#{filenames,  mode=IN,
     	  jdbcTypeName=FILE_ARRAY,
     	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler

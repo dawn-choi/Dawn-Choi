@@ -57,7 +57,6 @@ input[type=text] {
 
 
 #writeOkDiv{
-	border: 1px solid red;
 	display:flex;
 	align-items:center;
 	
