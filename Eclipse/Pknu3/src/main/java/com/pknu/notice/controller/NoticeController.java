@@ -104,6 +104,8 @@ public class NoticeController {
 	{
 		System.out.println(map);
 		
+		
+		
 		return "notice/content";
 
 	}
