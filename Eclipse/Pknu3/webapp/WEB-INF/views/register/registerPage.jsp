@@ -9,6 +9,7 @@
 <title>수업 신청 페이지</title>
  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
 
 
   <!-- Ionicons -->
@@ -21,6 +22,15 @@
 
 <link rel="stylesheet" href="/css/commons.css">
 <style>
+	* {
+		font-family: 'Russo One', 'Do Hyeon', sans-serif;
+		font-size: 24px;
+	}
+	
+	table {
+		font-size: 20px;
+	}
+
 	.dupli {
 		color:red;
 		visibility: hidden;
@@ -39,6 +49,15 @@
 	#example {
 		margin-bottom: 30px;
 	}
+	
+	#msgWrap{
+		float:right;
+	}
+	
+	#msgGet {
+		display: inline-block;
+	}
+	
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -61,18 +80,12 @@
             var oCode = "${ oCode }";
             var oMsg  = "${ oMsg  }";
          
-            
-            if(oCode != '0' || oMsg != '0'){
-               
-               alert( '[' + oCode + ' : ' + oMsg  + ']' );
-            }
-            
-            
+                        
             var grSelect = $("#grSelect").val();
             
             $("#grSelect").change(function(){
                   var changeGr = $("#grSelect").val();
-                  alert(changeGr);
+              
                   $.ajax({
                      
                      url    : '/Subject/ListByFilter',
@@ -161,8 +174,7 @@
                function(){
                   var selectNum = $("#typeSelect").val();
                   var keyword     = $("#searchText").val();
-                  alert(selectNum);
-                  
+                                    
                   $.ajax({
                            
                            url    : '/Subject/ListBySearch',
@@ -318,8 +330,15 @@
 				            </select>
 				          </div>
 			            <input type="text" id="searchText"  class="form-control"  style="width:250px;"/>
-			            <input type="submit" id="searchBtn" class="btn btn-block btn-default" value="검색"  style="width:100px;"/>
+			            <input type="button" id="searchBtn" class="btn btn-block btn-default" value="검색"  style="width:100px;"/>
 			         </div>
+			      </div>
+			      <div id="msgWrap">
+			      	<div id="msgGet">
+			      		${ oCode }  	${ oMsg } 
+			      		<a href="/Subject/List" class="btn btn-block btn-default" style="width:100px;">전체</a>
+			      	</div>
+			      	
 			      </div>
               </div>
               <!-- /.card-header -->
