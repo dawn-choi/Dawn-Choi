@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: sardv
+Built-By: PKNU
 Build-Jdk: 1.8.0_242
-=======
-Built-By: dnjsd
-Build-Jdk: 1.8.0_251
->>>>>>> branch 'master' of https://github.com/wonik-kim/Project3_Fitness.git
 Created-By: Maven Integration for Eclipse
 

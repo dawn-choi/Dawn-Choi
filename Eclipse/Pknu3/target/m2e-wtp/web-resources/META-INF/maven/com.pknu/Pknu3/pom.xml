@@ -90,8 +90,7 @@
     	<version>2.5.1</version>
     </dependency>
     
-<<<<<<< HEAD
-=======
+
     
     
     <dependency>
@@ -120,7 +119,6 @@
 	</dependency>
     
     
->>>>>>> branch 'master' of https://github.com/wonik-kim/Project3_Fitness.git
   </dependencies>
   
   <build>

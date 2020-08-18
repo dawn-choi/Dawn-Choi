@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "Notice">
+
+	<resultMap  id="FilterListMap" type="com.pknu.notice.vo.FilterVo" >
+		<result property="menu_id"        column=""    javaType="string" />
+		<result property="menu_name"      column=""    javaType="string" />
+		<result property="menu_seq"       column=""    javaType="int" />
+	</resultMap>
+	
+	<select id = "FilterList" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.FilterVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_FILTER_LIST(
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	    javaType = ResultSet, resultMap = FilterListMap
+	 	}
+	 )}
+	 </select>
+
+
+	<resultMap type="com.pknu.notice.vo.NoticeVo" id="NoticeListMap">
+		<result property="idx"          column=""    javaType="int" />
+		<result property="menu_id"      column=""    javaType="string" />
+		<result property="title"        column=""    javaType="string" />
+		<result property="cont"         column=""    javaType="string" />
+		<result property="mid"          column=""    javaType="string" />
+		<result property="mname"        column=""    javaType="string" />
+		<result property="regdate"      column=""    javaType="string" />		
+		<result property="readcount"    column=""    javaType="int" />		
+		<result property="sumnail"      column=""    javaType="string" />		
+	</resultMap>
+
+	<select id = "NoticeList" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.NoticeVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_TABLE_LIST(
+	  #{menu_id, mode=IN, jdbcType = CHAR},
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeListMap}
+	 )}
+	 </select>
+	 
+	 <insert id = "InsertList" statementType = "CALLABLE" parameterType = "hashmap">
+	
+	{CALL PKG_NOTICE.PROC_NOTICE_INSERT(
+		#{menu_id, mode=IN, jdbcType=CHAR},
+		#{title, mode=IN, jdbcType=VARCHAR},
+		#{cont, mode=IN, jdbcType=VARCHAR},
+		#{mid, mode=IN, jdbcType=VARCHAR},
+		#{bnum, mode=IN, jdbcType=INTEGER},
+		#{lvl, mode=IN, jdbcType=INTEGER},
+		#{step, mode=IN, jdbcType=INTEGER},
+		#{nref, mode=IN, jdbcType=INTEGER},
+		#{sumnail, mode=IN, jdbcType=VARCHAR},
+		#{filenames,  mode=IN,
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	},
+    	#{fileexts,  mode=IN, 
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	},    	
+    	#{sfilenames,  mode=IN,
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	}
+	)}
+	
+	</insert>
+	 
+
+</mapper>
