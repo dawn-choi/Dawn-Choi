@@ -8,32 +8,70 @@
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/mainPage.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    var logininfo =  "${login.mname}";
+  	
+    if(logininfo!=""){
+    	alert(logininfo+"님 반갑습니다")
+    	$("div[name=barRight1]").hide();
+    }
+    
+    else{
+    	$("div[name=barRight2]").hide();
+    }
+});
 
+function myTicket(){
+	var logininfo =  "${login.mname}";
+	var url= "/myTicket?mid=${login.mid}"
+	var name = "이용권조회"
+	var option = "width =700, height=800, top = 100 , left = 200, location= no"
+	if(logininfo!= ""){
+	window.open(url,name,option);}
+	else{alert("로그인이 필요합니다");}
+}
+</script>
 </head>
 <body>
 	   <!-- 상단 네비게이션  -->
    <div id="topNav">
-      <div id="logo">
-         <span>로고 위치</span>
-      </div>
-      <input id="selBtn" type="button" value="이용권 조회" onclick="" />
-      <div id="barRight">
-         <ul>
-            <li>
-               <a href="/LoginForm">
-                  <img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
-                  <div>로그인</div>
-               </a>
-            </li>
-            <li>
-               <a href="/SignUpForm">
-                  <img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
-                  <div>회원가입</div>
-               </a>
-            </li>
-         </ul>
-      </div>
-   </div>
+		<div id="logo">
+			<span>로고 위치</span>
+		</div>
+		<input id="selBtn" type="button" value="이용권 조회" onclick="myTicket()"/>
+		<div id="barRight" name="barRight1">
+			<ul>
+				<li>
+					<a href="/LoginForm">
+						<img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
+						<div>로그인</div>
+					</a>
+				</li>
+				<li>
+					<a href="/AssignForm">
+						<img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
+						<div>회원가입</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="barRight" name="barRight2">
+			<ul>
+				<li >
+						<img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
+						<div>${login.mname}님</div>
+				</li>
+				<li>
+					<a href="/logout">
+						<img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
+						<div>로그아웃</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
    <!-- 왼쪽 네비게이션 -->
    <div id="leftNav">
       <ul>

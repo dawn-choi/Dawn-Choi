@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +13,7 @@
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/mainPage.css">
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Russo+One&display=swap" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <style>
  #mainImg {
@@ -22,7 +28,7 @@
 		@import url(https://fonts.googleapis.com/css?family=Russo One:300);
 
 .login-page {
-  width: 360px;
+  width: 700px;
   padding: 8% 0 0;
   margin: auto;
 }
@@ -30,14 +36,15 @@
   position: relative;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 360px;
+  max-width: 500px;
+  height: 350px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
-  font-family: "Russo One", sans-serif;
+  font-family:'Russo One', 'Do Hyeon', sans-serif;
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -45,10 +52,10 @@
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 20px;
 }
 .form button {
-  font-family: "Russo One", sans-serif;
+  font-family: 'Russo One', 'Do Hyeon', sans-serif;
   text-transform: uppercase;
   outline: 0;
   background: #4CAF50;
@@ -111,25 +118,64 @@
 }
 body {
   background: #07D88E; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #07D88E, #8DC26F);
-  background: -moz-linear-gradient(right, #07D88E, #8DC26F);
-  background: -o-linear-gradient(right, #07D88E, #8DC26F);
-  background: linear-gradient(to left, #07D88E, #8DC26F);
-  font-family: "Russo One", sans-serif;
+  background: -webkit-linear-gradient(right,#8DC26F,#07D88E);
+  background: -moz-linear-gradient(right, #8DC26F,#07D88E);
+  background: -o-linear-gradient(right, #8DC26F,#07D88E);
+  background: linear-gradient(to left, #8DC26F,#07D88E);
+  font-family:  'Russo One', 'Do Hyeon', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
-		</style>
+#selBtn{ font-family:  'Russo One', 'Do Hyeon', sans-serif; }
 </style>
 
 </head>
+<script>
+$(function(){
+	var responseMessege = "<c:out value ="${pop}" />"; 
+	if(responseMessege == "nologoin"){
+		alert("로그인이 필요한 서비스입니다.")
+	}else if(responseMessege == "noid"){
+		alert("아이디를 입력해주세요.")
+	}else if(responseMessege == "nopwd"){
+		alert("비밀번호를 입력해주세요.")
+	}else if(responseMessege == "nocorrect"){
+		alert("아이디와 비빌번호를 정확히 입력해 주세요.")
+	}
+})
+
+$(document).ready(function() {
+    var logininfo =  "${login.mname}";
+  	
+    if(logininfo!=""){
+    	alert(logininfo+"님 반갑습니다")
+    	$("div[name=barRight1]").hide();
+    }
+    
+    else{
+    	$("div[name=barRight2]").hide();
+    }
+});
+
+function myTicket(){
+	var logininfo =  "${login.mname}";
+	var url= "/myTicket?mid=${login.mid}"
+	var name = "이용권조회"
+	var option = "width =700, height=800, top = 100 , left = 200, location= no"
+	if(logininfo!= ""){
+	window.open(url,name,option);}
+	else{alert("로그인이 필요합니다");}
+}
+
+</script>
+
 <body>
-<div id="topNav">
+		<div id="topNav">
 		<div id="logo">
 			<span>로고 위치</span>
 		</div>
-		<input id="selBtn" type="button" value="이용권 조회" onclick="" />
-		<div id="barRight">
+		<input id="selBtn" type="button" value="이용권 조회" onclick="myTicket()"/>
+		<div id="barRight" name="barRight1">
 			<ul>
 				<li>
 					<a href="/LoginForm">
@@ -141,6 +187,20 @@ body {
 					<a href="/AssignForm">
 						<img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
 						<div>회원가입</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="barRight" name="barRight2">
+			<ul>
+				<li >
+						<img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
+						<div>${login.mname}님</div>
+				</li>
+				<li>
+					<a href="/logout">
+						<img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
+						<div>로그아웃</div>
 					</a>
 				</li>
 			</ul>
@@ -165,20 +225,14 @@ body {
 			<div id="mainImg">
 					<div class="login-page">
   <div class="form">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
+    
+    <form class="login-form" action="/loginProcess" method="POST">
+      <input type="text" placeholder="userid" name= "mid"/>
+      <input type="password" placeholder="userpass" name= "mpwd"/>
       <button>login</button>
       <p class="message">Not registered? <a href="/AssignForm">Create an account</a></p>
-      <p class="message">Forgot ID? <a href="/AssignForm">Find it!</a></p>
-      <p class="message">Forgot Password? <a href="/AssignForm">Find it!</a></p>
+      <p class="message">Forgot ID? <a href="/GetIdForm">Find it!</a></p>
+      <p class="message">Forgot Password? <a href="/GetPwdForm">Find it!</a></p>
     </form>
   </div>
 </div>
@@ -188,3 +242,12 @@ body {
 	</div>
 </body>
 </html>
+
+<!-- 
+<form class="register-form">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#">Sign In</a></p>
+    </form> -->
