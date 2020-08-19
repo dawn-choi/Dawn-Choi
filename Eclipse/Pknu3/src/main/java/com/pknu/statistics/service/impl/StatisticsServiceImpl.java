@@ -16,12 +16,23 @@ public class StatisticsServiceImpl implements StatisticsService {
 	
 	@Autowired()
 	private StatisticsDao statisticsDao;
-	
+
 	@Override
-	public List<StatisticsVo> getStatisticsList(HashMap<String, Object> map) {
-		List<StatisticsVo> statisticsList = statisticsDao.getStatisticsList(map);
-		return statisticsList;
+	public List<StatisticsVo> getAgeList(HashMap<String, Object> map) {
+		List<StatisticsVo> ageList = statisticsDao.getAgeList(map);
+		return ageList;
 	}
 
+	@Override
+	public List<StatisticsVo> getGenList(HashMap<String, Object> map) {
+		List<StatisticsVo> genList = statisticsDao.getGenList(map);
+		return genList;
+	}
+
+	@Override
+	public List<StatisticsVo> getTrnList(HashMap<String, Object> map) {
+		List<StatisticsVo> trnList = statisticsDao.getTrnList(map);
+		return trnList;
+	}
 
 }

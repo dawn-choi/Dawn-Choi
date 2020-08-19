@@ -23,4 +23,28 @@ public class StatisticsDaoImpl implements StatisticsDao {
 		return statisticsList;
 	}
 
+	@Override
+	public List<StatisticsVo> getAgeList(HashMap<String, Object> map) {
+		System.out.println("dao map:" + map);
+		sqlSession.selectList("Statistics.AgeList", map);
+		List<StatisticsVo> ageList = (List<StatisticsVo>) map.get("result");
+		return ageList;
+	}
+
+	@Override
+	public List<StatisticsVo> getGenList(HashMap<String, Object> map) {
+		System.out.println("dao map:" + map);
+		sqlSession.selectList("Statistics.GenList", map);
+		List<StatisticsVo> ageList = (List<StatisticsVo>) map.get("result");
+		return ageList;
+	}
+
+	@Override
+	public List<StatisticsVo> getTrnList(HashMap<String, Object> map) {
+		System.out.println("dao map:" + map);
+		sqlSession.selectList("Statistics.TrnList", map);
+		List<StatisticsVo> genList = (List<StatisticsVo>) map.get("result");
+		return genList;
+	}
+
 }

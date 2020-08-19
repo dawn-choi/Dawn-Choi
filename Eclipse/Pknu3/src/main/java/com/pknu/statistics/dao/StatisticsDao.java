@@ -9,4 +9,10 @@ public interface StatisticsDao {
 
 	List<StatisticsVo> getStatisticsList(HashMap<String, Object> map);
 
+	List<StatisticsVo> getAgeList(HashMap<String, Object> map);
+
+	List<StatisticsVo> getGenList(HashMap<String, Object> map);
+
+	List<StatisticsVo> getTrnList(HashMap<String, Object> map);
+
 }

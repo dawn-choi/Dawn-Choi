@@ -20,7 +20,19 @@
       <result property="imp"   column="IMP"   javaType="int"></result>
    </resultMap>
 	
-   <select id="StatisticsList" statementType="CALLABLE" parameterType="hashmap" resultType="com.pknu.statistics.vo.StatisticsVo">
+   <select id="AgeList" statementType="CALLABLE" parameterType="hashmap" resultType="com.pknu.statistics.vo.StatisticsVo">
+      { CALL PKG_STATISTICS.PROC_STATISTICS_AGELIST(
+      #{ result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=statisticsMap }
+      ) }
+   </select>
+   
+   <select id="GenList" statementType="CALLABLE" parameterType="hashmap" resultType="com.pknu.statistics.vo.StatisticsVo">
+      { CALL PKG_STATISTICS.PROC_STATISTICS_GENLIST(
+      #{ result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=statisticsMap}
+      ) }
+   </select>
+   
+   <select id="TrnList" statementType="CALLABLE" parameterType="hashmap" resultType="com.pknu.statistics.vo.StatisticsVo">
       { CALL PKG_STATISTICS.PROC_STATISTICS_TRNLIST(
       #{ result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=statisticsMap }
       ) }
