@@ -25,7 +25,6 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
 	@Override
 	public List<ScheduleVo> getScheduleView(HashMap<String, Object> map) {
-		//System.out.println("dao : " +map);
 		sqlSession.selectList("Schedule.ScheduleView", map);
 		List<ScheduleVo> scheduleView  = (List<ScheduleVo>) map.get("result");
 		return scheduleView;
@@ -33,9 +32,10 @@ public class ScheduleDaoImpl implements ScheduleDao {
 
 	@Override
 	public List<ScheduleVo> getImpList(HashMap<String, Object> map) {
-		//System.out.println("dao : " +map);
+		System.out.println("dao map:" + map);
 		sqlSession.selectList("Schedule.ImpList", map);
 		List<ScheduleVo> impList = (List<ScheduleVo>) map.get("result");
+		System.out.println("dao impList: " +impList);
 		return impList;
 	}
 

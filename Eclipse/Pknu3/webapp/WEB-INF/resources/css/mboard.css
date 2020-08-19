@@ -14,7 +14,7 @@
  	position:absolute;
  	margin-left : 160px;
  	margin-top  : 60px;
- 	position:fixed;
+ 	
  }
   #mb_title > h1 {
   	color:#07D88E;
@@ -23,10 +23,10 @@
  
  #select_kind{
  	position:absolute;
- 	margin-left : 74%;
+ 	margin-left : 1400px;
  	margin-top  : 70px;
  	width: 100px;
- 	position:fixed;
+ 	
  }
 
 #kind
@@ -47,7 +47,7 @@
  	 margin-top  : 20px;
      width: 1450px;
      height: 800px;
-     position:fixed;
+    
 }
 
 
@@ -193,5 +193,15 @@ width: 550px;
 {
 position:absolute;
 top:10px;
-left:400px;
+left:450px;
 }
+
+.textdiv > a {
+  color: black;
+}
+
+.textdiv > a:hover {
+  color: #07D88E;
+}
+
+

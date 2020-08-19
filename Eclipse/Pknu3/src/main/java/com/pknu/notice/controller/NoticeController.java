@@ -89,21 +89,26 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/Write")
-	public ModelAndView testWrite(@RequestParam HashMap<String, Object>map,
+	public String testWrite(@RequestParam HashMap<String, Object>map,
 			HttpServletRequest request)
 	{
 		System.out.println(map);
 		
 		noticeService.setWrite(map,request);
-		
-		
-	    ModelAndView mv = new ModelAndView();
-	    mv.addObject("map", map);
-	    mv.setViewName("notice/content");
-	    
-		return mv;
+ 
+		return "notice/content";
 	}
 	
+	@RequestMapping("/GoContent")
+	public String GoContent(@RequestParam HashMap<String, Object>map)
+	{
+		System.out.println(map);
+		
+		
+		
+		return "notice/content";
+
+	}
 	
 	
 	//==================================에디터 그림 업로드 컨트롤러

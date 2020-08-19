@@ -1670,9 +1670,15 @@ pre code {
 }
 
 .table td, .table th {
-	padding: .75rem;
 	vertical-align: top;
-	border-top: 1px solid #dee2e6
+	border-top: 1px solid #dee2e6;
+	text-align: center;
+}
+
+.table td {
+	height: 42px;
+	line-height: 45px;
+	padding:5px;
 }
 
 .table thead th {
@@ -1706,7 +1712,7 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, .05)
+	background-color: rgba(1, 1, 1, 0)
 }
 
 .table-hover tbody tr:hover {

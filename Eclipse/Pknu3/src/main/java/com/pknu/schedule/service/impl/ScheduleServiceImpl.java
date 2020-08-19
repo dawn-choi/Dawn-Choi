@@ -18,16 +18,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 	@Override
 	public List<ScheduleVo> getScheduleList(HashMap<String, Object> map) {
-		//System.out.println("service : " +map);
 		List<ScheduleVo> scheduleList = scheduleDao.getScheduleList(map);
-		//System.out.println(map);
 		return scheduleList;
 
 	}
 
 	@Override
 	public List<ScheduleVo> getScheduleView(HashMap<String, Object> map) {
-		//System.out.println("service" + map);
 		List<ScheduleVo> scheduleView = scheduleDao.getScheduleView(map);
 		return scheduleView;
 	}
@@ -35,8 +32,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
 	@Override
 	public List<ScheduleVo> getImpList(HashMap<String, Object> map) {
-		System.out.println("service" + map);
+		System.out.println("service map:" + map);
 		List<ScheduleVo> impList = scheduleDao.getImpList(map);
+		System.out.println("service impList:" + impList);
 		return impList;
 	}
 	
