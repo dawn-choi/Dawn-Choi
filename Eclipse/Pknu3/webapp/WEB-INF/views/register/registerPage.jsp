@@ -32,8 +32,13 @@
 	}
 
 	.dupli {
-		color:red;
+		/*
 		visibility: hidden;
+		*/
+	}
+	
+	.dupli > span{
+		visibility : hidden;
 	}
 	
 	#search > .form-group {
@@ -48,6 +53,26 @@
 	
 	#example {
 		margin-bottom: 30px;
+	}
+	
+	#example> thead th {
+		font-size:26px;
+		height:50px;
+		line-height: 50px;
+	}
+	
+	#exampleThead th:nth-of-type(1){ width:170px; }
+	#exampleThead th:nth-of-type(2){ width:135px; }
+	#exampleThead th:nth-of-type(3){ width:90px; }
+	#exampleThead th:nth-of-type(4){ width:170px; }
+	#exampleThead th:nth-of-type(5){ width:150px; }
+	#exampleThead th:nth-of-type(6){ width:140px; }
+	#exampleThead th:nth-of-type(7){ width:220px; }
+	#exampleThead th:nth-of-type(8){ width:145px; }
+
+	
+	#example > tbody > tr {
+		border-bottom: 1px solid red;
 	}
 	
 	#msgWrap{
@@ -130,16 +155,16 @@
 
                               }
                               else {
-	                            	  strHTML += '<td class="dupli" >' + subjectVo.grName + '</td>';
-	                                  strHTML += '<td class="dupli">' + subjectVo.lName   + '</td>';
+	                            	  strHTML += '<td class="dupli" ><span>' + subjectVo.grName + '</span></td>';
+	                                  strHTML += '<td class="dupli"><span>' + subjectVo.lName   + '</span></td>';
 	                                  strHTML += '<td >' + subjectVo.dDay   + '</td>';
                                       strHTML += '<td>' + subjectVo.dTime  + '</td>';
-                                      strHTML += '<td class="dupli">' + subjectVo.rName  + '</td>';
-  	                                  strHTML += '<td class="dupli">' + subjectVo.tName  + '</td>';
-  	                                  strHTML += '<td class="dupli">' + subjectVo.pCost  + '</td>';
-  	                                  strHTML += '<td class="dupli">';
+                                      strHTML += '<td class="dupli"><span>' + subjectVo.rName  + '</span></td>';
+  	                                  strHTML += '<td class="dupli"><span>' + subjectVo.tName  + '</span></td>';
+  	                                  strHTML += '<td class="dupli"><span>' + subjectVo.pCost  + '</span></td>';
+  	                                  strHTML += '<td class="dupli"><span>';
 	                                  strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
-	                                  strHTML += '</td>';
+	                                  strHTML += '</span></td>';
                               }
                               
                               old = subjectVo.lId;
@@ -219,16 +244,16 @@
 	
 	                              }
 	                              else {
-		                            	  strHTML += '<td class="dupli" >' + subjectVo.grName + '</td>';
-		                                  strHTML += '<td class="dupli">' + subjectVo.lName   + '</td>';
+		                            	  strHTML += '<td class="dupli" ><span>' + subjectVo.grName + '</span></td>';
+		                                  strHTML += '<td class="dupli"><span>' + subjectVo.lName   + '</span></td>';
 		                                  strHTML += '<td >' + subjectVo.dDay   + '</td>';
 	                                      strHTML += '<td>' + subjectVo.dTime  + '</td>';
-	                                      strHTML += '<td class="dupli">' + subjectVo.rName  + '</td>';
-	  	                                  strHTML += '<td class="dupli">' + subjectVo.tName  + '</td>';
-	  	                                  strHTML += '<td class="dupli">' + subjectVo.pCost  + '</td>';
-	  	                                  strHTML += '<td class="dupli">';
+	                                      strHTML += '<td class="dupli"><span>' + subjectVo.rName  + '</span></td>';
+	  	                                  strHTML += '<td class="dupli"><span>' + subjectVo.tName  + '</span></td>';
+	  	                                  strHTML += '<td class="dupli"><span>' + subjectVo.pCost  + '</span></td>';
+	  	                                  strHTML += '<td class="dupli"><span>';
 		                                  strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
-		                                  strHTML += '</td>';
+		                                  strHTML += '</span></td>';
 	                              }
 	                              
 	                              old = subjectVo.lId;
@@ -312,7 +337,7 @@
               <div class="card-header">
               	 <div id="searchWrap">
 			         <div class="form-group">
-			            <select id="grSelect" class="form-control" style="width:100px;">
+			            <select id="grSelect" class="form-control" style="width:150px;">
 			               <option  value="">선택</option>
 			               <!-- 그룹명 - GRNAME -->
 			               <c:forEach var="grpVo" items="${ groupList }">
@@ -323,7 +348,7 @@
 			         <!-- 여기 상품 목록이 출력 될 것임 -->
 			         <div id="search">
 				         <div class="form-group">
-				            <select id="typeSelect" class="form-control" style="width:100px;">
+				            <select id="typeSelect" class="form-control" style="width:150px;">
 				               <option value="0">선택</option>
 				               <option value="1">수업명</option>
 				               <option value="2">강사명</option>
@@ -336,7 +361,7 @@
 			      <div id="msgWrap">
 			      	<div id="msgGet">
 			      		${ oCode }  	${ oMsg } 
-			      		<a href="/Subject/List" class="btn btn-block btn-default" style="width:100px;">전체</a>
+			      		<a href="/Subject/List" class="btn btn-block btn-default" style="width:120px;">처음으로</a>
 			      	</div>
 			      	
 			      </div>
@@ -344,7 +369,7 @@
               <!-- /.card-header -->
 				  <div class="card-body">
 					<table id="example" class="table table-bordered table-striped">
-					<thead>
+					<thead id="exampleThead">
 					  <tr>
 			            <th>종류</th>
 			            <th>수업명</th>
@@ -356,7 +381,7 @@
 			            <th>신청</th>
 			         </tr>
 			         </thead>
-			         <tbody>
+			         <tbody id="exampleTbody">
 
 			         <!-- 아래에 리스트 ROW 반복 -->
 			         <c:set   var="old"   value=" " />
@@ -376,15 +401,17 @@
 			               </td>
 			            </c:when>
 			            <c:otherwise>
-			               <td  class="dupli">${ subjectVo.grName }</td>
-			               <td  class="dupli">${ subjectVo.lName  }</td>
+			               <td  class="dupli"><span>${ subjectVo.grName }</span></td>
+			               <td  class="dupli"><span>${ subjectVo.lName  }</span></td>
 			               <td  >${ subjectVo.dDay   }</td>
 			               <td  >${ subjectVo.dTime   }</td>
-			               <td  class="dupli">${ subjectVo.rName  }</td>
-			               <td  class="dupli">${ subjectVo.tName  }</td>
-			               <td  class="dupli">${ subjectVo.pCost  }</td>
+			               <td  class="dupli"><span>${ subjectVo.rName  }</span></td>
+			               <td  class="dupli"><span>${ subjectVo.tName  }</span></td>
+			               <td  class="dupli"><span>${ subjectVo.pCost  }</span></td>
 			               <td  class="dupli">
+			               	<span>
 			                  <a href="/Subject/Register?mId=${ subjectVo.mId }&lId=${ subjectVo.lId }"  class="insertBtn" style="border:none">신청</a>
+			              	</span>
 			               </td>
 			            </c:otherwise>
 			         </c:choose>   
