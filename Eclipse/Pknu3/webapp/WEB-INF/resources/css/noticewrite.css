@@ -29,7 +29,9 @@
   box-sizing: border-box;
 } 
 
-
+#writeButtons{
+	text-align: right;
+}
 
 .writeInfoDiv {
 	width: 100%;

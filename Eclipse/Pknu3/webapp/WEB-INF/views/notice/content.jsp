@@ -67,7 +67,7 @@
 					
 					<table class = "writeTr">
 						<tr >
-						<td><h3 class="card-title" style = "font-size:30px;">게시글 작성</h3></td>
+						<td><h3 class="card-title" style = "font-size:30px;">게시글 보기</h3></td>
 						<td>
 							<h3 style = "font-size:20px;">작성자: 유아름</h3>
 							<h3 style = "font-size:20px;">작성일: 2020-08-19</h3>
@@ -93,23 +93,30 @@
 					    	</span>&nbsp;<img alt="blush" src="http://localhost:9090/ckeditor/plugins/smiley/images/embarrassed_smile.png" style="height:23px; width:23px" title="blush" /></p>
 					    </div>
 						
+						<div class="writeInfoDiv" id = "Like">
+							
+								<a href=/dddd><button><img alt = "like" src = "/img/notice_unlike.png" style="height:100px; width:100px" /><span>수정하기</span></button></a>
+							
+						</div>
 						
-						 <div class="writeInfoDiv" id = "writeFiles">
-						 	 
-						 </div>
 						 
-						 <div class="writeInfoDiv" id = "writeButton" >
-						 <table class = "writeTr">
-						 	<tr>
-						 		  <td id ="UpdateTD">
-						 		  	
-						 		  </td>
-						 		  <td id ="DeleteTD">
-						 		  	<a href=/NoticeWriteUpdateForm?idx=1><button class = writeBtn id = writeBtn1 ><span>수정하기</span></button></a>
-						 		  	<a href=/NoticeDelete?idx=1><button class = writeBtn id = writeBtn2 ><span>삭제하기</span></button></a>
-						 		  </td>
-						 	</tr>
-						 </table>
+						
+						
+						 
+						 
+						 <div class="writeInfoDiv" id = "writeButtons" >
+						
+						     <table id = "fileAndBtn" style = "width: 100%;">
+						     	<tr>
+						     		<td style="width: 50%; text-align:left;">
+						     	 		다운로드 파일 : <a href = "/MBoard">파일1번</a>, <a href = "/MBoard">파일2번</a>, <a href = "/MBoard">파일3번</a>, <a href = "/MBoard">파일4번</a>
+						     	 	</td>
+						     	 	<td style="width: 50%; text-align:right">
+						     	 		<a href=/NoticeWriteUpdateForm?idx=1><button class = writeBtn id = writeBtn1 ><span>수정하기</span></button></a>
+						 		  	    <a href=/NoticeDelete?idx=1><button class = writeBtn id = writeBtn2 ><span>삭제하기</span></button></a>
+						     	 	</td>	
+						     	<tr>     
+						     </table>
 						 </div>			 
 					</div>
 					

@@ -69,7 +69,7 @@ var getListAll = function(kindValue){
                 strHTML += '<td></td>';
                 strHTML += '<td></td>';
                 strHTML += '<td></td>';
-                strHTML += '<td><a href=/NoticeWriteForm?mid=SA0066&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
+                strHTML += '<td><a href=/NoticeWriteForm?mid=${ login.mid }&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
 
 				
@@ -128,7 +128,7 @@ var getListKind = function(kindValue){
                 strHTML += '</table>'; 
                 strHTML += '<table width = 1450 cellpadding = 0 cellspacing =0 id = writeButton>';
                 strHTML += '<tr class = write_TR>';
-                strHTML += '<td><a href=/NoticeWriteForm?mid=SA0066&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
+                strHTML += '<td><a href=/NoticeWriteForm?mid=${ login.mid }&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
 
 				
@@ -212,7 +212,7 @@ $(document).ready(
             <li>
                <a href="/LoginForm">
                   <img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
-                  <div>로그인</div>
+                  <div>${ login.mname }님</div>
                </a>
             </li>
             <li>
@@ -253,7 +253,7 @@ $(document).ready(
 					<!-- 테이블 -->			
 				</div>
 			</div>
-	
+
 	    </div>
 </div>
 

@@ -5,6 +5,22 @@
 }
 
 
+
+
+#fileAndBtn > td:nth-of-type(2)
+{
+	text-align:right;
+	border : 1px solid black;
+}
+
+#Like{
+	text-align: center;
+}
+
+span{
+	border : 1px solid black;
+}
+
 #writeBtn1{
 	font-family: 'Russo One', 'Do Hyeon', sans-serif;
 	display: inline-block;
@@ -39,9 +55,6 @@
     margin: 5px;
 }
 
-.writeTR {
-	border:1px solid black;
-}
 
 #UpdateTD{
 	text-align:left;

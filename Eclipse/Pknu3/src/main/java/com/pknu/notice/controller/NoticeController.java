@@ -80,7 +80,7 @@ public class NoticeController {
 	@RequestMapping("/NoticeWriteForm")
 	public ModelAndView NoticeWriteForm(@RequestParam HashMap<String, Object>map)
 	{
-		
+		System.out.println("writeform" + map);
 	    ModelAndView mv = new ModelAndView();
 	    mv.addObject("map", map);
 	    mv.setViewName("notice/writeform");
