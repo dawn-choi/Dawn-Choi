@@ -1,0 +1,62 @@
+-- 2020.08.20 BOARD TABLE 생성 
+
+--  게시판 테이블 생성 
+CREATE TABLE BOARD(
+    IDX         NUMBER(5)                  PRIMARY KEY,
+    MENU_ID     CHAR(10)                   NOT NULL,
+    TITLE       VARCHAR2(100)              NOT NULL,
+    CONT        VARCHAR2(4000)             NOT NULL,
+    MID         VARCHAR2(20)               NOT NULL,
+    REGDATE     VARCHAR2(50)               NOT NULL,
+    READCOUNT   NUMBER(5),
+    BNUM        NUMBER(5),
+    LVL         NUMBER(5),
+    STEP        NUMBER(5),
+    NREF        NUMBER(5),
+    DELNUM      NUMBER(2)
+    LIKECOUNT  NUMBER(10)
+);
+
+-- 게시판 데이터 입력 
+SET DEFINE OFF;
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (3,'MENU003   ','일요일에도 수업있으면해요.','<p><span style="color:#c0392b">주말반만 따로 만들어주세요.&nbsp;<img alt="crying" src="http://localhost:9090/ckeditor/plugins/smiley/images/cry_smile.png" style="height:23px; width:23px" title="crying" /></span></p>
+','SA0066','2020-08-19 08:41:11',0,1,0,0,1,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (4,'MENU004   ','다이어트 성공! 10KG 감량 ','<p><img alt="" src="files/10kg.jpg" style="height:960px; width:960px" /></p>
+
+<p>힘들었지만 그만큼 보람이 있었네요!&nbsp;</p>
+','SA0066','2020-08-19 08:42:08',0,1,0,0,1,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (5,'MENU005   ','추석 이벤트 참가 후기! ','<p><img alt="" src="files/gx365.JPG" style="height:841px; width:640px" /></p>
+
+<p>추석 이벤트로 싸게 10KG 감량 성공 했어요. 이게 다 최트레이너 님 덕분이에요!&nbsp;<img alt="laugh" src="http://localhost:9090/ckeditor/plugins/smiley/images/teeth_smile.png" style="height:23px; width:23px" title="laugh" /></p>
+','SA0066','2020-08-19 08:43:45',0,1,0,0,1,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (6,'MENU004   ','배고파요','<p>asdfasdgsadg<span style="color:#2ecc71">sdgsdagasdgasdgsag<img alt="" src="files/10kg.jpg" style="height:960px; width:960px" /></span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="color:#2ecc71"><img alt="wink" src="http://localhost:9090/ckeditor/plugins/smiley/images/wink_smile.png" style="height:23px; width:23px" title="wink" /><img alt="blush" src="http://localhost:9090/ckeditor/plugins/smiley/images/embarrassed_smile.png" style="height:23px; width:23px" title="blush" /></span></p>
+','SA0066','2020-08-19 09:27:23',2,2,0,0,2,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (10,'MENU001   ','dfhdfh','<p>dfhdfhdfh</p>
+','SA0066','2020-08-19 09:35:15',1,2,0,0,2,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (21,'MENU001   ','세션잘되니?','<p>잘되남?&nbsp;</p>
+','SA0066','2020-08-20 10:37:49',0,3,0,0,3,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (22,'MENU001   ','세션테스트2 ','<p>잘되니?&nbsp;</p>
+','SA0066','2020-08-20 10:38:51',0,4,0,0,4,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (23,'MENU001   ','ㄴㅇㅀㅇㄴㅀ','<p>ㅇ롱ㄴ로</p>
+','SA0066','2020-08-20 10:40:20',0,5,0,0,5,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (24,'MENU001   ','asdgasdgasdg','<p>asdgasdgsadg</p>
+','SA0066','2020-08-20 10:41:41',0,6,0,0,6,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (1,'MENU001   ','귀여운 고양이보고 가세요! ','<p><img alt="" src="files/1.gif" style="height:300px; width:270px" /></p>
+
+<p>귀엽죠?&nbsp;<img alt="laugh" src="http://localhost:9090/ckeditor/plugins/smiley/images/teeth_smile.png" style="height:23px; width:23px" title="laugh" /></p>
+','SA0066','2020-08-19 08:34:25',46,1,0,0,1,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (2,'MENU002   ','목 스트레칭 하는법 ','<p><img alt="" src="files/목스트레칭.jpg" style="height:346px; width:680px" /></p>
+
+<p>건강한 목을 유지합시다!!!!&nbsp;</p>
+','SA0066','2020-08-19 08:40:28',1,1,0,0,1,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (25,'MENU001   ','세션 잘되니? ','<p>ㄹㅇㅎㄴㅇㅀㅇㄹㄶ</p>
+','JOOH97','2020-08-20 10:54:29',0,7,0,0,7,null,0);
+Insert into S.BOARD (IDX,MENU_ID,TITLE,CONT,MID,REGDATE,READCOUNT,BNUM,LVL,STEP,NREF,DELNUM,LIKECOUNT) values (26,'MENU001   ','세션 잘되나요! ','<p><img alt="" src="files/8.gif" style="height:258px; width:320px" /></p>
+
+<p>잘되나요1!!!!!&nbsp;</p>
+','DONGANA','2020-08-20 01:34:32',0,8,0,0,8,null,0);
+ 
