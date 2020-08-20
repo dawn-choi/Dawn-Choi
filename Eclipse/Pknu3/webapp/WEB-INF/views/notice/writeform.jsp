@@ -164,6 +164,7 @@ $(document).ready(
 					<div class="card-body" id = "writeBody"  style = "height: 88%;">
 					<!-- form 테그 시작 -->
 						 <form action ="/Write" method = "post" id = "writeform" enctype="multipart/form-data">
+						 					 
 						 <div id = "select_kind"></div>
 						 
 						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>

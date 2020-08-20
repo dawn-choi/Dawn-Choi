@@ -57,6 +57,13 @@ public class NoticeDaoImpl implements NoticeDao {
 	}
 
 
+	@Override
+	public void plusRC(HashMap<String, Object> map) {
+		sqlSession.update("Notice.PlusRC", map);
+		
+	}
+
+
 	
 
 	

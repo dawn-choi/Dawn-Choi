@@ -3,3 +3,48 @@
 #writerTd{
 	text-align: right;
 }
+
+
+#writeBtn1{
+	font-family: 'Russo One', 'Do Hyeon', sans-serif;
+	display: inline-block;
+    border-radius: 4px;
+    background-color: #07D88E;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 150px;
+    height: 45px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#writeBtn2{
+	font-family: 'Russo One', 'Do Hyeon', sans-serif;
+	display: inline-block;
+    border-radius: 4px;
+    background-color: #FE2E64;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 150px;
+    height: 45px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.writeTR {
+	border:1px solid black;
+}
+
+#UpdateTD{
+	text-align:left;
+} 
+
+

@@ -104,7 +104,8 @@ public class NoticeController {
 	{
 		System.out.println(map);
 		
-		
+		// 중간 과정에서 조회수 업데이트 한다.
+		noticeService.plusRC(map);
 		
 		return "notice/content";
 

@@ -10,6 +10,7 @@
 <title>03 프로젝트 자유게시판</title>
 <link rel="stylesheet" href="/css/commons.css">
 <link rel="stylesheet" href="/css/noticewrite.css">
+<link rel="stylesheet" href="/css/noticecontent.css">
 <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -64,70 +65,52 @@
 				<div class="card card-success" >
 					<div class="card-header" style="background-color:#07D88E; color:white;">
 					
-					<table>
-						<tr class = "writeTr">
+					<table class = "writeTr">
+						<tr >
 						<td><h3 class="card-title" style = "font-size:30px;">게시글 작성</h3></td>
 						<td>
 							<h3 style = "font-size:20px;">작성자: 유아름</h3>
 							<h3 style = "font-size:20px;">작성일: 2020-08-19</h3>
 						</td>
 						</tr>
-					
 					</table>
 						
 						
 					</div>
 					<div class="card-body" id = "writeBody"  style = "height: 88%;">
 				
-					
-						 <div class="writeInfoDiv">
-						 	
+						<div class = "writeInfoDiv" id = "writeMT">
+					     <input type="text" value ="메뉴" readonly/>
+						 
+						 <input type="text" value ="타이틀" readonly/>
 						 </div>
 						 
-						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>
-					
-						
-						 <!-- 본문 에디터 -->
-						  <!-- Ckeditor4 에디터 불러오기 크기 조절 최대치 설정 실패... 하...-->
-					    <div class = "writeInfoDiv">
-					    
-					    <textarea id = "cont" name = "cont"
-					    style = "width:100%;"></textarea>
-					    
-					    <script type="text/javascript">
-						$(function(){
-							CKEDITOR.replace('cont',{
-								filebrowserUploadUrl: '/imageUpload.do'
-							});
-						});
-						</script>
+						 <!-- 본문 내용  -->
+						 <div class = "writeInfoDiv" id = "writeContent">
+					    	<p><img alt="" src="files/79.gif" style="height:532px; width:300px" /></p>
+					    	<p><span style="color:#e74c3c">
+					    	<span style="font-size:18px">핵 귀요미~~</span>
+					    	</span>&nbsp;<img alt="blush" src="http://localhost:9090/ckeditor/plugins/smiley/images/embarrassed_smile.png" style="height:23px; width:23px" title="blush" /></p>
 					    </div>
 						
 						
-						 <div class="writeInfoDiv">
-						 <input type="file" name="upfile" />		 
+						 <div class="writeInfoDiv" id = "writeFiles">
+						 	 
 						 </div>
 						 
-						 <div class="writeInfoDiv" id = "writeOkDiv" >
-						 <table>
-						 	<tr class = "writeTr">
-						 		<td><input type = "submit"  id = "writeOk" value="작성" />
-						        </td>
+						 <div class="writeInfoDiv" id = "writeButton" >
+						 <table class = "writeTr">
+						 	<tr>
+						 		  <td id ="UpdateTD">
+						 		  	
+						 		  </td>
+						 		  <td id ="DeleteTD">
+						 		  	<a href=/NoticeWriteUpdateForm?idx=1><button class = writeBtn id = writeBtn1 ><span>수정하기</span></button></a>
+						 		  	<a href=/NoticeDelete?idx=1><button class = writeBtn id = writeBtn2 ><span>삭제하기</span></button></a>
+						 		  </td>
 						 	</tr>
 						 </table>
-						 </div>
-						 
-						 
-						 
-						 <!-- 숨겨진 정보 -->
-						 <input type="hidden" name = "mid" value = "<c:out value= '${map.mid}'/>"/>
-						 <input type="hidden" name="bnum" value="<c:out value='${ map.bnum}' />" />
-   						 <input type="hidden" name="lvl" value="<c:out value='${ map.lvl}' />" />
-   						 <input type="hidden" name="step" value="<c:out value='${ map.step}' />" />
-   						 <input type="hidden" name="nref" value="<c:out value='${ map.nref}' />" />	
-   						 <div id = "sumnailDiv"></div>		 
-   						 	
-							 
+						 </div>			 
 					</div>
 					
 				</div>

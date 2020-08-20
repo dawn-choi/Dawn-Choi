@@ -128,10 +128,6 @@ var getListKind = function(kindValue){
                 strHTML += '</table>'; 
                 strHTML += '<table width = 1450 cellpadding = 0 cellspacing =0 id = writeButton>';
                 strHTML += '<tr class = write_TR>';
-                strHTML += '<td></td>';
-                strHTML += '<td></td>';
-                strHTML += '<td></td>';
-                strHTML += '<td></td>';
                 strHTML += '<td><a href=/NoticeWriteForm?mid=SA0066&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
 
