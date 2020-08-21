@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pknu.notice.dao.NoticeDao;
+import com.pknu.notice.vo.ContentVo;
 import com.pknu.notice.vo.FilterVo;
+import com.pknu.notice.vo.LikeVo;
 import com.pknu.notice.vo.NoticeVo;
 
 
@@ -61,6 +63,32 @@ public class NoticeDaoImpl implements NoticeDao {
 	public void plusRC(HashMap<String, Object> map) {
 		sqlSession.update("Notice.PlusRC", map);
 		
+	}
+
+
+	@Override
+	public List<ContentVo> getContent(HashMap<String, Object> map) {
+		
+		sqlSession.selectList("Notice.NoticeContent", map);
+		
+		List<ContentVo> list = (List<ContentVo>) map.get("result");
+		
+		System.out.println(list);
+		
+		return  list;
+	}
+
+
+	@Override
+	public List<LikeVo> settingLike(HashMap<String, Object> map) {
+		
+		sqlSession.selectList("Notice.NoticeLike", map);
+		
+		List<LikeVo> list = (List<LikeVo>) map.get("result");
+		
+		System.out.println(list);
+		
+		return list;
 	}
 
 

@@ -22,8 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pknu.notice.service.NoticeService;
+import com.pknu.notice.vo.ContentVo;
 import com.pknu.notice.vo.FileUploadVo;
 import com.pknu.notice.vo.FilterVo;
+import com.pknu.notice.vo.LikeVo;
 import com.pknu.notice.vo.NoticeVo;
 
 
@@ -99,17 +101,70 @@ public class NoticeController {
 		return "notice/content";
 	}
 	
+	
+	// 본문! 페이지로 가기
 	@RequestMapping("/GoContent")
-	public String GoContent(@RequestParam HashMap<String, Object>map)
+	public ModelAndView GoContent(@RequestParam HashMap<String, Object>map)
 	{
 		System.out.println(map);
 		
 		// 중간 과정에서 조회수 업데이트 한다.
 		noticeService.plusRC(map);
 		
-		return "notice/content";
+		ModelAndView mv = new ModelAndView();
+	    mv.addObject("map", map);
+	    mv.setViewName("notice/content");
+		
+		
+		return mv;
 
 	}
+	
+	
+	// 본문 내용 불러오기 (타이틀, 내용)
+	@RequestMapping(value = "/Notice/getContent", produces = "application/text; charset=utf8" )
+	@ResponseBody
+	public String getContent (@RequestParam HashMap<String,Object> map,HttpServletResponse response ) throws JsonProcessingException
+	{
+		 // ajax에게 전해받은 idx를 이용해서 데이터를 가져와 보자! 
+		 List<ContentVo> list = noticeService.getContent(map);
+		
+		 //중요!
+		 // 자바 객체를 json으로 보내주자! ajax에게 
+		 ObjectMapper mapper = new ObjectMapper();
+		 
+		 String jsonStr = mapper.writeValueAsString(list);
+		 
+		 System.out.println("컨텐츠 제이슨" + jsonStr);
+		 
+	     return jsonStr;
+	}
+	
+	
+	// 좋아요 세팅 불러오기 (해당 게시글과 세션의 로그인 아이디와 비교 후 좋아요 했는지 판단 값 결과로 리턴)
+	@RequestMapping(value = "/Notice/settingLike", produces = "application/text; charset=utf8" )
+	@ResponseBody
+	public String settingLike (@RequestParam HashMap<String,Object> map, HttpServletResponse response) throws JsonProcessingException
+	{
+		System.out.println("오잉" + map);
+		
+		List<LikeVo> list = noticeService.settingLike(map);
+		
+		//중요!
+		 // 자바 객체를 json으로 보내주자! ajax에게 
+		 ObjectMapper mapper = new ObjectMapper();
+		 
+		 String jsonStr = mapper.writeValueAsString(list);
+		 
+		 System.out.println("좋아요 제이슨" + jsonStr);
+		
+		return jsonStr;
+		
+	}
+	
+	
+	
+	
 	
 	
 	//==================================에디터 그림 업로드 컨트롤러

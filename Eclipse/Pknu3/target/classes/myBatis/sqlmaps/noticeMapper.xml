@@ -84,5 +84,38 @@
 	 
 	 </update>
 	 
+	 <resultMap type = "com.pknu.notice.vo.ContentVo" id = "NoticeContentMap">
+	 	<result property= "mname" column=""    javaType="string"/>
+	 	<result property= "regdate" column=""    javaType="string"/>
+	 	<result property= "menu_name" column=""    javaType="string"/>
+	 	<result property= "title" column=""    javaType="string"/>
+	 	<result property= "cont" column=""    javaType="string"/> 
+	 </resultMap>
+	 
+	 <select id = "NoticeContent" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.ContentVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_GETCONTENT(
+	    #{idx, mode=IN, jdbcType = INTEGER},
+	  	#{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeContentMap}
+	 )}
+	 </select>
+
+	<resultMap type="com.pknu.notice.vo.LikeVo" id="NoticeLike">
+		<result property= "islike" column=""    javaType="string"/>
+	</resultMap>
+
+	<select id = "NoticeLike" statementType = "CALLABLE"
+	parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.LikeVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_HOWLIKE(
+	 	#{mid, mode = IN, jdbcType = VARCHAR},
+	 	#{idx, mode=IN, jdbcType = INTEGER},
+	 	#{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeLike}
+	 )}
+	 </select>
+
 
 </mapper>

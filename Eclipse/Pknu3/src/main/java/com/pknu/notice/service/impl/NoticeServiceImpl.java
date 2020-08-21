@@ -17,7 +17,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pknu.notice.dao.NoticeDao;
 import com.pknu.notice.service.NoticeService;
+import com.pknu.notice.vo.ContentVo;
 import com.pknu.notice.vo.FilterVo;
+import com.pknu.notice.vo.LikeVo;
 import com.pknu.notice.vo.NoticeVo;
 
 
@@ -115,6 +117,22 @@ public class NoticeServiceImpl implements NoticeService {
 	public void plusRC(HashMap<String, Object> map) {
 		noticeDao.plusRC(map);
 		
+	}
+
+	@Override
+	public List<ContentVo> getContent(HashMap<String, Object> map) {
+		
+		List<ContentVo> list = noticeDao.getContent(map);
+		
+		return list;
+	}
+
+	@Override
+	public List<LikeVo> settingLike(HashMap<String, Object> map) {
+		
+		List<LikeVo> list = noticeDao.settingLike(map);
+		
+		return list;
 	}
 
 
