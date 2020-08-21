@@ -114,28 +114,6 @@ td
   right: 0;
 }
 
-.write_TR > td:nth-of-type(1)
-{
-	width:250px;	
-}
-.write_TR > td:nth-of-type(2)
-{	
-	width:450px;	
-}
-.write_TR > td:nth-of-type(3)
-{	
-	width:250px;	
-}
-.write_TR > td:nth-of-type(4)
-{
-	width:250px;
-}
-
-
-.write_TR > td:nth-of-type(5) 
-{
-	width: 100px;
-}
 
 .headtr
 {

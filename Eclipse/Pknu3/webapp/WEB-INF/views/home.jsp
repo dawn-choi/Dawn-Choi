@@ -35,7 +35,9 @@ function myTicket(){
 </script>
 </head>
 <body>
+
 	<%@include file="/WEB-INF/include/navigationBar.jsp" %>
+
 	<!-- 메인 -->
 	<div id="wrapper">
 		<div id="wrapMain">

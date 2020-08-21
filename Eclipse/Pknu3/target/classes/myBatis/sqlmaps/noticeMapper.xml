@@ -74,7 +74,15 @@
     	}
 	)}
 	
-	</insert>
+	</insert >
+	 
+	 <update id = "PlusRC" statementType = "CALLABLE" parameterType = "hashmap">
+	 
+	 {CALL PKG_NOTICE.PROC_NOTICE_PLUS_READCOUNT(
+	 	#{idx, mode=IN, jdbcType=INTEGER}
+	 )}
+	 
+	 </update>
 	 
 
 </mapper>

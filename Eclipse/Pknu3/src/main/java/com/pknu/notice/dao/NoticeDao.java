@@ -16,6 +16,8 @@ public interface NoticeDao {
 
 	void setWrite(HashMap<String, Object> map);
 
+	void plusRC(HashMap<String, Object> map);
+
 
 
 }

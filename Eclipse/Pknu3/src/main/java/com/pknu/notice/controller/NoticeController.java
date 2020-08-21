@@ -80,7 +80,7 @@ public class NoticeController {
 	@RequestMapping("/NoticeWriteForm")
 	public ModelAndView NoticeWriteForm(@RequestParam HashMap<String, Object>map)
 	{
-		
+		System.out.println("writeform" + map);
 	    ModelAndView mv = new ModelAndView();
 	    mv.addObject("map", map);
 	    mv.setViewName("notice/writeform");
@@ -104,7 +104,8 @@ public class NoticeController {
 	{
 		System.out.println(map);
 		
-		
+		// 중간 과정에서 조회수 업데이트 한다.
+		noticeService.plusRC(map);
 		
 		return "notice/content";
 
