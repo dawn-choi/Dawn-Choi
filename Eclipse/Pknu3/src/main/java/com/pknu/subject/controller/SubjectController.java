@@ -3,6 +3,9 @@ package com.pknu.subject.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pknu.subject.service.SubjectSerivce;
 import com.pknu.subject.vo.SubjectVo;
+import com.pknu.users.vo.UsersVo;
 
 @Controller
 public class SubjectController {
@@ -20,8 +24,14 @@ public class SubjectController {
 	private SubjectSerivce subjectService;
 	
 	@RequestMapping("/Subject/List")
-	public ModelAndView subjectList(
+	public ModelAndView subjectList( HttpServletRequest request,
 			@RequestParam HashMap<String, Object> map ) {
+				
+		HttpSession session = request.getSession();
+		
+		UsersVo login = (UsersVo) session.getAttribute("login");
+		
+		map.put("mId", login.getMid());
 		
 		System.out.println("맵 : "  + map);
 		
@@ -38,7 +48,8 @@ public class SubjectController {
 		mv.addObject("subjectList", subjectList);
 		mv.addObject("groupList", groupList);
 		mv.addObject("oCode", map.get("oCode"));
-		mv.addObject("oMsg", map.get("oMsg"));		
+		mv.addObject("oMsg", map.get("oMsg"));
+		mv.addObject("mId", login.getMid());
 
 		
 		System.out.println("2번째 map : " + map);
@@ -81,8 +92,6 @@ public class SubjectController {
 	public ModelAndView register(
 			@RequestParam HashMap<String, Object> map ) { 	//mid= &lId= 
 		
-		//임의로 멤버 아이디를 넣고 테스트
-		map.put("mId", "test");
 		
 		subjectService.setRegister(map);
 		
@@ -107,6 +116,96 @@ public class SubjectController {
 		
 		return mv;
 
+	}
+	
+	@RequestMapping("/Subject/ticketPage")
+	public ModelAndView ticketPage(
+			HttpServletRequest request,
+			@RequestParam HashMap<String, Object> map) {
+		
+		HttpSession session = request.getSession();
+		
+		UsersVo login = (UsersVo) session.getAttribute("login");
+		
+		map.put("mId", login.getMid());
+		
+		System.out.println("티켓 페이지 : " + map);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("oMsg", map.get("oMsg"));
+		mv.setViewName("/register/ticketPage");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/Subject/ticketList")
+	public ModelAndView ticketList(
+			HttpServletRequest request,
+			@RequestParam HashMap<String, Object> map) {
+		
+		HttpSession session = request.getSession();
+		
+		UsersVo login = (UsersVo) session.getAttribute("login");
+		
+		map.put("mId", login.getMid());
+		
+		List<SubjectVo> grSelect = subjectService.getGrSelect(map);
+		
+		List<SubjectVo> ticketList = subjectService.getTicketList(map);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("grSelect", grSelect);
+		mv.addObject("ticketList", ticketList);
+		mv.addObject("mId", login.getMid());
+		mv.setViewName("/register/ticketList");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping("/Ticket/ClassList")
+	@ResponseBody
+	public List<SubjectVo> classList(
+			@RequestParam HashMap<String, Object> map){
+		
+		List<SubjectVo> classSelect = subjectService.getClassSelect(map);
+		
+		return classSelect;
+		
+	}
+	
+	@RequestMapping("/Ticket/TermList")
+	@ResponseBody
+	public List<SubjectVo> termList(
+			@RequestParam HashMap<String, Object> map){
+		
+		List<SubjectVo> termSelect 	= subjectService.getTermSelect(map);
+		
+		return termSelect;
+		
+	}
+	
+	@RequestMapping("/Ticket/Charge")
+	@ResponseBody
+	public HashMap<String, Object> ticketCharge(
+			@RequestParam HashMap<String, Object> map) {
+		
+		subjectService.getTicket(map);
+		
+		System.out.println("!!!!!!!!!!!" + map);
+		
+		return map;
+		
+	}
+	
+	@RequestMapping("/Ticket/TicketList")
+	@ResponseBody
+	public List<SubjectVo> ticketChangeList(
+			@RequestParam HashMap<String, Object> map) {
+		
+		List<SubjectVo> ticketList = subjectService.getTicketList(map);
+		
+		return ticketList;
+		
 	}
 
 }

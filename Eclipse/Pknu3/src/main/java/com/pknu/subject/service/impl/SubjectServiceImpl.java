@@ -14,12 +14,12 @@ import com.pknu.subject.vo.SubjectVo;
 public class SubjectServiceImpl implements SubjectSerivce{
 
 	@Autowired
-	private SubjectDao subjectdao;
+	private SubjectDao subjectDao;
 	
 	@Override
 	public List<SubjectVo> getTotList(HashMap<String, Object> map) {
 		
-		List<SubjectVo> subjectList = subjectdao.getTotList(map);
+		List<SubjectVo> subjectList = subjectDao.getTotList(map);
 		
 		return subjectList;
 	}
@@ -27,7 +27,7 @@ public class SubjectServiceImpl implements SubjectSerivce{
 	@Override
 	public List<SubjectVo> getGrList(HashMap<String, Object> map) {
 		
-		List<SubjectVo> groupList = subjectdao.getGrList(map);
+		List<SubjectVo> groupList = subjectDao.getGrList(map);
 		
 		return groupList;
 	}
@@ -35,7 +35,7 @@ public class SubjectServiceImpl implements SubjectSerivce{
 	@Override
 	public List<SubjectVo> getSubjectByFilter(HashMap<String, Object> map) {
 		
-		List<SubjectVo> subjectList = subjectdao.getSubjectByFilter(map);
+		List<SubjectVo> subjectList = subjectDao.getSubjectByFilter(map);
 		
 		return subjectList;
 	}
@@ -43,7 +43,7 @@ public class SubjectServiceImpl implements SubjectSerivce{
 	@Override
 	public List<SubjectVo> getSubjectBySearch(HashMap<String, Object> map) {
 		
-		List<SubjectVo> subjectList = subjectdao.getSubjectBySearch(map);
+		List<SubjectVo> subjectList = subjectDao.getSubjectBySearch(map);
 		
 		return subjectList;
 	}
@@ -51,8 +51,46 @@ public class SubjectServiceImpl implements SubjectSerivce{
 	@Override
 	public void setRegister(HashMap<String, Object> map) {
 		
-		 subjectdao.setRegister(map);
+		 subjectDao.setRegister(map);		
+	
+	}
+
+	@Override
+	public List<SubjectVo> getGrSelect(HashMap<String, Object> map) {
 		
+		List<SubjectVo> grList = subjectDao.getGrSelect(map);
+		
+		return grList;
+	}
+
+	@Override
+	public List<SubjectVo> getClassSelect(HashMap<String, Object> map) {
+		
+		List<SubjectVo> classList = subjectDao.getClassSelect(map);
+		
+		return classList;
+	}
+
+	@Override
+	public List<SubjectVo> getTermSelect(HashMap<String, Object> map) {
+
+		List<SubjectVo> termList = subjectDao.getTermSelect(map);
+		
+		return termList;
+	}
+
+	@Override
+	public List<SubjectVo> getTicketList(HashMap<String, Object> map) {
+		
+		List<SubjectVo> ticketList = subjectDao.getTicketList(map);
+		
+		return ticketList;
+	}
+
+	@Override
+	public void getTicket(HashMap<String, Object> map) {
+		
+		subjectDao.getTicket(map);
 		
 	}
 

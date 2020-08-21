@@ -17,4 +17,14 @@ public interface SubjectSerivce {
 
 	void setRegister(HashMap<String, Object> map);
 
+	List<SubjectVo> getGrSelect(HashMap<String, Object> map);
+
+	List<SubjectVo> getClassSelect(HashMap<String, Object> map);
+
+	List<SubjectVo> getTermSelect(HashMap<String, Object> map);
+
+	List<SubjectVo> getTicketList(HashMap<String, Object> map);
+
+	void getTicket(HashMap<String, Object> map);
+
 }

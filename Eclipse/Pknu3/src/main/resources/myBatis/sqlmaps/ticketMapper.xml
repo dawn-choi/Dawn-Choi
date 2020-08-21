@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="Ticket">
+    
+    	<resultMap id="ticketMap" type="com.pknu.subject.vo.SubjectVo">
+    		<result property="grId" 	column="GRID" 	javaType="string" />
+    		<result property="grName" 	column="GRNAME" javaType="string" />
+    		<result property="pId" 		column="PID" 	javaType="string" />
+    		<result property="pName" 	column="PNAME" 	javaType="string" />
+    		<result property="term" 	column="TERMS" 	javaType="string" />
+    		<result property="gubun" 	column="GUBUN" 	javaType="string" />
+    		<result property="pCost" 	column="PCOST" 	javaType="string" />
+    		<result property="pTot" 	column="PTOT" 	javaType="string" />
+    	</resultMap>
+    	
+    	<resultMap id="grsListMap" type="com.pknu.subject.vo.SubjectVo">
+    		<result property="grId"		column="GRID"	javaType="string" />
+    		<result property="grName"	column="GRNAME"	javaType="string" />
+    	</resultMap>
+    	
+    	<resultMap id="classListMap" type="com.pknu.subject.vo.SubjectVo">
+    		<result property="pName" column="PNAME" javaType="string" />
+    	</resultMap>
+    
+    	<resultMap id="termListMap" type="com.pknu.subject.vo.SubjectVo">
+    		<result property="term" column="TERMS" javaType="string" />
+    	</resultMap>
+    
+    	
+    	<select id="GrList" 
+    		parameterType="hashmap"
+    		statementType="CALLABLE">
+    		{CALL PKG_TICKET.PROC_GRLIST (
+    			#{result, mode=OUT, jdbcType = CURSOR,
+    				javaType=ResultSet, resultMap = grsListMap }
+    		 )}
+    	</select>
+    	
+    	<select id="ClassList" 
+    		parameterType="hashmap"
+    		statementType="CALLABLE">
+    		{CALL PKG_TICKET.PROC_CLASSLIST (
+    			#{ grId, mode=IN, jdbcType=VARCHAR},
+    			#{result, mode=OUT, jdbcType = CURSOR,
+    				javaType=ResultSet, resultMap = classListMap }
+    		 )}
+    	</select>
+    	
+    	<select id="TermList" 
+    		parameterType="hashmap"
+    		statementType="CALLABLE">
+    		{CALL PKG_TICKET.PROC_TERMLIST (
+	    		#{ pName, mode=IN, jdbcType=VARCHAR},
+    			#{ result, mode=OUT, jdbcType = CURSOR,
+    				javaType=ResultSet, resultMap = classListMap }
+    		 )}
+    	</select>
+    	
+    	<select id="TicketList" 
+    		parameterType="hashmap"
+    		statementType="CALLABLE">
+    		{CALL PKG_TICKET.PROC_TICKETLIST(
+    			#{ grId, mode=IN, jdbcType=VARCHAR},
+    			#{ pName, mode=IN, jdbcType=VARCHAR},
+	    		#{ term, mode=IN, jdbcType=VARCHAR},
+    			#{ result, mode=OUT, jdbcType = CURSOR,
+    				javaType=ResultSet, resultMap = termListMap }
+    		 )}
+    	</select>
+    	
+    	<insert id="TicketCharge"
+	    	parameterType="hashmap"
+    		statementType="CALLABLE">
+    		
+    		{ CALL PKG_TICKET.PROC_TICKET_CHARGE(
+    			#{ pId, mode=IN, jdbcType=VARCHAR },
+    			#{ mId, mode=IN, jdbcType=VARCHAR }
+    		 )}
+    		
+ 		</insert>
+    </mapper>
