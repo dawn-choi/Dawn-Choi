@@ -14,6 +14,15 @@
      </select>   
     
     
+     <delete id="Delete"         
+         parameterType="hashmap" 
+       >
+         
+         DELETE  
+          FROM    MEMBERS  
+          WHERE   MID   = #{mid}
+     </delete>  
+    
     
      <select id="Login"         
          parameterType="hashmap" 
@@ -67,16 +76,7 @@
       )}
     </select> 
      
-     <resultMap id="InsetrMember" type="com.pknu.users.vo.UsersVo">
-      <result property="mid"     column=""  javaType="string" />
-      <result property="mpwd"   column=""  javaType="string" />
-      <result property="mname"    column=""  javaType="string" />
-      <result property="memail"     column=""  javaType="string" />
-      <result property="mbirth"   column=""  javaType="string" />
-      <result property="mgender"  column=""  javaType="string" />
-      <result property="mtel"  column=""  javaType="string" />
-      <result property="maddr"  column=""  javaType="string" />
-    </resultMap>
+   
     
       <insert id="Insert"  statementType="CALLABLE"
         parameterType="hashmap">
@@ -91,6 +91,28 @@
         #{maddr,      mode=IN,   jdbcType = VARCHAR}
         )}
     </insert> 
+    
+    <resultMap id="InfoMap" type="com.pknu.users.vo.UsersVo">
+      <result property="mid"     column=""  javaType="string" />
+      <result property="mpwd"   column=""  javaType="string" />
+      <result property="mname"    column=""  javaType="string" />
+      <result property="memail"     column=""  javaType="string" />
+      <result property="mbirth"   column=""  javaType="string" />
+      <result property="mgender"  column=""  javaType="string" />
+      <result property="mtel"  column=""  javaType="string" />
+      <result property="maddr"  column=""  javaType="string" />
+    </resultMap>
+    
+      <select id="Info"  
+       statementType="CALLABLE"
+       parameterType="hashmap"
+       resultType="com.pknu.users.vo.UsersVo">
+      {CALL PKG_USER.PROC_USER_INFO(
+        #{mid,      mode=IN,   jdbcType = VARCHAR} ,
+        #{result,   mode=OUT,   jdbcType=CURSOR, 
+             javaType=ResultSet, resultMap = InfoMap }
+        )}
+    </select> 
              
   </mapper>        
 

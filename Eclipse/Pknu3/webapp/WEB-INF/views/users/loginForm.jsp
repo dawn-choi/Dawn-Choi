@@ -23,8 +23,8 @@
  	background-repeat: no-repeat;
  	
  }
- </style>
-<style>
+ </style> 
+ <style>
 		@import url(https://fonts.googleapis.com/css?family=Russo One:300);
 
 .login-page {
@@ -127,7 +127,7 @@ body {
   -moz-osx-font-smoothing: grayscale;      
 }
 #selBtn{ font-family:  'Russo One', 'Do Hyeon', sans-serif; }
-</style>
+</style> 
 
 </head>
 <script>
@@ -170,8 +170,7 @@ function myTicket(){
 </script>
 
 <body>
-<!-- 상단 네비게이션  -->
-   <div id="topNav">
+		<div id="topNav">
 		<div id="logo">
 			<span>로고 위치</span>
 		</div>
@@ -192,34 +191,21 @@ function myTicket(){
 				</li>
 			</ul>
 		</div>
-		<div id="barRight" name="barRight2">
-			<ul>
-				<li >
-						<img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
-						<div>${login.mname}님</div>
-				</li>
-				<li>
-					<a href="/logout">
-						<img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
-						<div>로그아웃</div>
-					</a>
-				</li>
-			</ul>
-		</div>
+		
 	</div>
-   <!-- 왼쪽 네비게이션 -->
-   <div id="leftNav">
-      <ul>
-      	 <li><a class="categorys" href="/"><img width="40px" height="40px" alt="HOME" src="/img/home.png"></a></li>
-         <li><a class="categorys" href="/Schedule/ScheduleList"><img width="40px" height="40px" alt="Schedule" src="/img/calendar.png"></a></li> 
-         <li><a class="categorys" href="/Subject/List"><img width="40px" height="40px" alt="Class register" src="/img/registration.png"></a></li>
-         <li><a class="categorys" href=""><img width="40px" height="40px" alt="Product List" src="/img/gym.png"></a></li>
-         <li><a class="categorys" href="/Statistics/StatisticsList"><img width="40px" height="40px" alt="Statistics" src="/img/result.png"></a></li>
-         <li><a class="categorys" href=""><img width="40px" height="40px" alt="Board" src="/img/meeting.png"></a></li>
-         <!-- 스케줄 / 수업신청 / 상품  / 통계  / 자유게시판 순 -->
-      </ul>
-   </div>
-
+	<!-- 왼쪽 네비게이션 -->
+	<div id="leftNav">
+		<div id="toHome"><a href="/"><img width="40px" height="40px" alt="HOME" src="/img/home.png"></a></div>
+		<ul>
+			<li><a class="category" href=""><img width="40px" height="40px" alt="Schedule" src="/img/calendar.png"></a></li> 
+			<li><a class="category" href=""><img width="40px" height="40px" alt="Class register" src="/img/registration.png"></a></li>
+			<li><a class="category" href=""><img width="40px" height="40px" alt="Product List" src="/img/gym.png"></a></li>
+			<li><a class="category" href=""><img width="40px" height="40px" alt="Statistics" src="/img/result.png"></a></li>
+			<li><a class="category" href=""><img width="40px" height="40px" alt="Board" src="/img/meeting.png"></a></li>
+			<!-- 스케줄 / 수업신청 / 상품  / 통계  / 자유게시판 순 -->
+		</ul>
+	</div>
+	
 	<!-- 메인 -->
 	<div id="wrapper" >
 		<div id="wrapMain">

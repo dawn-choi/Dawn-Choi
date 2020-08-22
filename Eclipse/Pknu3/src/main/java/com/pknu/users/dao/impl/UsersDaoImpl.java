@@ -53,4 +53,18 @@ public class UsersDaoImpl implements UsersDao {
 	public void setMember(HashMap<String, Object> map) {
 		sqlSession.insert("User.Insert", map);
 	}
+
+	@Override
+	public List<UsersVo> getInfo(HashMap<String, Object> map) {
+		
+		sqlSession.selectOne("User.Info", map);
+		List<UsersVo> usersVo =  (List<UsersVo>) map.get("result");
+		return usersVo;
+	}
+
+	@Override
+	public void deleteMember(HashMap<String, Object> map) {
+		sqlSession.delete("User.Delete", map);
+		
+	}
 }

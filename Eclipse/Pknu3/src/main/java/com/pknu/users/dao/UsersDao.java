@@ -17,6 +17,10 @@ public interface UsersDao {
 
 	public UsersVo getCount(HashMap<String, Object> map);
 
-	public void setMember(HashMap<String, Object> map); 
+	public void setMember(HashMap<String, Object> map);
+
+	public List<UsersVo> getInfo(HashMap<String, Object> map);
+
+	public void deleteMember(HashMap<String, Object> map); 
 
 }

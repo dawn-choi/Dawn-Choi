@@ -61,37 +61,49 @@ var getFilter = function() {
 	
 };
 
+/*
+//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
+var submitContents = function() {
+	 // 에디터의 내용이 textarea에 적용된다.
+	 oEditors.getById["cont"].exec("UPDATE_CONTENTS_FIELD", []);
+
+	 // 에디터의 내용에 대한 값 검증은 이곳에서
+	 // document.getElementById("ir1").value를 이용해서 처리한다.
+	 
+	 $('#writeform').submit(function(){
+			
+			submitContents();
+		    
+		});
+	 
+	 var oEditors = [];
+
+	    nhn.husky.EZCreator.createInIFrame({
+	      oAppRef : oEditors,
+	      elPlaceHolder : "cont",
+	      sSkinURI : "/smarteditor2/SmartEditor2Skin.html",
+	      fCreator : "createSEditor2",
+	      htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,             
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : false,     
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true
+	        }
+
+	     });
+
+}
+*/
+
+
 $(document).ready(
 		
 		function(){
 			getFilter();
-			
-			$('#title').keyup(function(){
-				if($(this).val().length > 50){
-					alert("제목의 최대 길이는 50자입니다.")
-					$(this).val($(this).val().substring(0, 50));
-				}
-			});
 
 			});
-			
-			
-function formCheck(){
-	
-	var title = document.forms[0].title.value;
-	var cont = document.forms[0].cont.value;
-	
-	if(title == null || title == ""){
-		alert("제목을 입력하세요.")
-		return false;
-	}
-	
-	if(cont == null || cont == ""){
-		alert("본문을 작성해주세요.")
-		return false;
-	}
-	
-}
 
 </script>
 
@@ -151,11 +163,10 @@ function formCheck(){
 					</div>
 					<div class="card-body" id = "writeBody"  style = "height: 88%;">
 					<!-- form 테그 시작 -->
-						 <form action ="/Write" method = "post" id = "writeform" enctype="multipart/form-data" onsubmit="return formCheck();">
-						 					 
+						 <form action ="/Write" method = "post" id = "writeform" enctype="multipart/form-data">
 						 <div id = "select_kind"></div>
 						 
-						 <input type = "text" id="title" name="title"  placeholder = "제목을 입력하세요." size = 50 maxlength=50/>
+						 <div class="writeInfoDiv" ><input type = "text" name="title" placeholder = "제목을 입력하세요."/></div>
 					
 						
 						 <!-- 본문 에디터 -->
@@ -176,9 +187,7 @@ function formCheck(){
 						
 						
 						 <div class="writeInfoDiv">
-						 <input type="file" name="upfile" />	
-						 <input type="file" name="upfile1" />	
-						 <input type="file" name="upfile2" />		 
+						 <input type="file" name="upfile" />		 
 						 </div>
 						 
 						 <div class="writeInfoDiv" id = "writeOkDiv" >

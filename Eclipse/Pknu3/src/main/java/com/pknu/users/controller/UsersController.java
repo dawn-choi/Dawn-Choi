@@ -32,7 +32,6 @@ public class UsersController {
 		return mv;
 	}
 
-
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	public String loginProcess(HttpSession session, @RequestParam HashMap<String, Object> map) {
 		String returnURL = "";
@@ -74,7 +73,6 @@ public class UsersController {
 		UsersVo vo = usersService.findId(map);
 		if (vo != null) {
 			mv.addObject("mid", vo.getMid());
-			System.out.println(vo.getMid());
 		}
 		mv.addObject("count", "1");
 		mv.setViewName("/users/getIdForm");
@@ -102,33 +100,56 @@ public class UsersController {
 	public ModelAndView myTicket(@RequestParam HashMap<String, Object> map) {
 		ModelAndView mv = new ModelAndView();
 		List<UsersVo> ticketList = usersService.getTicket(map);
-		
+
 		mv.addObject("ticket", ticketList);
 		mv.setViewName("/users/myTicketForm");
-		System.out.println("controller"+mv);
-		
+
 		return mv;
 	}
+
 	@ResponseBody
-	@RequestMapping(value="/idChk",method = RequestMethod.POST)
-	public HashMap<String, Object> idChk(@RequestBody HashMap<String, Object> map ) {
-	
-		UsersVo vo=usersService.getCount(map);
-		map.put("count",vo.getCount() );
-		System.out.println(map);
-		return map ;
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public HashMap<String, Object> idChk(@RequestBody HashMap<String, Object> map) {
+
+		UsersVo vo = usersService.getCount(map);
+		map.put("count", vo.getCount());
+		return map;
 	}
-	
+
 	@RequestMapping("/AssignForm")
 	public String assignForm() {
 		return "/users/assignForm";
 	}
 
-	@RequestMapping(value="/assign",method = RequestMethod.POST)
+	@RequestMapping(value = "/assign", method = RequestMethod.POST)
 	public String assign(@RequestParam HashMap<String, Object> map) {
-		System.out.println(map);
 		usersService.setMember(map);
 		return "home";
 	}
-	
+
+	@RequestMapping("/myInfo")
+	public ModelAndView myInfo(@RequestParam HashMap<String, Object> map) {
+		ModelAndView mv = new ModelAndView();
+
+		List<UsersVo> info = usersService.getInfo(map);
+		mv.addObject("info", info.get(0));
+		mv.setViewName("/users/myInfo");
+
+		return mv;
+	}
+
+	@RequestMapping("/deleteCheck")
+	public String deleteCheck() {
+
+		return "users/deleteCheck";
+	}
+
+	@RequestMapping("/deleteMember")
+	public String deleteMember(HttpSession session, @RequestParam HashMap<String, Object> map) {
+		usersService.deleteMember(map); 
+		session.removeAttribute("login");
+		session.invalidate();
+		return "/home";
+	}
+
 }

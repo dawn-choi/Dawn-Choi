@@ -24,9 +24,9 @@ public class SubjectVo {
 	
 	//Product
 	private String pId;
-	private String pName;
+	//private String pName;
 	private String pCost;
-	private String pTot;
+	//private String pTot;
 	
 	//Member
 	private String mId;
@@ -39,12 +39,6 @@ public class SubjectVo {
 	//OUT
 	private String oCode;
 	private String oMsg;
-	
-	//commons
-	private String term;
-	private String gubun;
-	
-	
 	public String getlId() {
 		return lId;
 	}
@@ -81,12 +75,15 @@ public class SubjectVo {
 	public void setdTime(String dTime) {
 		this.dTime = dTime;
 	}
+	
+		
 	public String getdCnt() {
 		return dCnt;
 	}
 	public void setdCnt(String dCnt) {
 		this.dCnt = dCnt;
 	}
+	
 	public String gettId() {
 		return tId;
 	}
@@ -117,41 +114,17 @@ public class SubjectVo {
 	public void setpId(String pId) {
 		this.pId = pId;
 	}
-	public String getpName() {
-		return pName;
-	}
-	public void setpName(String pName) {
-		this.pName = pName;
-	}
 	public String getpCost() {
 		return pCost;
 	}
 	public void setpCost(String pCost) {
 		this.pCost = pCost;
 	}
-	public String getpTot() {
-		return pTot;
-	}
-	public void setpTot(String pTot) {
-		this.pTot = pTot;
-	}
 	public String getmId() {
 		return mId;
 	}
 	public void setmId(String mId) {
 		this.mId = mId;
-	}
-	public String getInNum() {
-		return inNum;
-	}
-	public void setInNum(String inNum) {
-		this.inNum = inNum;
-	}
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
 	}
 	public String getoCode() {
 		return oCode;
@@ -165,25 +138,27 @@ public class SubjectVo {
 	public void setoMsg(String oMsg) {
 		this.oMsg = oMsg;
 	}
-	public String getTerm() {
-		return term;
+		
+	public String getInNum() {
+		return inNum;
 	}
-	public void setTerm(String term) {
-		this.term = term;
+	public void setInNum(String inNum) {
+		this.inNum = inNum;
 	}
-	public String getGubun() {
-		return gubun;
+		
+	public String getKeyword() {
+		return keyword;
 	}
-	public void setGubun(String gubun) {
-		this.gubun = gubun;
-	}	
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	
 	
-	public SubjectVo () { }
+	public SubjectVo( ) {}
 	
 	public SubjectVo(String lId, String lName, String grId, String grName, String dDay, String dTime, String dCnt,
-			String tId, String tName, String rId, String rName, String pId, String pName, String pCost, String pTot,
-			String mId, String inNum, String keyword, String oCode, String oMsg, String term, String gubun) {
+			String tId, String tName, String rId, String rName, String pId, String pCost, String mId, String inNum,
+			String keyword, String oCode, String oMsg) {
 		super();
 		this.lId = lId;
 		this.lName = lName;
@@ -197,26 +172,22 @@ public class SubjectVo {
 		this.rId = rId;
 		this.rName = rName;
 		this.pId = pId;
-		this.pName = pName;
 		this.pCost = pCost;
-		this.pTot = pTot;
 		this.mId = mId;
 		this.inNum = inNum;
 		this.keyword = keyword;
 		this.oCode = oCode;
 		this.oMsg = oMsg;
-		this.term = term;
-		this.gubun = gubun;
 	}
+	
 	
 	@Override
 	public String toString() {
 		return "SubjectVo [lId=" + lId + ", lName=" + lName + ", grId=" + grId + ", grName=" + grName + ", dDay=" + dDay
 				+ ", dTime=" + dTime + ", dCnt=" + dCnt + ", tId=" + tId + ", tName=" + tName + ", rId=" + rId
-				+ ", rName=" + rName + ", pId=" + pId + ", pName=" + pName + ", pCost=" + pCost + ", pTot=" + pTot
-				+ ", mId=" + mId + ", inNum=" + inNum + ", keyword=" + keyword + ", oCode=" + oCode + ", oMsg=" + oMsg
-				+ ", term=" + term + ", gubun=" + gubun + "]";
+				+ ", rName=" + rName + ", pId=" + pId + ", pCost=" + pCost + ", mId=" + mId + ", inNum=" + inNum
+				+ ", keyword=" + keyword + ", oCode=" + oCode + ", oMsg=" + oMsg + "]";
 	}
-	
+
 	
 }

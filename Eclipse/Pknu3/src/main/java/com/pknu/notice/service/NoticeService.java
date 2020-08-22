@@ -21,8 +21,6 @@ public interface NoticeService {
 
 	void setWrite(HashMap<String, Object> map, HttpServletRequest request);
 
-	void plusRC(HashMap<String, Object> map);
-
 
 	
 	

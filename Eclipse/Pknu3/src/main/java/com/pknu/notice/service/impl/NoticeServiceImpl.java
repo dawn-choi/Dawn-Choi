@@ -108,13 +108,7 @@ public class NoticeServiceImpl implements NoticeService {
 		System.out.println(map);
 		
 		//2. db에 저장합시당! 
-		noticeDao.setWrite(map); 
-	}
-
-	@Override
-	public void plusRC(HashMap<String, Object> map) {
-		noticeDao.plusRC(map);
-		
+		noticeDao.setWrite(map);
 	}
 
 

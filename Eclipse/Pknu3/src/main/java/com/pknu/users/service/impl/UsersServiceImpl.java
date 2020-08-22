@@ -56,4 +56,15 @@ public class UsersServiceImpl implements UsersService {
 		
 	}
 
+	@Override
+	public List<UsersVo> getInfo(HashMap<String, Object> map) {
+		List<UsersVo> usersVo = usersDao.getInfo(map);
+		return usersVo;
+	}
+
+	@Override
+	public void deleteMember(HashMap<String, Object> map) {
+		usersDao.deleteMember(map);
+	}
+
 }

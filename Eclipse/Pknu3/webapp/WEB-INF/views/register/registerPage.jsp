@@ -83,10 +83,6 @@
 		display: inline-block;
 	}
 	
-	#logoMsg {
-		font-size : 35px;
-	}
-	
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -108,21 +104,7 @@
                 
             var oCode = "${ oCode }";
             var oMsg  = "${ oMsg  }";
-            
-            if( oCode != 'Success' && oCode != ' ') {
-	            
-	            var url	 	= "/Subject/ticketPage?oMsg=${ oMsg }";
-	            var name 	= "이용권 충전 안내";
-	            var width 	= "450";
-	            var height 	= "150";
-	            var x		= (window.screen.width/2) - ( width / 2);
-	            var y		= (window.screen.height/2) - ( height / 3);
-	            
-	            var option = "width=" + width + ", height= " + height + ", left=" + x + ", top=" + y
-	            		+ ", location=no";
-	            
-            	window.open(url, name, option);
-            }         
+         
                         
             var grSelect = $("#grSelect").val();
             
@@ -168,7 +150,7 @@
 	                                strHTML += '<td>' + subjectVo.tName  + '</td>';
 	                                strHTML += '<td>' + subjectVo.pCost  + '</td>';
 	                                strHTML += '<td>';
-	                                strHTML += '<a href="/Subject/Register?mId=${mId}&lId="'+ subjectVo.lId + '" class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>';
+	                                strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>';
 	                                strHTML += '</td>';
 
                               }
@@ -181,7 +163,7 @@
   	                                  strHTML += '<td class="dupli"><span>' + subjectVo.tName  + '</span></td>';
   	                                  strHTML += '<td class="dupli"><span>' + subjectVo.pCost  + '</span></td>';
   	                                  strHTML += '<td class="dupli"><span>';
-	                                  strHTML += '<a href="/Subject/Register?mId=${mId}&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
+	                                  strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
 	                                  strHTML += '</span></td>';
                               }
                               
@@ -257,7 +239,7 @@
 		                                strHTML += '<td>' + subjectVo.tName  + '</td>';
 		                                strHTML += '<td>' + subjectVo.pCost  + '</td>';
 		                                strHTML += '<td>';
-		                                strHTML += '<a href="/Subject/Register?mId=${mId}&lId="'+ subjectVo.lId + '" class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>';
+		                                strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>';
 		                                strHTML += '</td>';
 	
 	                              }
@@ -270,7 +252,7 @@
 	  	                                  strHTML += '<td class="dupli"><span>' + subjectVo.tName  + '</span></td>';
 	  	                                  strHTML += '<td class="dupli"><span>' + subjectVo.pCost  + '</span></td>';
 	  	                                  strHTML += '<td class="dupli"><span>';
-		                                  strHTML += '<a href="/Subject/Register?mId=${mId}&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
+		                                  strHTML += '<a href="/Subject/Register?mId=' + subjectVo.mId  + '&lId="'+ subjectVo.lId + '" class="insertBtn">신청</a>';
 		                                  strHTML += '</span></td>';
 	                              }
 	                              
@@ -311,7 +293,41 @@
 </script>
 </head>
 <body>
-	<%@include file="/WEB-INF/include/navigationBar.jsp" %>
+   <!-- 상단 네비게이션  -->
+   <div id="topNav">
+      <div id="logo">
+         <span>로고 위치</span>
+      </div>
+      <input id="selBtn" type="button" value="이용권 조회" onclick="" />
+      <div id="barRight">
+         <ul>
+            <li>
+               <a href="/LoginForm">
+                  <img class="imgSet" width="35px" height="35px" alt="Login" src="/img/login.png">
+                  <div>로그인</div>
+               </a>
+            </li>
+            <li>
+               <a href="/SignUpForm">
+                  <img class="imgSet" width="35px" height="35px" alt="SignUp" src="/img/submit.png">
+                  <div>회원가입</div>
+               </a>
+            </li>
+         </ul>
+      </div>
+   </div>
+   <!-- 왼쪽 네비게이션 -->
+   <div id="leftNav">
+      <ul>
+	     <li><a class="categorys" href="/"><img width="40px" height="40px" alt="HOME" src="/img/home.png"></a></li>
+         <li><a class="categorys" href=""><img width="40px" height="40px" alt="Schedule" src="/img/calendar.png"></a></li> 
+         <li><a class="categorys" href="/Subject/List"><img width="40px" height="40px" alt="Class register" src="/img/registration.png"></a></li>
+         <li><a class="categorys" href=""><img width="40px" height="40px" alt="Product List" src="/img/gym.png"></a></li>
+         <li><a class="categorys" href=""><img width="40px" height="40px" alt="Statistics" src="/img/result.png"></a></li>
+         <li><a class="categorys" href=""><img width="40px" height="40px" alt="Board" src="/img/meeting.png"></a></li>
+         <!-- 스케줄 / 수업신청 / 상품  / 통계  / 자유게시판 순 -->
+      </ul>
+   </div>
    <div id="wrapper">
      
         <div class="container-fluid">
@@ -329,7 +345,6 @@
 			               </c:forEach>
 			            </select>
 			         </div>
-			         <h2>${ mid }</h2>
 			         <!-- 여기 상품 목록이 출력 될 것임 -->
 			         <div id="search">
 				         <div class="form-group">
@@ -375,14 +390,14 @@
 			         <c:choose>
 			            <c:when test="${ old ne subjectVo.lId }">
 			               <td>${ subjectVo.grName }</td>
-			               <td>${ subjectVo.lName  }</td>
+			               <td >${ subjectVo.lName  }</td>
 			               <td>${ subjectVo.dDay   }</td>
 			               <td>${ subjectVo.dTime   }</td>
-			               <td>${ subjectVo.rName  }</td>
-			               <td>${ subjectVo.tName  }</td>
-			               <td>${ subjectVo.pCost  }</td>
+			               <td >${ subjectVo.rName  }</td>
+			               <td >${ subjectVo.tName  }</td>
+			               <td >${ subjectVo.pCost  }</td>
 			               <td>
-			                  <a href="/Subject/Register?mId=${ mId }&lId=${ subjectVo.lId }"  class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>
+			                  <a href="/Subject/Register?mId=${ subjectVo.mId }&lId=${ subjectVo.lId }"  class="insertBtn btn btn-block btn-outline-primary btn-sm">신청</a>
 			               </td>
 			            </c:when>
 			            <c:otherwise>
@@ -395,7 +410,7 @@
 			               <td  class="dupli"><span>${ subjectVo.pCost  }</span></td>
 			               <td  class="dupli">
 			               	<span>
-			                  <a href="/Subject/Register?mId=${ mId }&lId=${ subjectVo.lId }"  class="insertBtn" style="border:none">신청</a>
+			                  <a href="/Subject/Register?mId=${ subjectVo.mId }&lId=${ subjectVo.lId }"  class="insertBtn" style="border:none">신청</a>
 			              	</span>
 			               </td>
 			            </c:otherwise>

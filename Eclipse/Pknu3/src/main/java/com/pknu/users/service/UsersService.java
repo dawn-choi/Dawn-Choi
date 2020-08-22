@@ -19,4 +19,8 @@ public interface UsersService {
 
 	void setMember(HashMap<String, Object> map);
 
+	List<UsersVo>getInfo(HashMap<String, Object> map);
+
+	void deleteMember(HashMap<String, Object> map);
+
 }

@@ -20,6 +20,28 @@ public class UsersVo {
 	private String pname;
 	private String oexp;
 	private String mbirth;
+	private String mgender;
+	public String getMgender() {
+		return mgender;
+	}
+	public void setMgender(String mgender) {
+		this.mgender = mgender;
+	}
+	public String getMtel() {
+		return mtel;
+	}
+	public void setMtel(String mtel) {
+		this.mtel = mtel;
+	}
+
+	private String mtel;
+	private String maddr;
+	public String getMaddr() {
+		return maddr;
+	}
+	public void setMaddr(String maddr) {
+		this.maddr = maddr;
+	}
 	public String getMbirth() {
 		return mbirth;
 	}

@@ -64,49 +64,4 @@ public class SubjectDaoImpl implements SubjectDao {
 		
 	}
 
-	@Override
-	public List<SubjectVo> getGrSelect(HashMap<String, Object> map) {
-		sqlSession.selectList("Ticket.GrList", map);
-		
-		List<SubjectVo> grList = (List<SubjectVo>) map.get("result");
-		
-		return grList;
-	}
-	
-
-	@Override
-	public List<SubjectVo> getClassSelect(HashMap<String, Object> map) {
-		sqlSession.selectList("Ticket.ClassList", map);
-		
-		List<SubjectVo> classList = (List<SubjectVo>) map.get("result");
-		
-		return classList;
-	}
-
-	@Override
-	public List<SubjectVo> getTermSelect(HashMap<String, Object> map) {
-		sqlSession.selectList("Ticket.TermList", map);
-		
-		List<SubjectVo> termList = (List<SubjectVo>) map.get("result");
-		
-		return termList;
-	}
-
-	@Override
-	public List<SubjectVo> getTicketList(HashMap<String, Object> map) {
-		
-		sqlSession.selectList("Ticket.TicketList", map);
-		List<SubjectVo> ticketList = (List<SubjectVo>) map.get("result");
-		
-		return ticketList;
-	}
-	
-	@Override
-	public void getTicket(HashMap<String, Object> map) {
-		
-		sqlSession.insert("Ticket.TicketCharge", map);
-		
-	}
-
-
 }
