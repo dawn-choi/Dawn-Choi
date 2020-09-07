@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "Notice">
+
+	<resultMap  id="FilterListMap" type="com.pknu.notice.vo.FilterVo" >
+		<result property="menu_id"        column=""    javaType="string" />
+		<result property="menu_name"      column=""    javaType="string" />
+		<result property="menu_seq"       column=""    javaType="int" />
+	</resultMap>
+	
+	<select id = "FilterList" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.FilterVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_FILTER_LIST(
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	    javaType = ResultSet, resultMap = FilterListMap
+	 	}
+	 )}
+	 </select>
+
+
+	<resultMap type="com.pknu.notice.vo.NoticeVo" id="NoticeListMap">
+		<result property="idx"          column=""    javaType="int" />
+		<result property="menu_id"      column=""    javaType="string" />
+		<result property="title"        column=""    javaType="string" />
+		<result property="cont"         column=""    javaType="string" />
+		<result property="mid"          column=""    javaType="string" />
+		<result property="mname"        column=""    javaType="string" />
+		<result property="regdate"      column=""    javaType="string" />		
+		<result property="readcount"    column=""    javaType="int" />
+		<result property="bnum"         column=""    javaType="int" />
+      	<result property="lvl"          column=""    javaType="int" />
+      	<result property="step"         column=""    javaType="int" />
+      	<result property="nref"         column=""    javaType="int" />    
+      	<result property="delnum"       column=""    javaType="int" />    	
+		<result property="sumnail"      column=""    javaType="string" />		
+	</resultMap>
+
+	<select id = "NoticeList" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.NoticeVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_TABLE_LIST(
+	  #{menu_id, mode=IN, jdbcType = CHAR},
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeListMap}
+	 )}
+	 </select>
+	 
+	 <select id = "NoticeSearchList" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.NoticeVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_TABLE_SEARCH_LIST(
+	  #{searchType, mode = IN, jdbcType = VARCHAR},
+	  #{searchKeyword, mode = IN, jdbcType = VARCHAR},
+	  #{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeListMap}
+	 )}
+	 </select>
+	 
+	 
+	 <insert id = "InsertList" statementType = "CALLABLE" parameterType = "hashmap">
+	
+	{CALL PKG_NOTICE.PROC_NOTICE_INSERT(
+		#{menu_id, mode=IN, jdbcType=CHAR},
+		#{title, mode=IN, jdbcType=VARCHAR},
+		#{cont, mode=IN, jdbcType=VARCHAR},
+		#{mid, mode=IN, jdbcType=VARCHAR},
+		#{bnum, mode=IN, jdbcType=INTEGER},
+		#{lvl, mode=IN, jdbcType=INTEGER},
+		#{step, mode=IN, jdbcType=INTEGER},
+		#{nref, mode=IN, jdbcType=INTEGER},
+		#{filenames,  mode=IN,
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	},
+    	#{fileexts,  mode=IN, 
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	},    	
+    	#{sfilenames,  mode=IN,
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	}
+	)}
+	
+	</insert >
+	 
+	 <update id = "PlusRC" statementType = "CALLABLE" parameterType = "hashmap">
+	 
+	 {CALL PKG_NOTICE.PROC_NOTICE_PLUS_READCOUNT(
+	 	#{idx, mode=IN, jdbcType=INTEGER}
+	 )}
+	 
+	 </update>
+	 
+	 <resultMap type = "com.pknu.notice.vo.ContentVo" id = "NoticeContentMap">
+	 	<result property= "mname" column=""    javaType="string"/>
+	 	<result property= "regdate" column=""    javaType="string"/>
+	 	<result property= "menu_name" column=""    javaType="string"/>
+	 	<result property= "title" column=""    javaType="string"/>
+	 	<result property= "cont" column=""    javaType="string"/>
+	 	<result property= "menu_id" column=""    javaType="string"/>  
+	 </resultMap>
+	 
+	 <select id = "NoticeContent" statementType = "CALLABLE"
+	 parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.ContentVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_GETCONTENT(
+	    #{idx, mode=IN, jdbcType = INTEGER},
+	  	#{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeContentMap}
+	 )}
+	 </select>
+
+	<resultMap type="com.pknu.notice.vo.LikeVo" id="NoticeLike">
+		<result property= "islike" column=""    javaType="string"/>
+	</resultMap>
+
+	<select id = "NoticeLike" statementType = "CALLABLE"
+	parameterType = "hashmap"
+	 resultType = "com.pknu.notice.vo.LikeVo">
+	 {CALL PKG_NOTICE.PROC_NOTICE_HOWLIKE(
+	 	#{mid, mode = IN, jdbcType = VARCHAR},
+	 	#{idx, mode=IN, jdbcType = INTEGER},
+	 	#{result, mode = OUT, jdbcType = CURSOR,
+	  	javaType = ResultSet, resultMap = NoticeLike}
+	 )}
+	 </select>
+
+	<select id="NoticeShowLike" parameterType="int" 
+	 resultType = "int">
+		SELECT LIKECOUNT
+	    FROM BOARD
+	    WHERE IDX = #{ridx}
+	</select>
+
+	<insert id = "NoticeSwitchLike" parameterType = "hashmap">
+		INSERT INTO BLIKE
+	    VALUES(#{mid}, #{idx}, 'Y')
+	</insert>
+	
+	<update id="LikeCountPlus" parameterType = "hashmap">
+		UPDATE BOARD
+		SET LIKECOUNT = LIKECOUNT +1
+	    WHERE IDX = #{idx}
+	</update>
+	
+	<delete id = "NoticeSwitchUnLike" parameterType = "hashmap">
+		DELETE FROM BLIKE
+		WHERE MID = #{mid}
+		AND   IDX = #{idx}
+	</delete>
+	
+	<update id="LikeCountMinus" parameterType = "hashmap">
+		UPDATE BOARD
+		SET LIKECOUNT = LIKECOUNT -1
+	    WHERE IDX = #{idx}
+	</update>
+	
+	<resultMap id="FileListMap"     type="com.pknu.notice.vo.FilesVo">
+   	 <result property="file_num"   column=""  javaType="int" />
+   	 <result property="idx"        column=""  javaType="int" />
+   	 <result property="filename"   column=""  javaType="string" />
+   	 <result property="fileext"    column=""  javaType="string" />
+   	 <result property="sfilename"  column=""  javaType="string" />
+   	 <result property="mid"        column=""  javaType="string" />
+   </resultMap>
+   
+    
+   <select id="FileList"  statementType="CALLABLE"
+        parameterType="hashmap"
+        resultType="com.pknu.notice.vo.FilesVo" >
+      {CALL  PKG_NOTICE.PROC_NOTICE_FILELIST(
+        #{idx,       mode=IN,   jdbcType = INTEGER}, 
+        #{result,    mode=OUT,   jdbcType = CURSOR,
+         javaType   = ResultSet, resultMap  = FileListMap}
+      )}
+    </select>
+	
+	<select id="selectMid" parameterType="int" 
+	 resultType = "string">
+		SELECT MID
+	    FROM BOARD
+	    WHERE IDX = #{ridx}
+	</select>
+	
+	<delete id ="fileDelete" parameterType="int">
+		DELETE 
+		FROM FILES
+		WHERE FILE_NUM = #{sfilenum}
+	</delete>
+	
+	<update id = "UpdateWrite"  statementType = "CALLABLE" parameterType = "hashmap">
+	{CALL PKG_NOTICE.PROC_NOTICE_UPDATE(
+		#{title, mode=IN, jdbcType = VARCHAR},
+		#{cont,  mode=IN, jdbcType = VARCHAR},
+		#{idx,   mode=IN, jdbcType = INTEGER},
+		#{menu_id, mode=IN, jdbcType = CHAR},
+		#{filenames,  mode=IN,
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	},
+    	#{fileexts,  mode=IN, 
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	},    	
+    	#{sfilenames,  mode=IN,
+    	  jdbcTypeName=FILE_ARRAY,
+    	  typeHandler=com.pknu.notice.service.typehandler.ListMapTypeHandler
+    	}
+	
+	
+	)}
+	</update>
+	
+	<delete id = "NoticeDelete" statementType = "CALLABLE" parameterType = "hashmap">
+	{CALL PKG_NOTICE.PROC_NOTICE_DELETE(
+		#{idx,   mode=IN, jdbcType = INTEGER}
+	)}
+	
+	</delete>
+
+</mapper>

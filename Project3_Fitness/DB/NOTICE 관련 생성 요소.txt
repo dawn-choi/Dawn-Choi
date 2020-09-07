@@ -1,0 +1,16 @@
+NOTICE TABLE 관련 
+생성 요소
+
+-- 배열 유형 
+create or replace TYPE FILE_ARRAY 
+IS 
+TABLE OF VARCHAR2(1000);
+
+-- 시퀀스 
+CREATE SEQUENCE  "S"."BRDSEQ"  MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 61 CACHE 20 NOORDER  NOCYCLE ;
+
+-영상은 영상일뿐 직접 시연을 보여야 한다. 
+-강사님 컴퓨터로 돌아가도록 db, 프로젝트 세팅을 내일 아침에 진행 할것이다. 발표자가 시연하는 사람이랑 나뉘는데 발표자는 전반적인 기획의도나 전체 내용을 설명하고 각자 시연설명을 직접해야함 
+-오늘 파이널 조 다시 짬 면접자, 남는 사람 순으로 랜덤 돌리고 실력 분배할 예정 
+-내일 아름이가 발표 빠지는데 유빈이가 대신함 
+- ppt 외 문서 작업은 안하지만 각자 스크립트(대본) 한번 적어서 발표 연습해볼것 

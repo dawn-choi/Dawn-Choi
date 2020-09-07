@@ -1,0 +1,161 @@
+PROCEDURE PROC_SUBJECT_INSERT(
+    IN_LID      VARCHAR2,
+    IN_MID      VARCHAR2,
+    O_ERR_CODE  OUT     VARCHAR2,
+    O_ERR_MSG   OUT     VARCHAR2
+  ) AS
+  
+    ERR_NO_TICKET   EXCEPTION;
+    ERR_OVER_CNT    EXCEPTION;
+    ERR_OVER_TIME   EXCEPTION;
+    ERR_MORE_REG    EXCEPTION;
+  
+    V_PID       VARCHAR(7);     -- 상품 아이디 담을 것
+    V_STAND     VARCHAR2(20);   -- DAY / MONTH 
+    
+    V_CHECK     VARCHAR2(10);   -- 사용자가 해당 수업에 대한 이용권이 있는지 체크
+    
+    V_OEXP      DATE;           -- 만료일 담을 변수
+    V_OCNT      NUMBER(5);      -- DAY 상품 신청할 때 횟수 담을 변수
+    V_PCNT      NUMBER(5);      -- 해당 상품이 몇 회권인지, 몇 개월권인지의 내용 담음
+  
+    V_NEXT_OCNT NUMBER(5);      -- 수업 신청 후 +1 된 후의 OCNT 담는 변수
+  BEGIN    
+  
+    -- 해당 수업 LID 를 가지고 DAY권인지 확인 
+    SELECT PID, CSTAND INTO V_PID, V_STAND
+    FROM
+    (
+    SELECT T1.LID,T1.LNAME,T1.RID,T1.TID,T2.PID,T2.PNAME,T2.PCOST,T2.PTOT,T2.CID,T3.GRID,T3.CNAME, T3.CSTAND 
+    FROM LECTURES T1, PRODUCTS T2, ( 
+        SELECT T1.CID, T1.GRID, T1.CNAME, T2.CNAME AS CSTAND
+        FROM COMMONS T1, COMMONS T2
+        WHERE T1.CPARENT_ID = T2.CID
+    )T3
+    WHERE T1.PID = T2.PID 
+    AND T2.CID = T3.CID
+    AND T1.LID = IN_LID
+    ORDER BY PID
+    )
+    ;
+    
+    -- 만약 해당 사용자가 신청한 수업에 대해 이용권이 없을 경우 예외 처리
+    SELECT MAX(ORID)
+    INTO V_CHECK
+    FROM ORDERS
+    WHERE PID = V_PID
+    AND MID = IN_MID;
+    
+    IF V_CHECK IS NULL THEN
+        RAISE ERR_NO_TICKET;
+    END IF;
+    
+    -- 만료일이 남은 이용권 또는 만료일이 지정되지 않은(PT용) 이용권 조회
+    -- 입력받은 수업아이디로 찾은 상품아이디와 신청인 아이디로 
+    -- 해당 사용자가 동일한 상품에 대해 적절한 이용권을 가지고 있는지 조회
+    -- 만료일, 신청 횟수, 상품권 제공 횟수 데이터 가져옴 
+    -- ( 이용권 등록 날짜가 빠른 순으로 사용되도록 할 것 )
+        
+    SELECT OEXP, OCNT, TO_NUMBER(PCNT)AS PCNT
+    INTO V_OEXP, V_OCNT, V_PCNT
+    FROM
+    (
+        SELECT T1.ORID, T1.PID, T1.MID, T1.SDATE
+            , T1.OEXP, T1.OCNT, T2.PNAME, T3.CNAME AS PCNT, T3.PARNAME 
+        FROM ORDERS T1, PRODUCTS T2, 
+        (
+            SELECT T1.CID, T1.CNAME, T2.CNAME AS PARNAME
+            FROM COMMONS T1, COMMONS T2
+            WHERE T1.CPARENT_ID = T2.CID
+        )T3
+        WHERE T1.PID = T2.PID
+        AND T2.CID = T3.CID
+        AND T1.PID = V_PID AND T1.MID = IN_MID
+        AND ( OEXP > (SELECT SYSDATE FROM DUAL) OR OEXP IS NULL )
+        AND SDATE = 
+        (
+        SELECT MIN(SDATE)
+        FROM ORDERS
+        WHERE PID = V_PID AND MID = IN_MID
+        AND (OEXP > (SELECT SYSDATE FROM DUAL) OR OEXP IS NULL)
+        )
+    )
+    ;   -- ORDER 테이블에서 해당 수업의 상품으로 결제한 권의 OCNT를 확인
+    
+    IF V_STAND = 'DAY' THEN -- DAY권인 경우
+        
+        -- 그 상품의 제공 갯수보다 작으면 신청 가능
+        IF V_OCNT < V_PCNT THEN
+            
+            -- 수업 신청 내역 테이블에 INSERT
+            INSERT INTO LSALES (LSID, LID, MID, LSDATE)
+            VALUES ( (SELECT 'LS' || TRIM(TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(LSID), 'LS000'), 3, 3))+1, '000')) FROM LSALES),
+                    IN_LID, IN_MID, SYSDATE );
+            
+            -- OCNT에 +1 
+            UPDATE  ORDERS
+            SET     OCNT = OCNT + 1
+            WHERE   PID = V_PID
+            AND     MID = IN_MID
+            ;
+        
+            COMMIT;
+            
+            SELECT  OCNT INTO V_NEXT_OCNT
+            FROM    ORDERS
+            WHERE   PID = V_PID
+            AND     MID = IN_MID;
+            
+            -- 입력한 후 OCNT가 총 개수와 같아지면 만료일 적어주기.
+            IF V_NEXT_OCNT = V_PCNT THEN
+                UPDATE  ORDERS
+                SET     OEXP = SYSDATE
+                WHERE   PID = V_PID
+                AND     MID = IN_MID
+                ;
+            END IF;
+       
+        ELSIF V_OCNT = V_PCNT THEN -- 총 개수와 같으면 EXCEPTION
+            RAISE ERR_OVER_CNT;            
+        END IF;
+        
+    ELSIF V_STAND = 'MONTH' THEN -- MONTH권인 경우
+        IF V_OCNT = 0 THEN
+            IF V_OEXP > SYSDATE THEN
+                 -- 수업 신청 내역 테이블에 INSERT
+                INSERT INTO LSALES (LSID, LID, MID, LSDATE)
+                VALUES ( (SELECT 'LS' || TRIM(TO_CHAR(TO_NUMBER(SUBSTR(NVL(MAX(LSID), 'LS000'), 3, 3) + 1), '000')) FROM LSALES),
+                        IN_LID, IN_MID, SYSDATE );
+                        
+                UPDATE  ORDERS
+                SET     OCNT = OCNT + 1
+                WHERE   PID = V_PID
+                AND     MID = IN_MID
+                ;        
+            ELSE
+                RAISE ERR_OVER_TIME;
+            END IF;
+        ELSE 
+            RAISE ERR_MORE_REG;
+        END IF;
+    END IF;
+    
+    EXCEPTION
+        WHEN ERR_NO_TICKET THEN
+            O_ERR_CODE  := 'ERR0001';
+            O_ERR_MSG   := '해당 수업을 신청가능한 이용권이 없습니다.';
+        WHEN ERR_OVER_CNT THEN
+            O_ERR_CODE  := 'ERR0002';
+            O_ERR_MSG   := '이용가능한 횟수가 부족합니다.';
+        WHEN ERR_OVER_TIME THEN
+            O_ERR_CODE  := 'ERR0003';
+            O_ERR_MSG   := '기간이 만료되었습니다.';
+        WHEN ERR_MORE_REG THEN
+            O_ERR_CODE  := 'ERR004';
+            O_ERR_MSG   := '해당 이용권은 이미 사용되었습니다';
+            -- 개월 권의 경우에는 신청 횟수가 최대 1번이기 때문에 추가
+        WHEN OTHERS THEN
+            O_ERR_CODE  := 'ERR0099';
+            O_ERR_MSG   := '' || SQLERRM;
+
+  END PROC_SUBJECT_INSERT;

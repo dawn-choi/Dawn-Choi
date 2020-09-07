@@ -1,0 +1,205 @@
+@charset "UTF-8";
+
+#wrapMain{ 
+    width: 100%;
+    height: 1000px;
+	 }
+	 
+ #mb_head{
+ 	position:relative;
+ 	height: 100px;
+ }
+ #mb_title {
+    font-family: 'Russo One', 'Do Hyeon', sans-serif;
+ 	position:absolute;
+ 	margin-left : 160px;
+ 	margin-top  : 60px;
+ 	
+ }
+  #mb_title > h1 {
+  	color:#07D88E;
+  }
+ 
+ 
+ #select_kind{
+ 	position:absolute;
+ 	margin-left : 900px;
+ 	margin-top  : 20px;
+ 	width: 800px;
+ 	
+ 	
+ }
+
+#kind
+{
+	font-family: 'Russo One', 'Do Hyeon', sans-serif;
+	width: 200px;
+	
+	margin-left : 490px;
+}
+
+#st
+{
+	font-family: 'Russo One', 'Do Hyeon', sans-serif;
+	width: 200px;
+	margin-left : 10px;
+	display: inline;
+}
+
+#searchKeyword
+{
+	width : 300px;
+	margin-left : 10px;
+	display: inline;
+}
+
+
+
+#mb_tableWrap{
+	position:relative;
+	height: 900px;
+}
+
+#mb_tableDiv{
+     position:absolute;
+     margin-left : 160px;
+ 	 margin-top  : 20px;
+     width: 1450px;
+     height: 800px;
+    
+}
+
+
+
+
+#userboard{
+	border-top:1px solid #E9E9E9; 
+    border-collapse: collapse;
+}
+
+td
+{
+ border-bottom:1px solid #E9E9E9; 
+ font-family: 'Russo One', 'Do Hyeon', sans-serif;
+}
+
+.write_TR > td
+{
+	
+	border-bottom:1px solid white;
+	height : 30px; 
+	text-align: right;
+}
+
+#writeBtn{
+	font-family: 'Russo One', 'Do Hyeon', sans-serif;
+	display: inline-block;
+    border-radius: 4px;
+    background-color: #07D88E;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 150px;
+    height: 45px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+#writeBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#writeBtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 15px;
+  transition: 0.5s;
+}
+
+#writeBtn:hover span {
+  padding-right: 20px;
+}
+
+#writeBtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+.headtr
+{
+ text-align:center;
+ height: 60px;
+}
+
+.MainUL
+{
+text-align:center;
+}
+
+.MainUL > td
+{
+ height: 100px;
+}
+
+.headtr > td:nth-of-type(1)
+{
+ width:250px;
+}
+
+.headtr > td:nth-of-type(2)
+{
+ width:450px;
+}
+
+.headtr > td:nth-of-type(3)
+{
+ width:250px;
+}
+
+.headtr > td:nth-of-type(4)
+{
+ width:250px;
+}
+
+.headtr > td:nth-of-type(5)
+{
+ width:250px;
+}
+
+.itemtd
+{
+position:relative;
+}
+
+/*2 열 */
+.itemtd
+{
+width: 550px;
+}
+
+.imgdiv
+{
+position:absolute;
+top:10px;
+left:450px;
+}
+
+.textdiv > a {
+  color: black;
+}
+
+.textdiv > a:hover {
+  color: #07D88E;
+}
+
+

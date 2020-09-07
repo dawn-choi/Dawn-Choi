@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+body {
+		margin:0 auto;
+	}
+	ul {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	
+	#topNav {
+		width:100%;
+		height:60px;
+		background-color: #07D88E;
+		position: fixed;
+		z-index:10;
+		top:0;
+		overflow:hidden;
+	}
+	
+	#logo {
+		/* 로고 대략적인 위치 → 임시로 배치 */
+		width:500px;
+		height:55px;
+		margin:2px 0;
+		line-height:55px;
+		color:white;
+		position: relative;
+		left : 60px;
+		display: inline-block;
+		font-family: 'Russo One', 'Do Hyeon', sans-serif;
+		font-size: 35px;
+	}
+	
+	#logoMsg{
+		display: inline-block;
+	}
+	
+	.imgSet+div {
+	font-size: 12px;
+	margin: 0;
+	color: white;
+	font-weight: bold;
+}
+		
+	#barRight {
+		float: right;
+		margin: 2px 30px;
+		height: 55px;
+		position: relative;
+		right: 0px;
+		
+	}
+	
+	#barRight1 > ul, #barRight2 > ul  {
+		padding: 0;
+		margin: 0 auto;
+	}
+	
+	#barRight1 li, #barRight2 li {
+		float: left;
+		text-align: center;
+		margin: 3px 10px;
+		color:white;
+	}
+	
+	#selBtn {
+		float: right;
+		height: 50px;
+		margin: 5px 50px 4px 0;
+		width:200px;
+		background-color: white;
+		border:1px solid lightgrey;
+		
+		font-family: 'Russo One', 'Do Hyeon', sans-serif;
+		font-size: 24px;
+	}
+	
+	/* 왼쪽 네비게이션 바  */
+	#leftNav{
+		width:60px;
+		height:100%;
+		position:fixed;
+		background-color: #07D88E;
+		top:0;
+		left:0;
+		z-index:11;
+		clear:both;
+	}
+	
+	#leftNav > ul {
+		margin-top:60px;
+		padding:0;
+	}
+	
+	.categorys {
+		display: block;
+		text-align: center;
+		height:40px;
+		margin: 50px 0px;
+	}
+	
+	#wrapper {
+	margin-left: 60px;
+	margin-top: 60px;
+}
+	
+	

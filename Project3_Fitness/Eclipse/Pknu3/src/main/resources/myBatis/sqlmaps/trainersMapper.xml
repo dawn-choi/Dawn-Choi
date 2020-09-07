@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Trainers">
+   <resultMap id="trainersMap" type="com.pknu.trainers.vo.TrainersVo">
+      <result property="tid"   column="TID" javaType="string"></result>
+      <result property="tname" column="TNAME" javaType="string"></result>
+      <result property="tgender"  column="TGENDER"  javaType="String"></result>
+      <result property="tbirth" column="TBIRTH" javaType="string"></result>
+      <result property="tcareer" column="TCAREER" javaType="int"></result>
+      <result property="tlicense"   column="TLICENSE"   javaType="string"></result>
+      <result property="lname"   column="LNAME"   javaType="string"></result>
+   </resultMap>
+   
+   
+   <select id="TrainersInfo" statementType="CALLABLE" parameterType="hashmap" resultType="com.pknu.trainers.vo.TrainersVo">
+      { CALL PKG_TRAINERS.PROC_TRAINER_LIST(
+      #{result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=trainersMap}
+      ) }
+   </select>
+   
+</mapper>   
