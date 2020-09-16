@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="Todo">
+   
+  <!--  
+  <resultMap type="com.d.todolist.vo.Vo"  id="TodoList">
+  	<result property="ids" column="" javaType="String"/>
+  	<result property="title" column="" javaType="String"/>
+  	<result property="names" column="" javaType="String"/>
+  	<result property="seqs" column="" javaType="String"/>
+  	<result property="typo" column="" javaType="String"/>
+  	<result property="regisdate" column="" javaType="String"/>
+  </resultMap>
+  	 -->
+  
+  <select id ="TodoList" resultType = "com.d.todolist.vo.Vo">
+  	SELECT ids, title,names,seqs,typo, to_char(regisdate,'yyyy.mm.dd') as regisdate
+  	FROM TODO
+  	order by ids
+  </select>
+  
+  <update id="Update" parameterType="hashmap">
+  	UPDATE TODO
+  	SET TYPO = CASE
+  	WHEN TYPO = 'TODO' THEN 'DOING'
+  	WHEN TYPO = 'DOING' THEN 'DONE'
+  	ELSE 'DONE'
+  	END
+  	WHERE IDS = #{ids}
+  </update>
+   
+  <insert id="Insert" parameterType ="hashmap">
+  	INSERT INTO TODO(IDS,TITLE,NAMES,SEQS)
+  	VALUES((SELECT NVL(MAX(IDS),0)+1 FROM TODO),#{title},#{names},#{seqs})
+  </insert> 
+       
+  </mapper>        
+
