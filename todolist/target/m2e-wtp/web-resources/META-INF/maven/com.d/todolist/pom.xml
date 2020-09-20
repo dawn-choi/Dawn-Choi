@@ -15,7 +15,11 @@
       <repository>
         <id>Spring Plugins</id>
         <url>https://repo.spring.io/plugins-release/</url>
-      </repository>    
+      </repository>  
+       <repository>
+        <id>projectlombok.org</id>
+        <url>http://projectlombok.org/mavenrepo</url>
+    </repository>  
     </repositories>
   
   <!-- 라이브러리 -->
@@ -90,9 +94,6 @@
     	<version>2.5.1</version>
     </dependency>
     
-
-    
-    
     <dependency>
 	<groupId>com.google.code.gson</groupId>
 	<artifactId>gson</artifactId>
@@ -113,13 +114,27 @@
 	</dependency>
 
 	<dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.4</version>
+    	<groupId>commons-io</groupId>
+    	<artifactId>commons-io</artifactId>
+    	<version>2.4</version>
 	</dependency>
     
     
+    <!-- 롬복 -->
+    
+    <dependency>
+   	 <groupId>org.projectlombok</groupId>
+    	<artifactId>lombok</artifactId>
+    	<version>1.18.12</version>
+    	<scope>provided</scope>
+	</dependency>
+    
+  
   </dependencies>
+   
+    
+
+  
   
   <build>
     <plugins>

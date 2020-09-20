@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 	div{margin: 10px;}
 	
@@ -92,7 +93,7 @@
  	 
  	</div>	 
  	
- 
+ <button id= 'balue'  onclick="myfunction('a',b)"></button>
  
  
  </div>

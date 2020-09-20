@@ -15,8 +15,6 @@ import com.d.todolist.vo.Vo;
 
 @Controller
 public class HomeController {
-	
-	
 	@Autowired private TodoService todoService;
 	 
 	
@@ -48,8 +46,8 @@ public class HomeController {
 	public List<Vo> update(Vo vo) {
 		HashMap<String, Object> map =new HashMap<String, Object>();
 		map.put("ids",vo.getIds());
+		map.put("typo",vo.getTypo());
 		todoService.update(map);
-		System.out.println(map);
 		List<Vo> vo2 = (List<Vo>)todoService.getList();	
 		return vo2;
 	}
