@@ -8,7 +8,8 @@ import com.d.todolist.vo.Vo;
 public interface TodoService {
 	List<Vo> getList();
 
-	void update(HashMap<String, Object> map);
+	int update(HashMap<String, Object> map);
 
 	void insert(HashMap<String, Object> map);
+
 }

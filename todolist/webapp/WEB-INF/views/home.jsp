@@ -53,23 +53,28 @@ a {
 }
 </style>
 <script>
-	var token = function() {
 
+$(function() {
+	$('div').on('click','.update',function(e){
+		var btn= e.target;
+		alert(btn.id);
+		alert(btn.getAttribute('typo'));
+		
 		var arrTypo = [ "TODO", "DOING", "DONE" ]
 		$.ajax({
 					url : "ajax",
 					type : "POST",
+					async : false,
 					dataType : "json",
 					success : function(datas) {
-
 						strHTML = "<div id='nav'> <a href='insertForm'> 새로운 TODO등록</a></div>";
 						for (var i = 0; i < 3; i++) {
 							strHTML += "<div class='list'>";
-							strHTML += "<div class='typo'>" + arrTypo[i]
+							strHTML += "<div class='typo' id='"+arrTypo[i]+"'>" + arrTypo[i]
 									+ " </div>"
 							$.each(datas,function(index, item) {
 												if (item.typo == arrTypo[i]) {
-													strHTML += "<div class='content'><font size='3px' b>"
+													strHTML += "<div class='content' id='s"+item.ids+"'><font size='3px' b>"
 															+ item.title
 															+ "</font></br>"
 															+ "등록날짜:"
@@ -80,15 +85,8 @@ a {
 															+ "우선순위"
 															+ item.seqs;
 													if (item.typo != arrTypo[2]) {
-														strHTML += "<button class='button' value="
-																+ "'"
-																+ item.ids
-																+ "'"
-																+ " onclick='myFunction(\" "
-																+ item.ids
-																+ "\",\""
-																+ item.typo
-																+ "\")'>";
+														strHTML += "<button class='update' id='"+item.ids+"' typo='"+item.typo+"'>"
+																
 														strHTML += "<img src='https://previews.123rf.com/images/"
 														strHTML += "get4net/get4net1709/get4net170901354/86307988-%"
 														strHTML += "EC%98%A4%EB%A5%B8%EC%AA%BD-%ED%99%94%EC%82%B4%ED%91%9C.jpg' height='5px' width='3px'>";
@@ -104,71 +102,43 @@ a {
 					error : function() {
 						alert("err");
 					}
+				})
+		})
 				});
-	}
 
-	$(function() {
-		token();
-	});
 
-	function myFunction(a, b) {
+
+
+
+
+	/*
+	function update(a, b) {
 		var arrTypo = [ "TODO", "DOING", "DONE" ]
-		$
-				.ajax({
+		$.ajax({
 					url : "update",
 					type : "POST",
+					async : false,
 					dataType : "json",
 					data : {
 						"ids" : a,
 						"typo" : b
 					},
-					success : function(datas) {
-
-						strHTML = "<div id='nav'> <a href='insertForm'> 새로운 TODO등록</a></div>";
-						for (var i = 0; i < 3; i++) {
-							strHTML += "<div class='list'>";
-							strHTML += "<div class='typo'>" + arrTypo[i]
-									+ " </div>"
-							$
-									.each(
-											datas,
-											function(index, item) {
-												if (item.typo == arrTypo[i]) {
-													strHTML += "<div class='content'><font size='3px' b>"
-															+ item.title
-															+ "</font></br>"
-															+ "등록날짜:"
-															+ item.regisdate
-															+ ","
-															+ item.names
-															+ ","
-															+ "우선순위"
-															+ item.seqs;
-													if (item.typo != arrTypo[2]) {
-														strHTML += "<button class='button' value="
-																+ "'"
-																+ item.ids
-																+ "'"
-																+ " onclick='myFunction(\" "
-																+ item.ids
-																+ "\",\""
-																+ item.typo
-																+ "\")'>";
-														strHTML += "<img src='https://previews.123rf.com/images/get4net/get4net1709/get4net170901354/86307988-%EC%98%A4%EB%A5%B8%EC%AA%BD-%ED%99%94%EC%82%B4%ED%91%9C.jpg' height='5px' width='3px'>";
-														strHTML += "</button>";
-													}
-													strHTML += "</div>";
+					success : function(data) {
+						if(data >0){
+					$('"#s'+a+'"').remove() 
+						console.log($('"#s'+a+'"'))
 												}
-											});
-							strHTML += "</div>";
-							$("#section").html(strHTML);
-						}
 					},
 					error : function() {
 						alert("err");
 					}
 				});
-	};
+	}; */
+	
+
+		
+	
+	
 </script>
 
 </head>
