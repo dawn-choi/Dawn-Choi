@@ -23,17 +23,19 @@ public class TodoServiceImpl implements TodoService{
 	}
 
 	@Override
-	public int update(HashMap<String, Object> map) {
-		
-		
-		
-		return todoDao.update(map);
+	public int move(HashMap<String, Object> map) {
+		return todoDao.move(map);
 	}
 
 	@Override
 	public void insert(HashMap<String, Object> map) {
 		todoDao.insert(map);
 	}
+
+    @Override
+    public int delete(HashMap<String, Object> map) {
+        return todoDao.delete(map);
+    }
 	
 
 

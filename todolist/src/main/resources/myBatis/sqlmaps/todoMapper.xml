@@ -36,6 +36,12 @@
 		VALUES((SELECT NVL(MAX(IDS),0)+1 FROM
 		TODO),#{title},#{names},#{seqs})
 	</insert>
+	
+	<delete id="Delete" parameterType="hashmap">
+		DELETE FROM TODO
+		WHERE IDS = #{ids}
+		AND TYPO = #{typo}
+	</delete>
 
 </mapper>        
 

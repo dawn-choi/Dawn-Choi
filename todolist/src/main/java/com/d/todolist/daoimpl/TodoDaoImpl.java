@@ -24,7 +24,7 @@ public class TodoDaoImpl implements TodoDao{
 	}
 
 	@Override
-	public int update(HashMap<String, Object> map) {
+	public int move(HashMap<String, Object> map) {
 		int result = sqlSession.update("Todo.Update",map);
 		
 		return result;
@@ -34,5 +34,11 @@ public class TodoDaoImpl implements TodoDao{
 	public void insert(HashMap<String, Object> map) {
 	  sqlSession.insert("Todo.Insert",map);
 	}
+
+    @Override
+    public int delete(HashMap<String, Object> map) {
+      int result =  sqlSession.delete("Todo.Delete",map);
+        return result;
+    }
 
 }

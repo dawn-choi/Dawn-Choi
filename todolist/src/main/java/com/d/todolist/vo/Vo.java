@@ -1,6 +1,5 @@
 package com.d.todolist.vo;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

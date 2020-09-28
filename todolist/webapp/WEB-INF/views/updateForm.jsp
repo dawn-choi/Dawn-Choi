@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>할일 등록하기</title>
+<title>할일 수정하기</title>
 
 <style>
 	div{margin: 10px;}
@@ -70,7 +70,7 @@
 <body>
  <div id='wrap'>
  
- 	<form action="insert" method="POST">
+ 	<form action="/update" method="POST">
  	<div><h1>할일 등록</h1></div>
  	<div> 어떤일인가요?</div>
  	<div><input type="text" placeholder="swift 공부하기(24자까지)" name="title" maxlength="24"/></div>
@@ -87,7 +87,7 @@
  	  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
 	
  	 <input type="button" class="rightButton" value="제출" onclick="submitCheck()">
- 	 <button type ="reset" class="rightButton"  >내용 지우기</button>
+ 	 <button type ="button" class="rightButton" onclick="redirect()">내용 지우기</button>
  	 
  	 </form>
  	 

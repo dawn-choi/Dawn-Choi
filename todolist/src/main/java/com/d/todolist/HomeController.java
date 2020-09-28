@@ -18,15 +18,12 @@ import com.d.todolist.vo.Vo;
 
 @Controller
 public class HomeController {
-	Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired private TodoService todoService;
 	 
 	
 	@RequestMapping("/")
 	public String home() {
-	
-		
 		return "home";
 	}
 	@RequestMapping("/insertForm")
@@ -34,7 +31,11 @@ public class HomeController {
 		return "/insertForm";
 	}
 	
-	
+	@RequestMapping("/insert")
+	    public String insert(@RequestParam HashMap<String, Object> map ) {
+	        todoService.insert(map);
+	        return "redirect:/";
+	}
 	
 	
 	@RequestMapping(value="/ajax", method = {RequestMethod.GET, RequestMethod.POST})
@@ -46,11 +47,10 @@ public class HomeController {
 		 * System.out.println("리스트 빔"); } mv.setViewName("home");
 		 * mv.addObject("list",mv);
 		 */
-		logger.debug("main"+vo);
 	   return vo;
 	}
 	
-	@RequestMapping(value="/update", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/move", method = { RequestMethod.POST})
     @ResponseBody
 	public int update(Vo vo) {
 		HashMap<String, Object> map =new HashMap<String, Object>();
@@ -58,15 +58,20 @@ public class HomeController {
 		map.put("typo",vo.getTypo());
 		
 			
-		return todoService.update(map);
+		return todoService.move(map);
 	}
 	
-	@RequestMapping("/insert")
-	public String insert(@RequestParam HashMap<String, Object> map ) {
-		
-		todoService.insert(map);
-		
-		return "home";
-	}
+	@RequestMapping(value="/delete", method = { RequestMethod.POST})
+    @ResponseBody
+    public int delete(Vo vo) {
+        HashMap<String, Object> map =new HashMap<String, Object>();
+        map.put("ids",vo.getIds());
+        map.put("typo",vo.getTypo());
+        System.out.println(map);
+        System.out.println(todoService.delete(map));
+        return todoService.delete(map);
+    }
+	
+
 	
 }
