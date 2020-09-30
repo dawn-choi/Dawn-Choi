@@ -54,8 +54,7 @@ a {
 }
 </style>
 <script>
-	
-
+//DB에서  할일 리스트를 가져와 뿌리는 함수 
 	function loadMain() {
 		var arrTypo = [ "TODO", "DOING", "DONE" ]
 		$
@@ -85,20 +84,22 @@ a {
 															+ ","
 															+ "우선순위"
 															+ item.seqs
-															+ "<br> <button type='button' class='update' id='"+item.ids+"' typo='"+item.typo+"'>"
-															+ "<img src='https://cdn.icon-icons.com/icons2/1462/PNG/512/101edit_99874.png' height='10px' width='10px'> </button>"
-															+ "<button type='button' class='delete' id='"+item.ids+"' typo='"+item.typo+"'>"
-															+ "<input type='image' src='https://img.icons8.com/ios/452/delete-message.png' height='10px' width='10px'> </button>";
+															+ "<br/><input type='image' class='update' id='"+item.ids+"' typo='"+item.typo+"'"
+															+ "src='https://cdn.icon-icons.com/icons2/1462/PNG/512/101edit_99874.png' height='15px' width='15px'"
+															+ "style=\"background-color:white;\">"
+
+															+ "<input type='image'class='delete' id='"+item.ids+"' typo='"+item.typo+"' "
+															+ "src='https://img.icons8.com/ios/452/delete-message.png' height=15px width=15px style=\"background-color:white; \">";
 
 													if (item.typo != arrTypo[2]) {
-														strHTML += "<button type='button' class='move' id='"+item.ids+"' typo='"+item.typo+"'" 
-														strHTML += "style='background:url(";
+														strHTML += "<input type='image' class='move' id='"+item.ids+"' typo='"+item.typo+"'";
+														strHTML += "title='"+item.title+"'names='"+item.names+"'"
+														strHTML += "src=\"";
 														strHTML += "https://previews.123rf.com/images/";
-														strHTML += "get4net/get4net1709/get4net170901354/86307988-%"
-														strHTML += "EC%98%A4%EB%A5%B8%EC%AA%BD-%ED%99%94%EC%82%B4%ED%91%9C.jpg' height='10px' width='10px'";
-														strHTML += ")' height='10px;' width='10px;'/>";
+														strHTML += "get4net/get4net1709/get4net170901354/86307988-%";
+														strHTML += "EC%98%A4%EB%A5%B8%EC%AA%BD-%ED%99%94%EC%82%B4%ED%91%9C.jpg\"";
+														strHTML += "height=15px width=15px style=\"background-color:white; \"/>";
 													}
-													/* 버튼태그 이미지 넣으면 이미지 누르면 값을 못보냄 백그라운드로 이미지를 주니 버튼 이 쪼매나짐 크기 조절법 생각하기 */
 													strHTML += "</div>";
 												}
 											});
@@ -111,82 +112,69 @@ a {
 					}
 				})
 
-	}// load main
+	}
 
-	/* 
-	 $('div').on('click', 'div button[class="update"]', function(e) {
-	 var btn = e.target;
-	 alert(btn.id);
-	 $.ajax({
-	 url : "delete",
-	 type : "POST",
-	 dataType : "json",
-	 data : {
-	 "ids" : btn.id,
-	 "typo" : btn.getAttribute('typo')
-	 },
-	 success : function(data) {
-	 if (data > 0) {
-	 loadMain();
-	 }
-	 },
-	 error : function() {
-	 alert("err");
-	 }
-	 });
-	 })// move */
-
+	 
+//첫 화면 뿌리는 동작
 	$(function() {
 		loadMain();
 	})
-	
-	$(document).off('click.move', 'div button[class="move"]').on('click.move',
-				'div button[class="move"]', function(e) {
-					var btn = e.target;
-					alert(btn.id);
-					$.ajax({
-						url : "move",
-						type : "POST",
-						async : false,
-						dataType : "json",
-						data : {
-							"ids" : btn.id,
-							"typo" : btn.getAttribute('typo')
-						},
-						success : function(data) {
-							if (data > 0) {
-					loadMain();
-							}
-						},
-						error : function() {
-							alert("err");
-						}
-					});
-				});
 
-		$(document).off('click.delete', 'div button[class="delete"]').on(
-				'click.delete', 'div button[class="delete"]', function(e) {
-					var btn = e.target;
-					alert(btn.id);
-					$.ajax({
-						url : "delete",
-						type : "POST",
-						dataType : "json",
-						async : false,
-						data : {
-							"ids" : btn.id,
-							"typo" : btn.getAttribute('typo')
-						},
-						success : function(data) {
-							if (data > 0) {
-					loadMain();
-							}
-						},
-						error : function() {
-							alert("err");
+// ajax 로 할일을 다음 단계로 이동 시킴
+	$('html').off('click.move', 'div input[class="move"]').on('click.move',
+			'div input[class="move"]', function(e) {
+				var btn = e.target;
+				alert(btn.id);
+				$.ajax({
+					url : "move",
+					type : "POST",
+					async : false,
+					dataType : "json",
+					data : {
+						"ids" : btn.id,
+						"typo" : btn.getAttribute('typo')
+					},
+					success : function(data) {
+						if (data > 0) {
+							loadMain();
 						}
-					});
-				});// move
+					},
+					error : function() {
+						alert("err");
+					}
+				});
+			});
+// 할일 삭제
+	$(document).off('click.delete', 'div input[class="delete"]').on(
+			'click.delete', 'div input[class="delete"]', function(e) {
+				var btn = e.target;
+				alert(btn.id);
+				$.ajax({
+					url : "delete",
+					type : "POST",
+					dataType : "json",
+					async : false,
+					data : {
+						"ids" : btn.id,
+						"typo" : btn.getAttribute('typo')
+					},
+					success : function(data) {
+						if (data > 0) {
+						}
+						loadMain();
+					},
+					error : function() {
+						alert("err");
+					}
+				});
+			});
+
+// 할일 수정 화면으로 이동
+	$(document).on('click.update','div input[class="update"]', function(e) {
+		 var btn = e.target;
+		 location.href="updateForm?ids="+btn.id+"&title="+btn.getAttribute('title')+"&names="+btn.getAttribute('names')+"";
+		 })
+		 
 </script>
 
 </head>

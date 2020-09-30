@@ -3,14 +3,14 @@ package com.d.todolist;
 import java.util.HashMap;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.d.todolist.service.TodoService;
 import com.d.todolist.vo.Vo;
@@ -28,7 +28,7 @@ public class HomeController {
 	}
 	@RequestMapping("/insertForm")
 	public String insertForm() {
-		return "/insertForm";
+		return "insertForm";
 	}
 	
 	@RequestMapping("/insert")
@@ -67,11 +67,20 @@ public class HomeController {
         HashMap<String, Object> map =new HashMap<String, Object>();
         map.put("ids",vo.getIds());
         map.put("typo",vo.getTypo());
-        System.out.println(map);
-        System.out.println(todoService.delete(map));
         return todoService.delete(map);
     }
 	
+	@RequestMapping("/updateForm")
+    public ModelAndView updateForm(Vo vo) {
+	    ModelAndView mv = new ModelAndView();
+	    
+	    mv.addObject("ids",vo.getIds());
+	    mv.addObject("title",vo.getTitle());
+	    mv.addObject("names",vo.getNames());
+	    mv.setViewName("updateForm");
+	    System.out.println(mv);
+        return mv;
+    }
 
 	
 }
