@@ -15,4 +15,6 @@ public interface TodoDao {
 
     int delete(HashMap<String, Object> map);
 
+    void update(HashMap<String, Object> map);
+
 }

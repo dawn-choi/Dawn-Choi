@@ -84,16 +84,13 @@ a {
 															+ ","
 															+ "우선순위"
 															+ item.seqs
-															+ "<br/><input type='image' class='update' id='"+item.ids+"' typo='"+item.typo+"'"
-															+ "src='https://cdn.icon-icons.com/icons2/1462/PNG/512/101edit_99874.png' height='15px' width='15px'"
+															+ "<br/><input type='image' class='update' id='"+item.ids+"' typo='"+item.typo+"' title='"+item.title+"'names='"+item.names+"'"
+															+ "src=\"https://cdn.icon-icons.com/icons2/1462/PNG/512/101edit_99874.png\" width='15px'"
 															+ "style=\"background-color:white;\">"
-
 															+ "<input type='image'class='delete' id='"+item.ids+"' typo='"+item.typo+"' "
 															+ "src='https://img.icons8.com/ios/452/delete-message.png' height=15px width=15px style=\"background-color:white; \">";
-
 													if (item.typo != arrTypo[2]) {
 														strHTML += "<input type='image' class='move' id='"+item.ids+"' typo='"+item.typo+"'";
-														strHTML += "title='"+item.title+"'names='"+item.names+"'"
 														strHTML += "src=\"";
 														strHTML += "https://previews.123rf.com/images/";
 														strHTML += "get4net/get4net1709/get4net170901354/86307988-%";
@@ -124,7 +121,6 @@ a {
 	$('html').off('click.move', 'div input[class="move"]').on('click.move',
 			'div input[class="move"]', function(e) {
 				var btn = e.target;
-				alert(btn.id);
 				$.ajax({
 					url : "move",
 					type : "POST",
@@ -148,7 +144,6 @@ a {
 	$(document).off('click.delete', 'div input[class="delete"]').on(
 			'click.delete', 'div input[class="delete"]', function(e) {
 				var btn = e.target;
-				alert(btn.id);
 				$.ajax({
 					url : "delete",
 					type : "POST",
@@ -170,9 +165,9 @@ a {
 			});
 
 // 할일 수정 화면으로 이동
-	$(document).on('click.update','div input[class="update"]', function(e) {
-		 var btn = e.target;
-		 location.href="updateForm?ids="+btn.id+"&title="+btn.getAttribute('title')+"&names="+btn.getAttribute('names')+"";
+	$(document).off('click.update', 'div input[class="update"]').on('click.update','div input[class="update"]', function(e) {
+		 var btn2 = e.target;
+		 location.href="updateForm?ids="+btn2.id+"&title="+btn2.getAttribute('title')+"&names="+btn2.getAttribute('names')+"";
 		 })
 		 
 </script>

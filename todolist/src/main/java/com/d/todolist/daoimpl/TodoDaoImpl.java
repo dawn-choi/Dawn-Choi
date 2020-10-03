@@ -41,4 +41,10 @@ public class TodoDaoImpl implements TodoDao{
         return result;
     }
 
+    @Override
+    public void update(HashMap<String, Object> map) {
+        System.out.println(map);
+       sqlSession.update("Todo.Update2",map);
+    }
+
 }

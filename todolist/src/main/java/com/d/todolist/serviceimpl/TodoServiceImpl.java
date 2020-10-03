@@ -36,6 +36,11 @@ public class TodoServiceImpl implements TodoService{
     public int delete(HashMap<String, Object> map) {
         return todoDao.delete(map);
     }
+
+    @Override
+    public void update(HashMap<String, Object> map) {
+        todoDao.update(map);
+    }
 	
 
 

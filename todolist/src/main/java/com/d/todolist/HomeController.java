@@ -73,14 +73,16 @@ public class HomeController {
 	@RequestMapping("/updateForm")
     public ModelAndView updateForm(Vo vo) {
 	    ModelAndView mv = new ModelAndView();
-	    
 	    mv.addObject("ids",vo.getIds());
 	    mv.addObject("title",vo.getTitle());
 	    mv.addObject("names",vo.getNames());
 	    mv.setViewName("updateForm");
-	    System.out.println(mv);
         return mv;
     }
-
+	@RequestMapping("/update")
+	public String update2(@RequestParam HashMap<String, Object> map ) {
+	    todoService.update(map);
+	    return "redirect:/";
+	    }
 	
 }

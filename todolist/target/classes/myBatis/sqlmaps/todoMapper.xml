@@ -29,7 +29,14 @@
 		WHERE IDS = #{ids}
 		AND TYPO = #{typo}
 	</update>
-
+	
+	<update id="Update2" parameterType="hashmap">
+		UPDATE TODO
+		SET TITLE = #{title} , NAMES= #{names}
+		WHERE IDS = #{ids}
+	</update>
+	
+	
 	<insert id="Insert" parameterType="hashmap">
 		INSERT INTO
 		TODO(IDS,TITLE,NAMES,SEQS)
