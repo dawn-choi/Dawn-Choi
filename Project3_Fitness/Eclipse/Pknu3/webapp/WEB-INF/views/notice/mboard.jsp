@@ -23,13 +23,11 @@
 
 // 전체 조회 - idx 순으로 나열 
 var getListAll = function(kindValue){
-
        $.ajax({
                 url :'/NoticeList',
                 dataType: 'json',
                 data : {menu_id : kindValue} ,
                 success : function(datas) {
-                
                  var strHTML = '<table width = 1450 cellpadding = 0 cellspacing =0 id = userboard>';
 				 strHTML += '<tr class = headtr>';
 				 strHTML +=	'<td>번호</td>';
@@ -38,9 +36,7 @@ var getListAll = function(kindValue){
 				 strHTML += '<td>날짜</td>';
 				 strHTML += '<td>조회수</td>';
 				 strHTML += '</tr>';
-                    
                 $.each( datas,function(index, item)
-               
                {
                	 strHTML += '<tr class = MainUL>';
                	 strHTML +=	'<td><h1 style = color:#07D88E>'+ item.idx +'</h1></td>';
@@ -61,7 +57,6 @@ var getListAll = function(kindValue){
                }
                         
                 );
-                
                 strHTML += '</table>'; 
                 strHTML += '<table width = 1450 cellpadding = 0 cellspacing =0 id = writeButton>';
                 strHTML += '<tr class = write_TR>';
@@ -71,9 +66,6 @@ var getListAll = function(kindValue){
                 strHTML += '<td></td>';
                 strHTML += '<td><a href=/NoticeWriteForm?mid=${ login.mid }&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
-
-				
-                
                 $('#mb_tableDiv').html(strHTML);
                 
                 },
@@ -124,15 +116,11 @@ var getListKind = function(kindValue){
                }
                         
                 );
-                
                 strHTML += '</table>'; 
                 strHTML += '<table width = 1450 cellpadding = 0 cellspacing =0 id = writeButton>';
                 strHTML += '<tr class = write_TR>';
                 strHTML += '<td><a href=/NoticeWriteForm?mid=${ login.mid }&bnum=0&lvl=0&step=0&nref=0><button id = writeBtn ><span>새글쓰기</span></button></a></td>';
                 strHTML += '</tr>';
-
-				
-                
                 $('#mb_tableDiv').html(strHTML);
                 
                 },
@@ -172,7 +160,6 @@ var getFilter = function() {
 				else{
 					getListAll('all');
 				}
-				
 			});
 		},
 		error: function(datas){
